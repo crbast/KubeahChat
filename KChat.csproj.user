@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>ftp://ftp.kubeah.com/www/kubeah/Telechargement/Version1.3/|ftp://ftp.kubeah.com/kubeah/Telechargement/Version1.3/|publish\</PublishUrlHistory>
+    <InstallUrlHistory>https://kubeah.com/Telechargement/Version1.3/|https://www.kubeah.com/www/kubeah/Telechargement/Version1.3/|https://kubeah.com/www/kubeah/Telechargement/Version1.3/</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>
