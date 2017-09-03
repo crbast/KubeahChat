@@ -362,11 +362,10 @@ namespace ChatLocalClient
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP1.Text, 1);//Utilise la fonction "LabelToIntTest"
-            if (iTemp == 2){tbxIP1.BackColor = Color.Snow;}
-            else{tbxIP1.BackColor = Color.Red;}
+            if (iTemp == 2){tbxIP1.BackColor = Color.Snow;} else{tbxIP1.BackColor = Color.Red;}
             if (tbxIP1.Text == "0") { tbxIP1.BackColor = Color.Red; }
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP1.BackColor = Color.Red; } } catch { } //Permet de gérer l'erreur de plus de 255
+            try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP1.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
 
         }
         private void tbxIP2_TextChanged(object sender, EventArgs e)
@@ -374,20 +373,18 @@ namespace ChatLocalClient
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP2.Text, 1);//Utilise la fonction "LabelToIntTest"
-            if (iTemp == 2) { tbxIP2.BackColor = Color.Snow; }
-            else { tbxIP2.BackColor = Color.Red; }
+            if (iTemp == 2) { tbxIP2.BackColor = Color.Snow; } else { tbxIP2.BackColor = Color.Red; }
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) {tbxIP2.BackColor = Color.Red;}}catch { } //Permet de gérer l'erreur de plus de 255
+            try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255 || iTemp2 < 0) {tbxIP2.BackColor = Color.Red;}}catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
         }
         private void tbxIP3_TextChanged(object sender, EventArgs e)
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP3.Text, 1);//Utilise la fonction "LabelToIntTest"
-            if (iTemp == 2){tbxIP3.BackColor = Color.Snow;}
-            else{tbxIP3.BackColor = Color.Red;}
+            if (iTemp == 2){tbxIP3.BackColor = Color.Snow;} else{tbxIP3.BackColor = Color.Red;}
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP3.BackColor = Color.Red; } } catch { } //Permet de gérer l'erreur de plus de 255
+            try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255 || iTemp2 < 0) { tbxIP3.BackColor = Color.Red; } } catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
         }
 
         private void tbxIP4_TextChanged(object sender, EventArgs e)
@@ -395,10 +392,9 @@ namespace ChatLocalClient
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP4.Text, 1);//Utilise la fonction "LabelToIntTest"
-            if (iTemp == 2){tbxIP4.BackColor = Color.Snow;}
-            else{tbxIP4.BackColor = Color.Red;}
+            if (iTemp == 2){tbxIP4.BackColor = Color.Snow;} else{tbxIP4.BackColor = Color.Red;}
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP4.BackColor = Color.Red; } } catch { } //Permet de gérer l'erreur de plus de 255
+            try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP4.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
         }
         //======================================FIN========================FIN===============================================================================
         private void tbxMessageEnvoit_KeyDown(object sender, KeyEventArgs e)
