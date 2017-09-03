@@ -2,7 +2,8 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4 Final
+//  Version 1.4.1.x
+//  More information (Version.txt)
 //--------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
@@ -342,7 +343,7 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 1.4.0.0" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com" + "\r\n" + "\r\n" + "www.kubeah.com");
+            MessageBox.Show("Kubeah Chat - 1.4.0.x(001)" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com" + "\r\n" + "\r\n" + "www.kubeah.com");
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
