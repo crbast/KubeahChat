@@ -2,8 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4.1.x
-//  More information (Version.txt)
+//  Version 1.4.1
 //--------------------------------------------------------------------
 using System;
 using System.Collections.Generic;

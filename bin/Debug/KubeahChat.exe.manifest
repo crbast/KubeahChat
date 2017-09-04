@@ -4,7 +4,7 @@
   <description asmv2:iconFile="logoKChat.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="KubeahChat" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="KubeahChat" version="1.4.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="KubeahChat.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -44,13 +44,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KubeahChat.exe" size="335360">
-      <assemblyIdentity name="KubeahChat" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="KubeahChat" version="1.4.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cChWhGw6Q1eFIFX1S6vtYZ2W5QhECgkeulD0yDuncig=</dsig:DigestValue>
+        <dsig:DigestValue>v8VMymAbXiPd3mAap/u4QZn+tgsd//bTlWiFS3ccfs4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
