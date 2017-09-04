@@ -183,8 +183,6 @@ F:\A_Kubeah!\B_Developer\1.x\V1.4.x.x\1.4.3.3\obj\Debug\KChat.pdb
 \\SVR01CREB\ServeurBastien\A_K!\A_Kubeah!\B_Developer\1.x\V1.4_Finale\obj\Debug\KubeahChat.application
 \\SVR01CREB\ServeurBastien\A_K!\A_Kubeah!\B_Developer\1.x\V1.4_Finale\obj\Debug\KubeahChat.exe
 \\SVR01CREB\ServeurBastien\A_K!\A_Kubeah!\B_Developer\1.x\V1.4_Finale\obj\Debug\KubeahChat.pdb
-<<<<<<< HEAD
-=======
 C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.exe.config
 C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.exe.manifest
 C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.application
@@ -200,7 +198,6 @@ C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe.manifest
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.application
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.pdb
->>>>>>> 1.4.1.x
 C:\GIT\KubeahChat\bin\Debug\KubeahChat.exe.config
 C:\GIT\KubeahChat\bin\Debug\KubeahChat.exe.manifest
 C:\GIT\KubeahChat\bin\Debug\KubeahChat.application
