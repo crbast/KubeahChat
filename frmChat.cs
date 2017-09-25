@@ -455,7 +455,7 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            Int64 iVersionApplication = 001004003000000;
+            Int64 iVersionApplication = 001004002000000;//ApplicationVersionWeb
             try
             {
                 System.Net.WebClient webClientKubeah = new System.Net.WebClient();
