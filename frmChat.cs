@@ -2,7 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4.2.5 Test
+//  Version 1.4.2 Final
 //  More Info (Version.txt)
 //--------------------------------------------------------------------
 using System;
@@ -73,9 +73,9 @@ namespace ChatLocalClient
                     //Ne fait rien
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.ToString());
+                Application.Restart();
             }
         }
         //Fonction LABELTOINTTEST==============================================================================================/
@@ -233,9 +233,9 @@ namespace ChatLocalClient
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                         }
-                                        catch (Exception ex)
+                                        catch
                                         {
-                                            MessageBox.Show(ex.ToString());
+                                            Application.Restart();
                                         }
                                         //Envoit la clé à l'autre client pour connecté
                                         EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178->Clé Présent
@@ -326,7 +326,7 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 1.4.2 ToTest" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
+            MessageBox.Show("Kubeah Chat - 1.4.2" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -402,7 +402,7 @@ namespace ChatLocalClient
                     {
                         if (lblStatutDestinataire.Text == "Destinataire :" || lblStatutDestinataire.Text == "Destinataire : Déconnecté")
                         {
-                            MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "!!! Si l'utilisateur n'est pas connecté il ne recevra pas les messages et il ne pourra pas les consulter ultérieurement." + "\r\n" + "Attendez qu'il se reconnecte.");
+                            MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "Les discussions n'étant pas enregistrées, votre destinataire ne recevra pas le message." + "\r\n" + "Attendez qu'il se reconnecte.", "Destinataire absent");
                         }
                         else
                         {
@@ -533,9 +533,9 @@ namespace ChatLocalClient
                 byte[] buffer = new byte[1500];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageEnvoi), buffer);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.ToString());
+                Application.Restart();
             }
         }
     }
