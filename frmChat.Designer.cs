@@ -54,7 +54,7 @@
             this.timNbrCaractères = new System.Windows.Forms.Timer(this.components);
             this.pbxLogo1 = new System.Windows.Forms.PictureBox();
             this.pbxLogoPetit = new System.Windows.Forms.PictureBox();
-            this.lblStatutAmi = new System.Windows.Forms.Label();
+            this.lblStatutDestinataire = new System.Windows.Forms.Label();
             this.lblFixeCePC = new System.Windows.Forms.Label();
             this.tbxIP1 = new System.Windows.Forms.TextBox();
             this.tbxIP2 = new System.Windows.Forms.TextBox();
@@ -90,9 +90,10 @@
             // lblIPDESTINATAIRE
             // 
             this.lblIPDESTINATAIRE.AutoSize = true;
-            this.lblIPDESTINATAIRE.Location = new System.Drawing.Point(659, 138);
+            this.lblIPDESTINATAIRE.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPDESTINATAIRE.Location = new System.Drawing.Point(660, 137);
             this.lblIPDESTINATAIRE.Name = "lblIPDESTINATAIRE";
-            this.lblIPDESTINATAIRE.Size = new System.Drawing.Size(76, 13);
+            this.lblIPDESTINATAIRE.Size = new System.Drawing.Size(94, 17);
             this.lblIPDESTINATAIRE.TabIndex = 6;
             this.lblIPDESTINATAIRE.Text = "IP Destinataire";
             // 
@@ -108,39 +109,41 @@
             // 
             // lbxTchat
             // 
-            this.lbxTchat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxTchat.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxTchat.FormattingEnabled = true;
+            this.lbxTchat.ItemHeight = 16;
             this.lbxTchat.Location = new System.Drawing.Point(21, 43);
             this.lbxTchat.Name = "lbxTchat";
-            this.lbxTchat.Size = new System.Drawing.Size(561, 290);
+            this.lbxTchat.Size = new System.Drawing.Size(561, 276);
             this.lbxTchat.TabIndex = 10;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(780, 378);
+            this.lblDescription.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(784, 378);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(73, 12);
+            this.lblDescription.Size = new System.Drawing.Size(67, 13);
             this.lblDescription.TabIndex = 18;
             this.lblDescription.Text = "Kubeah! 2017";
             // 
             // lblDescription2
             // 
             this.lblDescription2.AutoSize = true;
-            this.lblDescription2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription2.Location = new System.Drawing.Point(530, 378);
+            this.lblDescription2.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription2.Location = new System.Drawing.Point(534, 378);
             this.lblDescription2.Name = "lblDescription2";
-            this.lblDescription2.Size = new System.Drawing.Size(73, 12);
+            this.lblDescription2.Size = new System.Drawing.Size(67, 13);
             this.lblDescription2.TabIndex = 19;
             this.lblDescription2.Text = "Kubeah! 2017";
             // 
             // lblIPPersonnel
             // 
             this.lblIPPersonnel.AutoSize = true;
+            this.lblIPPersonnel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPPersonnel.Location = new System.Drawing.Point(713, 270);
             this.lblIPPersonnel.Name = "lblIPPersonnel";
-            this.lblIPPersonnel.Size = new System.Drawing.Size(74, 13);
+            this.lblIPPersonnel.Size = new System.Drawing.Size(81, 16);
             this.lblIPPersonnel.TabIndex = 20;
             this.lblIPPersonnel.Text = "lblIPPersonnel";
             // 
@@ -175,34 +178,34 @@
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.arrêterToolStripMenuItem.Text = "Arrêter";
             this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.arrêterToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarer";
             this.redémmarerToolStripMenuItem.Click += new System.EventHandler(this.redémmarerToolStripMenuItem_Click);
             // 
             // iPPersonnelToolStripMenuItem
             // 
             this.iPPersonnelToolStripMenuItem.Name = "iPPersonnelToolStripMenuItem";
-            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.iPPersonnelToolStripMenuItem.Text = "IPPersonnel";
             // 
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.aProposToolStripMenuItem.Text = "A propos";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.siteToolStripMenuItem.Text = "Site";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
@@ -271,21 +274,23 @@
             this.pbxLogoPetit.TabIndex = 28;
             this.pbxLogoPetit.TabStop = false;
             // 
-            // lblStatutAmi
+            // lblStatutDestinataire
             // 
-            this.lblStatutAmi.AutoSize = true;
-            this.lblStatutAmi.Location = new System.Drawing.Point(18, 26);
-            this.lblStatutAmi.Name = "lblStatutAmi";
-            this.lblStatutAmi.Size = new System.Drawing.Size(33, 13);
-            this.lblStatutAmi.TabIndex = 29;
-            this.lblStatutAmi.Text = "Ami : ";
+            this.lblStatutDestinataire.AutoSize = true;
+            this.lblStatutDestinataire.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatutDestinataire.Location = new System.Drawing.Point(18, 26);
+            this.lblStatutDestinataire.Name = "lblStatutDestinataire";
+            this.lblStatutDestinataire.Size = new System.Drawing.Size(78, 16);
+            this.lblStatutDestinataire.TabIndex = 29;
+            this.lblStatutDestinataire.Text = "Destinataire :";
             // 
             // lblFixeCePC
             // 
             this.lblFixeCePC.AutoSize = true;
+            this.lblFixeCePC.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFixeCePC.Location = new System.Drawing.Point(660, 270);
             this.lblFixeCePC.Name = "lblFixeCePC";
-            this.lblFixeCePC.Size = new System.Drawing.Size(43, 13);
+            this.lblFixeCePC.Size = new System.Drawing.Size(49, 16);
             this.lblFixeCePC.TabIndex = 30;
             this.lblFixeCePC.Text = "Ce PC :";
             // 
@@ -343,28 +348,30 @@
             // lblEtatPing
             // 
             this.lblEtatPing.AutoSize = true;
-            this.lblEtatPing.Location = new System.Drawing.Point(660, 180);
+            this.lblEtatPing.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEtatPing.Location = new System.Drawing.Point(660, 178);
             this.lblEtatPing.Name = "lblEtatPing";
-            this.lblEtatPing.Size = new System.Drawing.Size(57, 13);
+            this.lblEtatPing.Size = new System.Drawing.Size(65, 16);
             this.lblEtatPing.TabIndex = 35;
             this.lblEtatPing.Text = "lblEtatPing";
             // 
             // lblNomPCDest
             // 
             this.lblNomPCDest.AutoSize = true;
+            this.lblNomPCDest.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomPCDest.Location = new System.Drawing.Point(660, 193);
             this.lblNomPCDest.Name = "lblNomPCDest";
-            this.lblNomPCDest.Size = new System.Drawing.Size(75, 13);
+            this.lblNomPCDest.Size = new System.Drawing.Size(84, 16);
             this.lblNomPCDest.TabIndex = 36;
             this.lblNomPCDest.Text = "lblNomPCDest";
             // 
             // lblPatience
             // 
             this.lblPatience.AutoSize = true;
-            this.lblPatience.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatience.Location = new System.Drawing.Point(671, 208);
+            this.lblPatience.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatience.Location = new System.Drawing.Point(667, 208);
             this.lblPatience.Name = "lblPatience";
-            this.lblPatience.Size = new System.Drawing.Size(110, 16);
+            this.lblPatience.Size = new System.Drawing.Size(119, 17);
             this.lblPatience.TabIndex = 37;
             this.lblPatience.Text = "Veuillez patienter";
             this.lblPatience.Visible = false;
@@ -382,7 +389,7 @@
             this.Controls.Add(this.tbxIP2);
             this.Controls.Add(this.tbxIP1);
             this.Controls.Add(this.lblFixeCePC);
-            this.Controls.Add(this.lblStatutAmi);
+            this.Controls.Add(this.lblStatutDestinataire);
             this.Controls.Add(this.pbxLogoPetit);
             this.Controls.Add(this.pbxLogo1);
             this.Controls.Add(this.lblNbrCaractRestants);
@@ -403,6 +410,7 @@
             this.Name = "frmMain";
             this.Text = "Kubeah Chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo1)).EndInit();
@@ -432,7 +440,7 @@
         private System.Windows.Forms.Timer timNbrCaractères;
         private System.Windows.Forms.PictureBox pbxLogo1;
         private System.Windows.Forms.PictureBox pbxLogoPetit;
-        private System.Windows.Forms.Label lblStatutAmi;
+        private System.Windows.Forms.Label lblStatutDestinataire;
         private System.Windows.Forms.Label lblFixeCePC;
         private System.Windows.Forms.ToolStripMenuItem NomDestinataireToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem focusToolStripMenuItem;

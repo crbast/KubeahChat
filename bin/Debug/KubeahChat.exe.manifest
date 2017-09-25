@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KubeahChat.exe" size="335360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KubeahChat.exe" size="336384">
       <assemblyIdentity name="KubeahChat" version="1.4.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hslXC2zyvMWoORQH126Xi/ZNsKIoSdcXTJzZvcbHH7s=</dsig:DigestValue>
+        <dsig:DigestValue>k/9eW0FRvciTtdahSyRQGQLrCZfBm4XY2nnQfMdndIw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

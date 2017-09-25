@@ -2,7 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4.2.x En Cours
+//  Version 1.4.2.5 Test
 //  More Info (Version.txt)
 //--------------------------------------------------------------------
 using System;
@@ -29,24 +29,6 @@ namespace ChatLocalClient
         public frmMain()
         {
             InitializeComponent();
-            //==============================LorsDuDémmarage===================================================
-            lblDescription2.Visible = false; //LABEL DESCRIPTION 2 non visible
-            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Création d'un socket
-            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            lblIPPersonnel.Text = GetLocalIP();//Met l'adresse ip du pc dans le label
-            tbxMessageEnvoit.MaxLength = 72;//Limite le nombre de caractères de la tbx à 32 caractères
-            pbxLogoPetit.Visible = false;//Permet de ne pas voir le logo au fond à droit
-            NomDestinataireToolStripMenuItem.Visible = false;
-            NomDestinataireToolStripMenuItem.Text = lblIPPersonnel.Text;
-            iPPersonnelToolStripMenuItem.Visible = false;
-            this.MaximizeBox = false;//Permet de ne pas pouvoir utiliser le bouton pour maximiser la fenêtre
-            //GESTIONFOCUS====================================================================================
-            timContrôleFocus.Enabled = true;//Départ du timer focus "Focus sur listbox"
-            oNToolStripMenuItem.Checked = true;
-            lblNomPCDest.Visible = false;
-            lblEtatPing.Visible = false;
-            //================================================================================================
-            IPSeparationString(lblIPPersonnel.Text);
         }
 
         private string GetLocalIP()
@@ -134,16 +116,17 @@ namespace ChatLocalClient
         //Permet de réaliser un ping avec un IP donnée
         public static bool PingDest(string sIpAdress)
         {
-            bool bResult;
             Ping ping = new Ping();
             PingReply pingresult = ping.Send(sIpAdress, 60);
             if (pingresult.Status.ToString() == "Success")
             {
-                return bResult = true;
+                bool bResult = true;
+                return bResult;
             }
             else
             {
-                return bResult = false;
+                bool bResult = false;
+                return bResult;
             }
         }
         //Fonction SPLITSTRING=================================================================================================/
@@ -172,10 +155,6 @@ namespace ChatLocalClient
         //=====================BTNSTART=============================================================================
         private void btnSart_Click(object sender, EventArgs e)
         {
-            lblPatience.Visible = true;
-            lblEtatPing.Visible = false;
-            lblNomPCDest.Visible = false;
-            this.Enabled = false;
             string sIPDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
             if (sIPDestinataire == lblIPPersonnel.Text) { tbxIP4.BackColor = Color.Red; }
             if (tbxIP1.BackColor != Color.Red)
@@ -187,6 +166,10 @@ namespace ChatLocalClient
                         {
                             if (tbxIP4.BackColor != Color.PaleGreen)
                             {
+                                this.Enabled = false;
+                                lblPatience.Visible = true;
+                                lblEtatPing.Visible = false;
+                                lblNomPCDest.Visible = false;
                                 lblEtatPing.Visible = true;
                                 string sNameDestinataire = NameMachineWithIP(sIPDestinataire);
                                 bool bResultPing = PingDest(sIPDestinataire);
@@ -229,7 +212,7 @@ namespace ChatLocalClient
                                         tbxIP2.Visible = false;
                                         tbxIP3.Visible = false;
                                         tbxIP4.Visible = false;
-                                        NomDestinataireToolStripMenuItem.Text = "Destinataire : " + sNameDestinataire;
+                                        NomDestinataireToolStripMenuItem.Text = "Destinataire :" + sNameDestinataire;
                                         lblNomPCDest.Visible = false;
                                         iPPersonnelToolStripMenuItem.Text = "Mon IP : " + lblIPPersonnel.Text;
                                         iPPersonnelToolStripMenuItem.Visible = true;
@@ -291,9 +274,9 @@ namespace ChatLocalClient
                 }
                 else
                 {
-                    if (lblStatutAmi.Text == "Ami : " || lblStatutAmi.Text == "Ami : Déconnecté")
+                    if (lblStatutDestinataire.Text == "Destinataire :" || lblStatutDestinataire.Text == "Destinataire : Déconnecté")
                     {
-                        MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "!!! Si le destinataire n'est pas connecté, il ne reçoit pas les messages et ne pourra pas les consulter ultérieurement." + "\r\n" + "Attendez qu'il se reconnecte.");
+                        MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "Les discussions n'étant pas enregistrées, votre destinataire ne pourra pas lire le message ultérieurement." + "\r\n" + "Attendez qu'il se reconnecte.", "Attention destinataire absent");
                     }
                     else
                     {
@@ -343,14 +326,14 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 1.4.0.x(001)" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com" + "\r\n" + "\r\n" + "www.kubeah.com");
+            MessageBox.Show("Kubeah Chat - 1.4.2 ToTest" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                System.Diagnostics.Process.Start("https://kubeah.com");//Ouvre le lien dans le navigateur par défault
+                System.Diagnostics.Process.Start("https://sites.google.com/view/kubeahchat");//Ouvre le lien dans le navigateur par défault
             }
             catch { }
         }
@@ -365,8 +348,8 @@ namespace ChatLocalClient
             if (iTemp == 2){tbxIP1.BackColor = Color.Snow;} else{tbxIP1.BackColor = Color.Red;}
             if (tbxIP1.Text == "0") { tbxIP1.BackColor = Color.Red; }
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP1.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
-
+            try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP1.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
+            if (tbxIP1.Text.Contains("-") || tbxIP1.Text.Contains("+")) { tbxIP1.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
         private void tbxIP2_TextChanged(object sender, EventArgs e)
         {
@@ -375,7 +358,8 @@ namespace ChatLocalClient
             int iTemp = LabelToIntTest(tbxIP2.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2) { tbxIP2.BackColor = Color.Snow; } else { tbxIP2.BackColor = Color.Red; }
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255 || iTemp2 < 0) {tbxIP2.BackColor = Color.Red;}}catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
+            try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255) {tbxIP2.BackColor = Color.Red;}}catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
+            if (tbxIP2.Text.Contains("-") || tbxIP2.Text.Contains("+")) { tbxIP2.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
         private void tbxIP3_TextChanged(object sender, EventArgs e)
         {
@@ -384,7 +368,8 @@ namespace ChatLocalClient
             int iTemp = LabelToIntTest(tbxIP3.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2){tbxIP3.BackColor = Color.Snow;} else{tbxIP3.BackColor = Color.Red;}
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255 || iTemp2 < 0) { tbxIP3.BackColor = Color.Red; } } catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
+            try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255) { tbxIP3.BackColor = Color.Red; } } catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
+            if (tbxIP3.Text.Contains("-") || tbxIP3.Text.Contains("+")) { tbxIP3.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
 
         private void tbxIP4_TextChanged(object sender, EventArgs e)
@@ -394,7 +379,8 @@ namespace ChatLocalClient
             int iTemp = LabelToIntTest(tbxIP4.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2){tbxIP4.BackColor = Color.Snow;} else{tbxIP4.BackColor = Color.Red;}
             btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
-            try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 < 0 || iTemp2 == -0) { tbxIP4.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
+            try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP4.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
+            if (tbxIP4.Text.Contains("-") || tbxIP4.Text.Contains("+")) { tbxIP4.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
         //======================================FIN========================FIN===============================================================================
         private void tbxMessageEnvoit_KeyDown(object sender, KeyEventArgs e)
@@ -414,7 +400,7 @@ namespace ChatLocalClient
                     }
                     else
                     {
-                        if (lblStatutAmi.Text == "Ami : " || lblStatutAmi.Text == "Ami : Déconnecté")
+                        if (lblStatutDestinataire.Text == "Destinataire :" || lblStatutDestinataire.Text == "Destinataire : Déconnecté")
                         {
                             MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "!!! Si l'utilisateur n'est pas connecté il ne recevra pas les messages et il ne pourra pas les consulter ultérieurement." + "\r\n" + "Attendez qu'il se reconnecte.");
                         }
@@ -445,16 +431,62 @@ namespace ChatLocalClient
                 EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", 0);//789ZCFZTiniwjZTUvjkas79012798->Clé Absence
             }
         }
+
+
+        //Lors du chargement de la fenêtre
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            //==============================LorsDuDémmarage===================================================
+            lblDescription2.Visible = false; //LABEL DESCRIPTION 2 non visible
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Création d'un socket
+            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            lblIPPersonnel.Text = GetLocalIP();//Met l'adresse ip du pc dans le label
+            tbxMessageEnvoit.MaxLength = 72;//Limite le nombre de caractères de la tbx à 32 caractères
+            pbxLogoPetit.Visible = false;//Permet de ne pas voir le logo au fond à droit
+            NomDestinataireToolStripMenuItem.Visible = false;
+            NomDestinataireToolStripMenuItem.Text = lblIPPersonnel.Text;
+            iPPersonnelToolStripMenuItem.Visible = false;
+            this.MaximizeBox = false;//Permet de ne pas pouvoir utiliser le bouton pour maximiser la fenêtre
+            //GESTIONFOCUS====================================================================================
+            timContrôleFocus.Enabled = true;//Départ du timer focus "Focus sur listbox"
+            oNToolStripMenuItem.Checked = true;
+            lblNomPCDest.Visible = false;
+            lblEtatPing.Visible = false;
+            //================================================================================================
+            IPSeparationString(lblIPPersonnel.Text);
+            //==============RechercheMiseAJour================================================================
+            Int64 iVersionApplication = 001004003000000;
+            try
+            {
+                System.Net.WebClient webClientKubeah = new System.Net.WebClient();
+                string sVersionWeb = webClientKubeah.DownloadString("http://kubeah.com/kchat/version.txt");//Affectation de */version.txt à sVersionWeb
+                if (iVersionApplication >= Convert.ToInt64(sVersionWeb)) { }//Comparaison si nouvelle/ancienne version
+                else
+                {//Si ancienne version
+                    string sInfoNewVersion = webClientKubeah.DownloadString("http://kubeah.com/kchat/info.txt");//Affectation de */version.txt à sInfoNewVersion
+                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, "Une nouvelle version est disponible", MessageBoxButtons.YesNo);//Message box avec YES/NO
+                    if (dialogResultUser == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/files/latest/download");//Ouvre le lien dans le navigateur par défault
+                    }
+                    else if (dialogResultUser == DialogResult.No) { }//Ne rien faire si NO
+                }
+            }
+            catch{}//Pour gestion pas d'accès internet
+            //================================================================================================
+        }
+
+
         //=====================FonctionReceptionMessage=====================================================================
-        // Le code pour la méthode(ami connecté/Déconnecté) est intégré directement dans la fonction
+        // Le code pour la méthode(Destinataire connecté/Déconnecté) est intégré directement dans la fonction
         // d'envoi du message. Elle risque d'évoluer et de changer de place. 
         // Les clé sont utilisées dans ce cas comme moyen de comparaison grâce à des "IF". !!!!!Il est possible de changer
         // l'état du client en envoyant la clé par message.
         //
-        // Méthode(ami connecté/Déconnecté):
+        // Méthode(Destinataire connecté/Déconnecté):
         // client 1 se connecte -> Il envoit la clé(dans le vide)-> client 2 se connecte -> Il envoit la clé ->
-        // Client 1 reçoit, compare le message -> client 1 regarde contenu lblStatutAmi(execute selon condition) ->
-        // client 2 reçoit, compare le message -> client 2 regarde contenu lblStatutAmi(execute selon condition)
+        // Client 1 reçoit, compare le message -> client 1 regarde contenu lblStatutDestinataire(execute selon condition) ->
+        // client 2 reçoit, compare le message -> client 2 regarde contenu lblStatutDestinataire(execute selon condition)
         private void MessageEnvoi(IAsyncResult aResult)
         {
             try
@@ -471,16 +503,16 @@ namespace ChatLocalClient
                     //Comparaison chaine de caractère reçu
                     if (receivedMessage == "789ZCFZTiniwjZTUvjkas79012798\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0")
                     {
-                        lblStatutAmi.Text = "Ami : Déconnecté";
-                        lblStatutAmi.ForeColor = Color.Red;
+                        lblStatutDestinataire.Text = "Destinataire : Déconnecté";
+                        lblStatutDestinataire.ForeColor = Color.Red;
                     }
                     else
                     {
-                        //Comparaison chaine de caractère reçu est regarde contenu lblStatutAmi
-                        if (receivedMessage == "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" && lblStatutAmi.Text == "Ami : " || lblStatutAmi.Text == "Ami : Déconnecté")
+                        //Comparaison chaine de caractère reçu est regarde contenu lblStatutDestinataire
+                        if (receivedMessage == "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" && lblStatutDestinataire.Text == "Destinataire :" || lblStatutDestinataire.Text == "Destinataire : Déconnecté")
                         {
-                            lblStatutAmi.Text = "Ami : Connecté";//Changement du statut le la personne
-                            lblStatutAmi.ForeColor = Color.Green;//Changement de la couleur du text
+                            lblStatutDestinataire.Text = "Destinataire : Connecté";//Changement du statut le la personne
+                            lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
                             //Pour confirmation que l'autre utilisateur ai dans le label Connecté
                             EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);
                         }
@@ -492,7 +524,7 @@ namespace ChatLocalClient
                             }
                             else
                             {
-                                lbxTchat.Items.Add("Ami :      " + receivedMessage);
+                                lbxTchat.Items.Add("Destinataire :      " + receivedMessage);
                             }
                         }
                     }
