@@ -2,7 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4.2 Final
+//  Version 1.4.2.1 Final
 //  More Info (Version.txt)
 //--------------------------------------------------------------------
 using System;
@@ -73,9 +73,9 @@ namespace ChatLocalClient
                     //Ne fait rien
                 }
             }
-            catch
+            catch(Exception exeption)
             {
-                Application.Restart();
+                MessageBox.Show("Veuillez redémarrer l'application" + exeption.ToString(), "Une erreur est survenue");
             }
         }
         //Fonction LABELTOINTTEST==============================================================================================/
@@ -233,9 +233,8 @@ namespace ChatLocalClient
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                         }
-                                        catch
+                                        catch (Exception exception)
                                         {
-                                            Application.Restart();
                                             MessageBox.Show("Veuillez redémarrer l'application" + exception.ToString(), "Une erreur est survenue");
                                         }
                                         //Envoit la clé à l'autre client pour connecté
@@ -327,7 +326,7 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 1.4.2" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
+            MessageBox.Show("Kubeah Chat - 1.4.2.1" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -456,7 +455,7 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            Int64 iVersionApplication = 001004002000000;//ApplicationVersionWeb
+            Int64 iVersionApplication = 001004002000001;//ApplicationVersionWeb
             try
             {
                 System.Net.WebClient webClientKubeah = new System.Net.WebClient();
@@ -534,9 +533,9 @@ namespace ChatLocalClient
                 byte[] buffer = new byte[1500];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageEnvoi), buffer);
             }
-            catch
+            catch (Exception exception)
             {
-                Application.Restart();
+                MessageBox.Show("Veuillez redémarrer l'application" + exception.ToString(), "Une erreur est survenue");
             }
         }
     }
