@@ -236,6 +236,7 @@ namespace ChatLocalClient
                                         catch
                                         {
                                             Application.Restart();
+                                            MessageBox.Show("Veuillez redémarrer l'application" + exception.ToString(), "Une erreur est survenue");
                                         }
                                         //Envoit la clé à l'autre client pour connecté
                                         EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178->Clé Présent
