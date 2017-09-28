@@ -75,7 +75,7 @@ namespace ChatLocalClient
             }
             catch(Exception exeption)
             {
-                MessageBox.Show("Veuillez redémarrer l'application" + exeption.ToString(), "Une erreur est survenue");
+                MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exeption.ToString(), "Une erreur est survenue");
             }
         }
         //Fonction LABELTOINTTEST==============================================================================================/
@@ -235,7 +235,7 @@ namespace ChatLocalClient
                                         }
                                         catch (Exception exception)
                                         {
-                                            MessageBox.Show("Veuillez redémarrer l'application" + exception.ToString(), "Une erreur est survenue");
+                                            MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exception.ToString(), "Une erreur est survenue");
                                         }
                                         //Envoit la clé à l'autre client pour connecté
                                         EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178->Clé Présent
@@ -535,7 +535,7 @@ namespace ChatLocalClient
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Veuillez redémarrer l'application" + exception.ToString(), "Une erreur est survenue");
+                MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exception.ToString(), "Une erreur est survenue");
             }
         }
     }
