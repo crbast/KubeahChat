@@ -2,7 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 1.4.2.1 Final
+//  Version 2.0.0.x
 //  More Info (Version.txt)
 //--------------------------------------------------------------------
 using System;
@@ -326,7 +326,7 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 1.4.2.1" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
+            MessageBox.Show("Kubeah Chat - 2.0.0.x" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -455,7 +455,7 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            Int64 iVersionApplication = 001004002000001;//ApplicationVersionWeb
+            Int64 iVersionApplication = 002000000000000;//ApplicationVersionWeb
             try
             {
                 System.Net.WebClient webClientKubeah = new System.Net.WebClient();
