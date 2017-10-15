@@ -13,3 +13,4 @@ C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe.manifest
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.application
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe
 C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.pdb
+jhz
