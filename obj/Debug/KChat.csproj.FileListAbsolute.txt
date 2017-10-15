@@ -1,0 +1,15 @@
+C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.exe.config
+C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.exe.manifest
+C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.application
+C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.exe
+C:\GIT\KubeahChatGitHub\KubeahChat\bin\Debug\KubeahChat.pdb
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KChat.csprojResolveAssemblyReference.cache
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\ChatLocalClient.frmMain.resources
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KChat.Properties.Resources.resources
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KChat.csproj.GenerateResource.Cache
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KChat.csproj.CoreCompileInputs.cache
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.TrustInfo.xml
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe.manifest
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.application
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.exe
+C:\GIT\KubeahChatGitHub\KubeahChat\obj\Debug\KubeahChat.pdb
