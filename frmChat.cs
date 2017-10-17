@@ -326,7 +326,7 @@ namespace ChatLocalClient
 
         private static void NewMethod()
         {
-            MessageBox.Show("Kubeah Chat - 2.0.0.x" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos");
+            MessageBox.Show("Kubeah Chat - 2.0.0.x" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
