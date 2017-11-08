@@ -2,8 +2,7 @@
 //  Kubeah ! Open Source Project
 //  
 //  Kubeah Chat
-//  Version 2.0.0.x
-//  More Info (Version.txt)
+//  Just like Open Source
 //--------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
@@ -321,12 +320,7 @@ namespace ChatLocalClient
 
         private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewMethod();
-        }
-
-        private static void NewMethod()
-        {
-            MessageBox.Show("Kubeah Chat - 2.0.0.x" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Kubeah Chat - In Progress" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,13 +474,13 @@ namespace ChatLocalClient
         //=====================FonctionReceptionMessage=====================================================================
         // Le code pour la méthode(Destinataire connecté/Déconnecté) est intégré directement dans la fonction
         // d'envoi du message. Elle risque d'évoluer et de changer de place. 
-        // Les clé sont utilisées dans ce cas comme moyen de comparaison grâce à des "IF". !!!!!Il est possible de changer
-        // l'état du client en envoyant la clé par message.
+        // Les clé sont utilisées dans ce cas comme moyen de comparaison. 
         //
         // Méthode(Destinataire connecté/Déconnecté):
         // client 1 se connecte -> Il envoit la clé(dans le vide)-> client 2 se connecte -> Il envoit la clé ->
         // Client 1 reçoit, compare le message -> client 1 regarde contenu lblStatutDestinataire(execute selon condition) ->
         // client 2 reçoit, compare le message -> client 2 regarde contenu lblStatutDestinataire(execute selon condition)
+        // More information "bastien.crettenand@kubeah.com"
         private void MessageEnvoi(IAsyncResult aResult)
         {
             try
