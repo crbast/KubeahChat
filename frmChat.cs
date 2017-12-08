@@ -54,6 +54,13 @@ namespace ChatLocalClient
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
             Int64 iVersionApplication = 002000000000000;//ApplicationVersionWeb
+            VersionVerification(iVersionApplication);
+            //================================================================================================
+        }
+
+        //Fonction vérification version du client
+        private static void VersionVerification(long iVersionApplication)
+        {
             try
             {
                 System.Net.WebClient webClientKubeah = new System.Net.WebClient();
@@ -71,7 +78,6 @@ namespace ChatLocalClient
                 }
             }
             catch { }//Pour gestion pas d'accès internet
-            //================================================================================================
         }
 
         private string GetLocalIP()
@@ -194,7 +200,6 @@ namespace ChatLocalClient
         //=====================================================================================================================/
         //====================================================================================================================/
 
-
         //=====================BTNSTART=============================================================================
         private void btnSart_Click(object sender, EventArgs e)
         {
@@ -281,7 +286,7 @@ namespace ChatLocalClient
                                             MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exception.ToString(), "Une erreur est survenue");
                                         }
                                         //Envoit la clé à l'autre client pour connecté
-                                        EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178->Clé Présent
+                                        EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//Clé Présent
                                     }
                                 }
                                 else
@@ -299,8 +304,6 @@ namespace ChatLocalClient
             lblPatience.Visible = false;
         }
         //==========================================================================================================================================================
-
-
 
         //====================================BTNEnvoi====================================================
         private void btnEnvoi_Click(object sender, EventArgs e)
@@ -440,7 +443,7 @@ namespace ChatLocalClient
                     {
                         if (bEtatDestinataire == false)
                         {
-                            MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "Les discussions n'étant pas enregistrées, votre destinataire ne recevra pas le message." + "\r\n" + "Attendez qu'il se reconnecte.", "Destinataire absent");
+                            MessageBox.Show("Votre destinataire est absent." + "\r\n" + "Attendez qu'il se reconnecte.", "Destinataire absent");
                         }
                         else
                         {
@@ -466,10 +469,9 @@ namespace ChatLocalClient
             //Que si la conversation à démmarée
             if (btnSart.Visible == false)
             {
-                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", 0);//789ZCFZTiniwjZTUvjkas79012798->Clé Absence
+                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", 0);//Clé Absent
             }
         }
-
 
         //=====================FonctionReceptionMessage=====================================================================
         // Le code pour la méthode(Destinataire connecté/Déconnecté) est intégré directement dans la fonction
