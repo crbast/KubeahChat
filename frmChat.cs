@@ -5,17 +5,13 @@
 //  Just like Open Source
 //--------------------------------------------------------------------
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
+using KChat.Methods;
 
 namespace ChatLocalClient
 {
@@ -35,16 +31,16 @@ namespace ChatLocalClient
         private void frmMain_Load(object sender, EventArgs e)
         {
             //==============================LorsDuDémmarage===================================================
-            lblDescription2.Visible = false; //LABEL DESCRIPTION 2 non visible
-            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Création d'un socket
+            lblDescription2.Visible = false; //Hidden label
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Socket creation
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            lblIPPersonnel.Text = GetLocalIP();//Met l'adresse ip du pc dans le label
-            tbxMessageEnvoit.MaxLength = 72;//Limite le nombre de caractères de la tbx à 32 caractères
-            pbxLogoPetit.Visible = false;//Permet de ne pas voir le logo au fond à droit
+            lblIPPersonnel.Text = GetLocalIP();//Show personnal Ip
+            tbxMessageEnvoit.MaxLength = 72;//Limit max lenght
+            pbxLogoPetit.Visible = false;//Don't show logo
             NomDestinataireToolStripMenuItem.Visible = false;
             NomDestinataireToolStripMenuItem.Text = lblIPPersonnel.Text;
             iPPersonnelToolStripMenuItem.Visible = false;
-            this.MaximizeBox = false;//Permet de ne pas pouvoir utiliser le bouton pour maximiser la fenêtre
+            this.MaximizeBox = false;//Don't show maximize button on form
             //GESTIONFOCUS====================================================================================
             timContrôleFocus.Enabled = true;//Départ du timer focus "Focus sur listbox"
             oNToolStripMenuItem.Checked = true;
@@ -53,31 +49,8 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            Int64 iVersionApplication = 002000000000000;//ApplicationVersionWeb
-            VersionVerification(iVersionApplication);
+            UpdateApplication.VersionVerification(002000000000000);//ApplicationVersionWeb
             //================================================================================================
-        }
-
-        //Fonction vérification version du client
-        private static void VersionVerification(long iVersionApplication)
-        {
-            try
-            {
-                System.Net.WebClient webClientKubeah = new System.Net.WebClient();
-                string sVersionWeb = webClientKubeah.DownloadString("http://kubeah.com/kchat/version.txt");//Affectation de */version.txt à sVersionWeb
-                if (iVersionApplication >= Convert.ToInt64(sVersionWeb)) { }//Comparaison si nouvelle/ancienne version
-                else
-                {//Si ancienne version
-                    string sInfoNewVersion = webClientKubeah.DownloadString("http://kubeah.com/kchat/info.txt");//Affectation de */version.txt à sInfoNewVersion
-                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, "Une nouvelle version est disponible", MessageBoxButtons.YesNo);//Message box avec YES/NO
-                    if (dialogResultUser == DialogResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/files/latest/download");//Ouvre le lien dans le navigateur par défault
-                    }
-                    else if (dialogResultUser == DialogResult.No) { }//Ne rien faire si NO
-                }
-            }
-            catch { }//Pour gestion pas d'accès internet
         }
 
         private string GetLocalIP()
@@ -96,8 +69,6 @@ namespace ChatLocalClient
             return "172.0.0.1";
         }
 
-
-
         //Fonction ENVOIDUMESSAGE===============================================================================================/
         //======================================================================================================================/
         // 1 = OUI
@@ -107,7 +78,7 @@ namespace ChatLocalClient
         {
             try
             {
-                System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();//Encode en UTF8 (préparationn du packet)
+                System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();
                 byte[] msg = new byte[1500];
                 msg = enc.GetBytes(lblTextEnvoi);
 
@@ -119,7 +90,7 @@ namespace ChatLocalClient
                 }
                 else
                 {
-                    //Ne fait rien
+                    //Nothing
                 }
             }
             catch(Exception exeption)
@@ -129,8 +100,8 @@ namespace ChatLocalClient
         }
         //Fonction LABELTOINTTEST==============================================================================================/
         //====================================================================================================================/
-        //Return : 1 = Erreur 2 = PASS
-        //Permet de contrôler si les v
+        //Return : 1 = Error 2 = PASS
+        //Control int
         public int LabelToIntTest(string sText, int i)
         {
             try
@@ -143,41 +114,7 @@ namespace ChatLocalClient
                 return i = 1;
             }
         }
-        //Fonction NAMEMACHINTEWITHIP========================================================================================/
-        //===================================================================================================================/
-        //Return : Detinataire Name
-        private static string NameMachineWithIP(string ipAdress)
-        {
-            string machineName = string.Empty;
-            try
-            {
-                IPHostEntry hostEntry = Dns.GetHostEntry(ipAdress);
-                machineName = hostEntry.HostName;
-            }
-            catch
-            {
-                //MessageBox.Show("Destinataire introuvable");
-            }
-            return machineName;
-        }
-        //FONCTION PINGDEST====================================================================================================/
-        //=====================================================================================================================/
-        //Permet de réaliser un ping avec un IP donnée
-        public static bool PingDest(string sIpAdress)
-        {
-            Ping ping = new Ping();
-            PingReply pingresult = ping.Send(sIpAdress, 60);
-            if (pingresult.Status.ToString() == "Success")
-            {
-                bool bResult = true;
-                return bResult;
-            }
-            else
-            {
-                bool bResult = false;
-                return bResult;
-            }
-        }
+        
         //Fonction SPLITSTRING=================================================================================================/
         //=====================================================================================================================/
         //Permet l'affichage de l'IP séparé dans les textbox
@@ -219,8 +156,8 @@ namespace ChatLocalClient
                                 lblEtatPing.Visible = false;
                                 lblNomPCDest.Visible = false;
                                 lblEtatPing.Visible = true;
-                                string sNameDestinataire = NameMachineWithIP(sIPDestinataire);
-                                bool bResultPing = PingDest(sIPDestinataire);
+                                string sNameDestinataire = Ip.NameMachineWithIP(sIPDestinataire);
+                                bool bResultPing = Ip.PingDest(sIPDestinataire);
                                 if (bResultPing == true)
                                 {
                                     lblEtatPing.Text = "Ping : OK";
@@ -240,7 +177,7 @@ namespace ChatLocalClient
                                             lblNomPCDest.Visible = true;
                                             lblNomPCDest.Text = "Nom :" + "\r\n" + sNameDestinataire;
                                             lblNomPCDest.ForeColor = Color.Black;
-                                            bResultPing = PingDest(sIPDestinataire);
+                                            bResultPing = Ip.PingDest(sIPDestinataire);
                                         }
                                     }
                                     else
@@ -267,7 +204,7 @@ namespace ChatLocalClient
                                         //______________________________________________
                                         try
                                         {
-                                            epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Utilise le port 3056
+                                            epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
                                             sck.Bind(epLocal);
 
                                             epRemote = new IPEndPoint(IPAddress.Parse(sIPDestinataire), 3056);

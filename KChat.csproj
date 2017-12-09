@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>fr</TargetCulture>
     <ProductName>KChat</ProductName>
-    <PublisherName>Bastien Crettenand - Kubeah!</PublisherName>
+    <PublisherName>Kubeah!</PublisherName>
     <SuiteName>KChat</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
@@ -99,6 +99,9 @@
     <Compile Include="frmChat.Designer.cs">
       <DependentUpon>frmChat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Methods\GetMessage.cs" />
+    <Compile Include="Methods\Ip.cs" />
+    <Compile Include="Methods\UpdateApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChat.resx">
