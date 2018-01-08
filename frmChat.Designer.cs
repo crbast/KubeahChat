@@ -125,7 +125,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(67, 13);
             this.lblDescription.TabIndex = 18;
-            this.lblDescription.Text = "Kubeah! 2017";
+            this.lblDescription.Text = "Kubeah! 2018";
             // 
             // lblDescription2
             // 
@@ -135,7 +135,7 @@
             this.lblDescription2.Name = "lblDescription2";
             this.lblDescription2.Size = new System.Drawing.Size(67, 13);
             this.lblDescription2.TabIndex = 19;
-            this.lblDescription2.Text = "Kubeah! 2017";
+            this.lblDescription2.Text = "Kubeah! 2018";
             // 
             // lblIPPersonnel
             // 
