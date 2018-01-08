@@ -49,7 +49,7 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            UpdateApplication.VersionVerification(001004002000001);//ApplicationVersionWeb
+            UpdateApplication.VersionVerification(001004002000002);//ApplicationVersionWeb
             //================================================================================================
         }
 
