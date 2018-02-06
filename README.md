@@ -6,5 +6,5 @@ Kubeah Chat est un chat en local libre et open source. Il n'utilise pas de serve
 <br></br>
 <br></br>
 <p align="center">
-  <img src="http://kubeah.com/Images/logoKChat.ico">
+  <img src="https://kubeah.com/img/logoKChat.ico">
 </p>
