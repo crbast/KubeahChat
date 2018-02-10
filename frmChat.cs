@@ -10,7 +10,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-using System.Net.NetworkInformation;
 using KChat.Methods;
 
 namespace ChatLocalClient
@@ -49,7 +48,7 @@ namespace ChatLocalClient
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
             //==============RechercheMiseAJour================================================================
-            UpdateApplication.VersionVerification(001005000000000);//ApplicationVersionWeb
+            UpdateApplication.VersionVerification(001005000000001);//ApplicationVersionWeb
             //================================================================================================
         }
 
@@ -300,7 +299,7 @@ namespace ChatLocalClient
 
         private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(text: "Kubeah Chat - In Progress" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", caption: "A propos", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+            AppInfoOnline.GetDescription();
         }
 
         private void siteToolStripMenuItem_Click(object sender, EventArgs e)

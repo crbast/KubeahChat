@@ -99,6 +99,7 @@
     <Compile Include="frmChat.Designer.cs">
       <DependentUpon>frmChat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Methods\AppInfoOnline.cs" />
     <Compile Include="Methods\GetMessage.cs" />
     <Compile Include="Methods\Ip.cs" />
     <Compile Include="Methods\UpdateApplication.cs" />
