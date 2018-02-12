@@ -15,13 +15,13 @@ using KChat.Methods;
 namespace ChatLocalClient
 {
 
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         Socket sck;
         EndPoint epLocal, epRemote;
-        bool bEtatDestinataire = false; //Variable etat destinataire True/Actif False/Inactif
+        bool bEtatDestinataire = false; //State recipient True/Actif False/Inactif
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -41,15 +41,18 @@ namespace ChatLocalClient
             iPPersonnelToolStripMenuItem.Visible = false;
             this.MaximizeBox = false;//Don't show maximize button on form
             //GESTIONFOCUS====================================================================================
-            timContrôleFocus.Enabled = true;//Départ du timer focus "Focus sur listbox"
+            timContrôleFocus.Enabled = true;//Start timer focus
             oNToolStripMenuItem.Checked = true;
             lblNomPCDest.Visible = false;
             lblEtatPing.Visible = false;
             //================================================================================================
             IPSeparationString(lblIPPersonnel.Text);
-            //==============RechercheMiseAJour================================================================
-            UpdateApplication.VersionVerification(001005000000001);//ApplicationVersionWeb
+            //==============SearchUpdate================================================================
+            UpdateApplication.VersionVerification(AppInfo.lLongFormattedVersion);//ApplicationVersionWeb          
             //================================================================================================
+            //UpdateAppYear===================================================================================
+            lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
+            lblDescription2.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
         }
 
         private string GetLocalIP()

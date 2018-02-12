@@ -1,6 +1,6 @@
 ﻿namespace ChatLocalClient
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.tbxMessageEnvoit = new System.Windows.Forms.TextBox();
             this.btnEnvoi = new System.Windows.Forms.Button();
             this.lblIPDESTINATAIRE = new System.Windows.Forms.Label();
@@ -376,7 +376,7 @@
             this.lblPatience.Text = "Veuillez patienter";
             this.lblPatience.Visible = false;
             // 
-            // frmMain
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -407,7 +407,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.Text = "Kubeah Chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);

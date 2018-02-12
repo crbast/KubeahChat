@@ -1,4 +1,10 @@
-﻿using System.Windows.Forms;
+﻿//--------------------------------------------------------------------
+//  Kubeah ! Open Source Project
+//  
+//  Kubeah Chat
+//  Just like Open Source
+//--------------------------------------------------------------------
+using System.Windows.Forms;
 
 namespace KChat.Methods
 {
@@ -6,23 +12,32 @@ namespace KChat.Methods
     {
         public static void GetDescription()
         {
+            int iMode = 1;
+            string sDescription = "";
+            string sVersionWeb = "";
             try
             {
                 System.Net.WebClient webClientKubeah = new System.Net.WebClient();
-                string sDescription = webClientKubeah.DownloadString("http://kubeah.com/kchat/description.txt");
+                sDescription = webClientKubeah.DownloadString("http://kubeah.com/kchat/description.txt");
                 try
                 {
-                    string sVersionWeb = webClientKubeah.DownloadString("http://kubeah.com/kchat/formattedVersion.txt");//Affectation de */version.txt à sVersionWeb
-                    DialogResult dialogResultUser = MessageBox.Show($"{sDescription} \r\n \r\nLast version : {sVersionWeb}", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    sVersionWeb = webClientKubeah.DownloadString("http://kubeah.com/kchat/formattedVersion.txt");//Affectation de */version.txt à sVersionWeb
+                    iMode = 1;
                 }
-                catch
-                {
-                    DialogResult dialogResultUser = MessageBox.Show(sDescription, "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                
+                catch{ iMode = 2; }
             }
-            catch { //Description par défaut
-                MessageBox.Show(text: "Kubeah Chat - In Progress" + "\r\n" + "Kubeah! The Open Source Project" + "\r\n" + "www.kubeah.com" + "\r\n" + "\r\n" + "You want to join the developer team?" + "\r\n" + "Contact : support@kubeah.com", caption: "A propos", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+            catch { iMode = 3; }
+            switch (iMode)
+            {
+                case 1:
+                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}\r\nLast version : \t\t{sVersionWeb} ", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case 2:
+                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case 3: //Description par défaut
+                    MessageBox.Show($"Kubeah Chat - In Progress \r\nKubeah! Open Source Project \r\nwww.kubeah.com \r\n\r\nDo you want to join Kubeah Chat team? \r\nhttps://github.com/CrBast/KubeahChat \r\n\r\nsupport@kubeah.com \r\n\r\nApplication version : \t{AppInfo.sStringformattedVersion}", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
             }
         }
     }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿//--------------------------------------------------------------------
+//  Kubeah ! Open Source Project
+//  
+//  Kubeah Chat
+//  Just like Open Source
+//--------------------------------------------------------------------
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KChat.Methods
 {

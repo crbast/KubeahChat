@@ -1,4 +1,10 @@
-﻿using System;
+﻿//--------------------------------------------------------------------
+//  Kubeah ! Open Source Project
+//  
+//  Kubeah Chat
+//  Just like Open Source
+//--------------------------------------------------------------------
+using System;
 using System.Windows.Forms;
 
 namespace KChat.Methods
