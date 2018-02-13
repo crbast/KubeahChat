@@ -9,4 +9,4 @@
   <img src="https://kubeah.com/img/logoKChat.ico">
 </p>
 
-<h4>Voir les fonctionnalités futures et l'avancement du projet sur <a href="https://trello.com/b/XEJVgYdi">Trello</a>.</h4>
+<h4>Toutes les fonctionnalités futures et l'avancement du projet sur <a href="https://trello.com/b/XEJVgYdi">Trello</a>.</h4>
