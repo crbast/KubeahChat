@@ -131,7 +131,7 @@
             // 
             this.lblDescription2.AutoSize = true;
             this.lblDescription2.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription2.Location = new System.Drawing.Point(534, 378);
+            this.lblDescription2.Location = new System.Drawing.Point(529, 378);
             this.lblDescription2.Name = "lblDescription2";
             this.lblDescription2.Size = new System.Drawing.Size(67, 13);
             this.lblDescription2.TabIndex = 19;
@@ -178,34 +178,34 @@
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.arrêterToolStripMenuItem.Text = "Stop";
             this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.arrêterToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.redémmarerToolStripMenuItem.Text = "Restart";
             this.redémmarerToolStripMenuItem.Click += new System.EventHandler(this.redémmarerToolStripMenuItem_Click);
             // 
             // iPPersonnelToolStripMenuItem
             // 
             this.iPPersonnelToolStripMenuItem.Name = "iPPersonnelToolStripMenuItem";
-            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.iPPersonnelToolStripMenuItem.Text = "IPPersonnel";
             // 
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.aProposToolStripMenuItem.Text = "About";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.siteToolStripMenuItem.Text = "Site";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 

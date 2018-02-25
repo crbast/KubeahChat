@@ -468,9 +468,7 @@ namespace ChatLocalClient
             }
             else
             {
-                DateTime date = new DateTime();
-                string sLastConnection = date.ToString("HH:mm:ss");
-                lblStatutDestinataire.Text = $"Recipient : Last connection { sLastConnection}";
+                lblStatutDestinataire.Text = $"Recipient : Last connection { DateTime.Now.ToString("HH:mm")}";
                 lblStatutDestinataire.ForeColor = Color.Red;
             }
         }
