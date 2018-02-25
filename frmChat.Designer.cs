@@ -93,9 +93,9 @@
             this.lblIPDESTINATAIRE.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPDESTINATAIRE.Location = new System.Drawing.Point(660, 137);
             this.lblIPDESTINATAIRE.Name = "lblIPDESTINATAIRE";
-            this.lblIPDESTINATAIRE.Size = new System.Drawing.Size(94, 17);
+            this.lblIPDESTINATAIRE.Size = new System.Drawing.Size(78, 17);
             this.lblIPDESTINATAIRE.TabIndex = 6;
-            this.lblIPDESTINATAIRE.Text = "IP Destinataire";
+            this.lblIPDESTINATAIRE.Text = "IP Recipient";
             // 
             // btnSart
             // 
@@ -178,34 +178,34 @@
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.arrêterToolStripMenuItem.Text = "Arrêter";
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Text = "Stop";
             this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.arrêterToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.redémmarerToolStripMenuItem.Text = "Redémmarer";
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Text = "Restart";
             this.redémmarerToolStripMenuItem.Click += new System.EventHandler(this.redémmarerToolStripMenuItem_Click);
             // 
             // iPPersonnelToolStripMenuItem
             // 
             this.iPPersonnelToolStripMenuItem.Name = "iPPersonnelToolStripMenuItem";
-            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.iPPersonnelToolStripMenuItem.Text = "IPPersonnel";
             // 
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.aProposToolStripMenuItem.Text = "A propos";
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aProposToolStripMenuItem.Text = "About";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.siteToolStripMenuItem.Text = "Site";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
@@ -280,9 +280,9 @@
             this.lblStatutDestinataire.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatutDestinataire.Location = new System.Drawing.Point(18, 26);
             this.lblStatutDestinataire.Name = "lblStatutDestinataire";
-            this.lblStatutDestinataire.Size = new System.Drawing.Size(78, 16);
+            this.lblStatutDestinataire.Size = new System.Drawing.Size(65, 16);
             this.lblStatutDestinataire.TabIndex = 29;
-            this.lblStatutDestinataire.Text = "Destinataire :";
+            this.lblStatutDestinataire.Text = "Recipient :";
             // 
             // lblFixeCePC
             // 
@@ -290,9 +290,9 @@
             this.lblFixeCePC.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFixeCePC.Location = new System.Drawing.Point(660, 270);
             this.lblFixeCePC.Name = "lblFixeCePC";
-            this.lblFixeCePC.Size = new System.Drawing.Size(49, 16);
+            this.lblFixeCePC.Size = new System.Drawing.Size(51, 16);
             this.lblFixeCePC.TabIndex = 30;
-            this.lblFixeCePC.Text = "Ce PC :";
+            this.lblFixeCePC.Text = "This PC :";
             // 
             // tbxIP1
             // 
@@ -369,11 +369,11 @@
             // 
             this.lblPatience.AutoSize = true;
             this.lblPatience.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatience.Location = new System.Drawing.Point(667, 208);
+            this.lblPatience.Location = new System.Drawing.Point(686, 208);
             this.lblPatience.Name = "lblPatience";
-            this.lblPatience.Size = new System.Drawing.Size(119, 17);
+            this.lblPatience.Size = new System.Drawing.Size(82, 17);
             this.lblPatience.TabIndex = 37;
-            this.lblPatience.Text = "Veuillez patienter";
+            this.lblPatience.Text = "Please wait";
             this.lblPatience.Visible = false;
             // 
             // FrmMain
@@ -410,7 +410,7 @@
             this.Name = "FrmMain";
             this.Text = "Kubeah Chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
-            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo1)).EndInit();

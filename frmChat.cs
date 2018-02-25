@@ -27,7 +27,7 @@ namespace ChatLocalClient
         }
 
         //Lors du chargement de la fenêtre
-        private void frmMain_Load(object sender, EventArgs e)
+        private void FrmMain_Load(object sender, EventArgs e)
         {
             //==============================LorsDuDémmarage===================================================
             lblDescription2.Visible = false; //Hidden label
@@ -93,7 +93,7 @@ namespace ChatLocalClient
             }
             catch(Exception exeption)
             {
-                MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exeption.ToString(), "Une erreur est survenue");
+                MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exeption.ToString(), "An error has occurred");
             }
         }
         //Fonction LABELTOINTTEST==============================================================================================/
@@ -138,6 +138,7 @@ namespace ChatLocalClient
         //=====================BTNSTART=============================================================================
         private void btnSart_Click(object sender, EventArgs e)
         {
+            lblPatience.Visible = true;
             string sIPDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
             if (sIPDestinataire == lblIPPersonnel.Text) { tbxIP4.BackColor = Color.Red; }
             if (tbxIP1.BackColor != Color.Red)
@@ -160,20 +161,20 @@ namespace ChatLocalClient
                                 {
                                     lblEtatPing.Text = "Ping : OK";
                                     lblEtatPing.ForeColor = Color.Green;
-                                    if (btnSart.Text == "Vérifier l'IP")
+                                    if (btnSart.Text == "Check IP")
                                     {
                                         if (sNameDestinataire == "")
                                         {
-                                            lblNomPCDest.Text = "Nom :" + "\r\n" + "Introuvable";
+                                            lblNomPCDest.Text = "Name :" + "\r\n" + "Not found";
                                             lblNomPCDest.ForeColor = Color.Red;
                                             lblNomPCDest.Visible = true;
                                             tbxIP4.BackColor = Color.Red;
                                         }
                                         else
                                         {
-                                            btnSart.Text = "Commencer";
+                                            btnSart.Text = "Start";
                                             lblNomPCDest.Visible = true;
-                                            lblNomPCDest.Text = "Nom :" + "\r\n" + sNameDestinataire;
+                                            lblNomPCDest.Text = "Name :" + "\r\n" + sNameDestinataire;
                                             lblNomPCDest.ForeColor = Color.Black;
                                             bResultPing = Ip.PingDest(sIPDestinataire);
                                         }
@@ -195,9 +196,9 @@ namespace ChatLocalClient
                                         tbxIP2.Visible = false;
                                         tbxIP3.Visible = false;
                                         tbxIP4.Visible = false;
-                                        NomDestinataireToolStripMenuItem.Text = "Destinataire : " + sNameDestinataire;
+                                        NomDestinataireToolStripMenuItem.Text = "Recipient : " + sNameDestinataire;
                                         lblNomPCDest.Visible = false;
-                                        iPPersonnelToolStripMenuItem.Text = "Mon IP : " + lblIPPersonnel.Text;
+                                        iPPersonnelToolStripMenuItem.Text = "My IP : " + lblIPPersonnel.Text;
                                         iPPersonnelToolStripMenuItem.Visible = true;
                                         //______________________________________________
                                         try
@@ -211,14 +212,14 @@ namespace ChatLocalClient
                                             byte[] buffer = new byte[1500];
                                             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageEnvoi), buffer);
 
-                                            btnSart.Text = "Connecté";
+                                            btnSart.Text = "Connected";
                                             btnSart.Enabled = false;
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                         }
                                         catch (Exception exception)
                                         {
-                                            MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exception.ToString(), "Une erreur est survenue");
+                                            MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exception.ToString(), "An error has occurred");
                                         }
                                         //Envoit la clé à l'autre client pour connecté
                                         EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//Clé Présent
@@ -226,7 +227,7 @@ namespace ChatLocalClient
                                 }
                                 else
                                 {
-                                    lblEtatPing.Text = "Ping : Echoué";
+                                    lblEtatPing.Text = "Ping : Fail";
                                     lblEtatPing.ForeColor = Color.Red;
                                     lblNomPCDest.Visible = false;
                                     tbxIP4.BackColor = Color.Red;
@@ -257,7 +258,7 @@ namespace ChatLocalClient
                 {
                     if (bEtatDestinataire == false)
                     {
-                        MessageBox.Show("Votre destinataire n'est pas connecté." + "\r\n" + "Les discussions n'étant pas enregistrées, votre destinataire ne pourra pas lire le message ultérieurement." + "\r\n" + "Attendez qu'il se reconnecte.", "Attention destinataire absent");
+                        MessageBox.Show("Your recipient is not active." + "\r\n" + "The discussions are not saved." + "\r\n" + "Please wait for it to connect.", "Your recipient is not active");
                     }
                     else
                     {
@@ -323,7 +324,7 @@ namespace ChatLocalClient
             int iTemp = LabelToIntTest(tbxIP1.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2){tbxIP1.BackColor = Color.Snow;} else{tbxIP1.BackColor = Color.Red;}
             if (tbxIP1.Text == "0") { tbxIP1.BackColor = Color.Red; }
-            btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
+            btnSart.Text = "Check IP";//Changement du texte dans le btn
             try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP1.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
             if (tbxIP1.Text.Contains("-") || tbxIP1.Text.Contains("+")) { tbxIP1.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
@@ -333,7 +334,7 @@ namespace ChatLocalClient
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP2.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2) { tbxIP2.BackColor = Color.Snow; } else { tbxIP2.BackColor = Color.Red; }
-            btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
+            btnSart.Text = "Check IP";//Changement du texte dans le btn
             try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255) {tbxIP2.BackColor = Color.Red;}}catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
             if (tbxIP2.Text.Contains("-") || tbxIP2.Text.Contains("+")) { tbxIP2.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
@@ -343,7 +344,7 @@ namespace ChatLocalClient
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP3.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2){tbxIP3.BackColor = Color.Snow;} else{tbxIP3.BackColor = Color.Red;}
-            btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
+            btnSart.Text = "Check IP";//Changement du texte dans le btn
             try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255) { tbxIP3.BackColor = Color.Red; } } catch { } //Doit être supérieur ou égal à 0 mais inférieur à 256
             if (tbxIP3.Text.Contains("-") || tbxIP3.Text.Contains("+")) { tbxIP3.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
@@ -354,7 +355,7 @@ namespace ChatLocalClient
             lblNomPCDest.Visible = false;
             int iTemp = LabelToIntTest(tbxIP4.Text, 1);//Utilise la fonction "LabelToIntTest"
             if (iTemp == 2){tbxIP4.BackColor = Color.Snow;} else{tbxIP4.BackColor = Color.Red;}
-            btnSart.Text = "Vérifier l'IP";//Changement du texte dans le btn
+            btnSart.Text = "Check IP";//Changement du texte dans le btn
             try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP4.BackColor = Color.Red; } } catch { } //Doit être supérieur à 0 mais inférieur à 256
             if (tbxIP4.Text.Contains("-") || tbxIP4.Text.Contains("+")) { tbxIP4.BackColor = Color.Red; } //Parcoure la chaine pour trouver le signe "-" ou "+" si présent tbx -> Rouge
         }
@@ -374,7 +375,7 @@ namespace ChatLocalClient
                     {
                         if (bEtatDestinataire == false)
                         {
-                            MessageBox.Show("Votre destinataire est absent." + "\r\n" + "Attendez qu'il se reconnecte.", "Destinataire absent");
+                            MessageBox.Show("Your recipient is not active." + "\r\n" + "The discussions are not saved." + "\r\n" + "Please wait for it to connect.", "Your recipient is not active");
                         }
                         else
                         {
@@ -425,8 +426,7 @@ namespace ChatLocalClient
                     if (receivedMessage == "789ZCFZTiniwjZTUvjkas79012798\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0")
                     {
                         bEtatDestinataire = false;
-                        lblStatutDestinataire.Text = "Destinataire : Déconnecté";
-                        lblStatutDestinataire.ForeColor = Color.Red;
+                        StatusDestinataire(bEtatDestinataire);
                     }
                     else
                     {
@@ -434,10 +434,7 @@ namespace ChatLocalClient
                         if (receivedMessage == "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" && bEtatDestinataire == false)
                         {
                             bEtatDestinataire = true;
-                            lblStatutDestinataire.Text = "Destinataire : Connecté";//Changement du statut le la personne
-                            lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
-                            //Pour confirmation que l'autre utilisateur ai dans le label Connecté
-                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);
+                            StatusDestinataire(bEtatDestinataire);
                         }
                         else
                         {
@@ -454,7 +451,27 @@ namespace ChatLocalClient
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Veuillez redémarrer l'application" + "\r\n" + "\r\n" + exception.ToString(), "Une erreur est survenue");
+                MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exception.ToString(), "An error has occurred");
+            }
+        }
+
+        //True : active
+        //False : inactive
+        private void StatusDestinataire(bool bEtat)
+        {
+
+            if (bEtat == true)
+            {
+                lblStatutDestinataire.Text = "Recipient : Active";//Changement du statut le la personne
+                lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
+                EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);
+            }
+            else
+            {
+                DateTime date = new DateTime();
+                string sLastConnection = date.ToString("HH:mm:ss");
+                lblStatutDestinataire.Text = $"Recipient : Last connection { sLastConnection}";
+                lblStatutDestinataire.ForeColor = Color.Red;
             }
         }
     }

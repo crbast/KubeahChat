@@ -30,13 +30,13 @@ namespace KChat.Methods
             switch (iMode)
             {
                 case 1:
-                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}\r\nLast version : \t\t{sVersionWeb} ", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}\r\nLast version : \t\t{sVersionWeb} ", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 case 2:
-                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{sDescription} \r\n \r\nApplication version : \t{AppInfo.sStringformattedVersion}", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 case 3: //Description par défaut
-                    MessageBox.Show($"Kubeah Chat - In Progress \r\nKubeah! Open Source Project \r\nwww.kubeah.com \r\n\r\nDo you want to join Kubeah Chat team? \r\nhttps://github.com/CrBast/KubeahChat \r\n\r\nsupport@kubeah.com \r\n\r\nApplication version : \t{AppInfo.sStringformattedVersion}", "A propos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Kubeah Chat - In Progress \r\nKubeah! Open Source Project \r\nwww.kubeah.com \r\n\r\nDo you want to join Kubeah Chat team? \r\nhttps://github.com/CrBast/KubeahChat \r\n\r\nsupport@kubeah.com \r\n\r\nApplication version : \t{AppInfo.sStringformattedVersion}", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
         }
