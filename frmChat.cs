@@ -91,9 +91,10 @@ namespace ChatLocalClient
                     tbxMessageEnvoit.Clear();
                 }
             }
-            catch(Exception exeption)
+            catch (Exception exception)
             {
-                MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exeption.ToString(), "An error has occurred");
+                MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
+                Application.Exit();
             }
         }
         //Fonction LABELTOINTTEST==============================================================================================/
@@ -216,13 +217,15 @@ namespace ChatLocalClient
                                             btnSart.Enabled = false;
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
+                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//Clé Présent
                                         }
                                         catch (Exception exception)
                                         {
-                                            MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exception.ToString(), "An error has occurred");
+                                            MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
+                                            Application.Exit();
                                         }
                                         //Envoit la clé à l'autre client pour connecté
-                                        EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", 0);//Clé Présent
+
                                     }
                                 }
                                 else
@@ -451,7 +454,8 @@ namespace ChatLocalClient
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Please restart application" + "\r\n" + "\r\n" + exception.ToString(), "An error has occurred");
+                MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
+                Application.Exit();
             }
         }
 
