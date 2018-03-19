@@ -5,6 +5,7 @@
 //  Just like Open Source
 //--------------------------------------------------------------------
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace KChat.Methods
@@ -22,10 +23,18 @@ namespace KChat.Methods
                 else
                 {//Si ancienne version
                     string sInfoNewVersion = webClientKubeah.DownloadString("http://kubeah.com/kchat/info.txt");//Affectation de */version.txt à sInfoNewVersion
-                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, "Une nouvelle version est disponible", MessageBoxButtons.YesNo);//Message box avec YES/NO
+                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, "A new version is available", MessageBoxButtons.YesNo);//Message box avec YES/NO
                     if (dialogResultUser == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/files/latest/download");//Ouvre le lien dans le navigateur par défault
+                        try
+                        {
+                            Process.Start(".\\KubeahChat_Update.exe");
+                            Application.Exit();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("KubeahChat_Update.exe not found!", "", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                        }
                     }
                     else if (dialogResultUser == DialogResult.No) { }//Ne rien faire si NO
                 }
