@@ -1,2 +1,4 @@
 language: csharp
+mono: none
 solution: KChat.sln
+env: DOTNETCORE=1 
