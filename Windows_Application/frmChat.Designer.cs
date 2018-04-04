@@ -83,7 +83,7 @@
             this.btnEnvoi.Name = "btnEnvoi";
             this.btnEnvoi.Size = new System.Drawing.Size(93, 21);
             this.btnEnvoi.TabIndex = 2;
-            this.btnEnvoi.Text = "Envoyer";
+            this.btnEnvoi.Text = "Send";
             this.btnEnvoi.UseVisualStyleBackColor = true;
             this.btnEnvoi.Click += new System.EventHandler(this.btnEnvoi_Click);
             // 
@@ -103,7 +103,7 @@
             this.btnSart.Name = "btnSart";
             this.btnSart.Size = new System.Drawing.Size(130, 43);
             this.btnSart.TabIndex = 9;
-            this.btnSart.Text = "Vérifier l\'IP";
+            this.btnSart.Text = "Check IP";
             this.btnSart.UseVisualStyleBackColor = true;
             this.btnSart.Click += new System.EventHandler(this.btnSart_Click);
             // 
@@ -178,34 +178,34 @@
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrêterToolStripMenuItem.Text = "Stop";
             this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.arrêterToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redémmarerToolStripMenuItem.Text = "Restart";
             this.redémmarerToolStripMenuItem.Click += new System.EventHandler(this.redémmarerToolStripMenuItem_Click);
             // 
             // iPPersonnelToolStripMenuItem
             // 
             this.iPPersonnelToolStripMenuItem.Name = "iPPersonnelToolStripMenuItem";
-            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.iPPersonnelToolStripMenuItem.Text = "IPPersonnel";
             // 
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aProposToolStripMenuItem.Text = "About";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.siteToolStripMenuItem.Text = "Site";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
@@ -221,14 +221,14 @@
             // oNToolStripMenuItem
             // 
             this.oNToolStripMenuItem.Name = "oNToolStripMenuItem";
-            this.oNToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.oNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.oNToolStripMenuItem.Text = "ON";
             this.oNToolStripMenuItem.Click += new System.EventHandler(this.oNToolStripMenuItem_Click);
             // 
             // oFFToolStripMenuItem
             // 
             this.oFFToolStripMenuItem.Name = "oFFToolStripMenuItem";
-            this.oFFToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.oFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.oFFToolStripMenuItem.Text = "OFF";
             this.oFFToolStripMenuItem.Click += new System.EventHandler(this.oFFToolStripMenuItem_Click);
             // 
