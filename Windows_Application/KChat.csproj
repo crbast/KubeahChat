@@ -104,6 +104,7 @@
     <Compile Include="Methods\GetMessage.cs" />
     <Compile Include="Methods\Ip.cs" />
     <Compile Include="Methods\UpdateApplication.cs" />
+    <Compile Include="Methods\XMLManipulation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChat.resx">

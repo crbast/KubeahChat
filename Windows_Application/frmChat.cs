@@ -20,6 +20,7 @@ namespace ChatLocalClient
         Socket sck;
         EndPoint epLocal, epRemote;
         bool bEtatDestinataire = false; //State recipient True/Actif False/Inactif
+        AppInfo appInfo = new AppInfo();
 
         public FrmMain()
         {
@@ -45,14 +46,28 @@ namespace ChatLocalClient
             oNToolStripMenuItem.Checked = true;
             lblNomPCDest.Visible = false;
             lblEtatPing.Visible = false;
-            //================================================================================================
-            IPSeparationString(lblIPPersonnel.Text);
+            
             //==============SearchUpdate================================================================
-            UpdateApplication.VersionVerification(AppInfo.lLongFormattedVersion);//ApplicationVersionWeb          
+            UpdateApplication.VersionVerification(appInfo.GetChainFormattedVersion());//ApplicationVersionWeb          
             //================================================================================================
             //UpdateAppYear===================================================================================
             lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
             lblDescription2.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
+            //Create and read config==========================================================================
+            string recipientIp = XMLManipulation.ReturnValue("LastIpConnexion");
+            if(recipientIp != "")
+                IPSeparationString(recipientIp, true);
+            else
+                IPSeparationString(lblIPPersonnel.Text, false);
+            string focusState = XMLManipulation.ReturnValue("FocusActivate");
+            if(focusState != "ON")
+            {
+                oFFToolStripMenuItem.Checked = true;
+                oNToolStripMenuItem.Checked = false;
+                timContrôleFocus.Enabled = false;
+            }
+            //================================================================================================
+            
         }
 
         private string GetLocalIP()
@@ -117,21 +132,43 @@ namespace ChatLocalClient
         //Fonction SPLITSTRING=================================================================================================/
         //=====================================================================================================================/
         //Permet l'affichage de l'IP séparé dans les textbox
-        public void IPSeparationString(string sIP)
+        public void IPSeparationString(string sIP, bool withConfig)
         {
-            string[] stringSeparators = new string[] { "." };
-            string[] result;
+            if (withConfig)
+            {
+                string[] stringSeparators = new string[] { "." };
+                string[] result;
 
-            // ...
-            result = sIP.Split(stringSeparators, StringSplitOptions.None);
+                // ...
+                result = sIP.Split(stringSeparators, StringSplitOptions.None);
 
-            string sIp1 = result[0];
-            string sIp2 = result[1];
-            string sIp3 = result[2];
+                string sIp1 = result[0];
+                string sIp2 = result[1];
+                string sIp3 = result[2];
+                string sIp4 = result[3];
 
-            tbxIP1.Text = sIp1;
-            tbxIP2.Text = sIp2;
-            tbxIP3.Text = sIp3;
+                tbxIP1.Text = sIp1;
+                tbxIP2.Text = sIp2;
+                tbxIP3.Text = sIp3;
+                tbxIP4.Text = sIp4;
+            }
+            else
+            {
+                string[] stringSeparators = new string[] { "." };
+                string[] result;
+
+                // ...
+                result = sIP.Split(stringSeparators, StringSplitOptions.None);
+
+                string sIp1 = result[0];
+                string sIp2 = result[1];
+                string sIp3 = result[2];
+
+                tbxIP1.Text = sIp1;
+                tbxIP2.Text = sIp2;
+                tbxIP3.Text = sIp3;
+            }
+            
         }
         //=====================================================================================================================/
         //====================================================================================================================/
@@ -202,6 +239,8 @@ namespace ChatLocalClient
                                         iPPersonnelToolStripMenuItem.Text = "My IP : " + lblIPPersonnel.Text;
                                         iPPersonnelToolStripMenuItem.Visible = true;
                                         //______________________________________________
+                                        //FichierConfig---------------------------------
+                                        XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
                                         try
                                         {
                                             epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
@@ -279,6 +318,7 @@ namespace ChatLocalClient
             oNToolStripMenuItem.Checked = true;
             oFFToolStripMenuItem.Checked = false;
             timContrôleFocus.Enabled = true;//Départ du timer focus
+            XMLManipulation.ModifyElementXML("FocusActivate", "ON");
         }
 
         private void oFFToolStripMenuItem_Click(object sender, EventArgs e)
@@ -286,6 +326,7 @@ namespace ChatLocalClient
             oFFToolStripMenuItem.Checked = true;
             oNToolStripMenuItem.Checked = false;
             timContrôleFocus.Enabled = false;
+            XMLManipulation.ModifyElementXML("FocusActivate", "OFF");
         }
         private void timContrôleFocus_Tick(object sender, EventArgs e)
         {
