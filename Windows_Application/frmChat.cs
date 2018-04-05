@@ -14,7 +14,6 @@ using KChat.Methods;
 
 namespace ChatLocalClient
 {
-
     public partial class FrmMain : Form
     {
         Socket sck;
@@ -43,7 +42,6 @@ namespace ChatLocalClient
             this.MaximizeBox = false;//Don't show maximize button on form
             //GESTIONFOCUS====================================================================================
             timContrôleFocus.Enabled = true;//Start timer focus
-            oNToolStripMenuItem.Checked = true;
             lblNomPCDest.Visible = false;
             lblEtatPing.Visible = false;
             
@@ -61,11 +59,9 @@ namespace ChatLocalClient
                 IPSeparationString(lblIPPersonnel.Text, false);
             string focusState = XMLManipulation.ReturnValue("FocusActivate");
             if(focusState != "ON")
-            {
-                oFFToolStripMenuItem.Checked = true;
-                oNToolStripMenuItem.Checked = false;
                 timContrôleFocus.Enabled = false;
-            }
+            if (XMLManipulation.ReturnValue("EnableLastIpConnexion") != "ON")
+                XMLManipulation.ModifyElementXML("LastIpConnexion", "");
             //================================================================================================
         }
 
@@ -239,7 +235,10 @@ namespace ChatLocalClient
                                         iPPersonnelToolStripMenuItem.Visible = true;
                                         //______________________________________________
                                         //FichierConfig---------------------------------
-                                        XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
+                                        if(XMLManipulation.ReturnValue("EnableLastIpConnexion") == "ON")
+                                            XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
+                                        else
+                                            XMLManipulation.ModifyElementXML("LastIpConnexion", "");
                                         try
                                         {
                                             epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
@@ -311,22 +310,6 @@ namespace ChatLocalClient
         //===============================================================================================
 
         //======================================GestionFocus==============================================
-        private void oNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Gestion du Focus - Dans la barre du menu
-            oNToolStripMenuItem.Checked = true;
-            oFFToolStripMenuItem.Checked = false;
-            timContrôleFocus.Enabled = true;//Départ du timer focus
-            XMLManipulation.ModifyElementXML("FocusActivate", "ON");
-        }
-
-        private void oFFToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            oFFToolStripMenuItem.Checked = true;
-            oNToolStripMenuItem.Checked = false;
-            timContrôleFocus.Enabled = false;
-            XMLManipulation.ModifyElementXML("FocusActivate", "OFF");
-        }
         private void timContrôleFocus_Tick(object sender, EventArgs e)
         {
             lbxTchat.SelectedIndex = lbxTchat.Items.Count - 1;
@@ -497,6 +480,21 @@ namespace ChatLocalClient
                 MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
                 Application.Exit();
             }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KChat.frmConfig frmConfig = new KChat.frmConfig();
+            frmConfig.Show();
+        }
+
+        private void ReadAppConfig_Tick(object sender, EventArgs e)
+        {
+            string temp = XMLManipulation.ReturnValue("FocusActivate");
+            if (temp == "ON")
+                timContrôleFocus.Enabled = true;
+            else
+                timContrôleFocus.Enabled = false;
         }
 
         //True : active

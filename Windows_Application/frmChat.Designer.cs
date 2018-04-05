@@ -46,9 +46,6 @@
             this.iPPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.focusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NomDestinataireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblNbrCaractRestants = new System.Windows.Forms.Label();
             this.timNbrCaractères = new System.Windows.Forms.Timer(this.components);
@@ -63,6 +60,8 @@
             this.lblEtatPing = new System.Windows.Forms.Label();
             this.lblNomPCDest = new System.Windows.Forms.Label();
             this.lblPatience = new System.Windows.Forms.Label();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReadAppConfig = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoPetit)).BeginInit();
@@ -70,82 +69,49 @@
             // 
             // tbxMessageEnvoit
             // 
-            this.tbxMessageEnvoit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxMessageEnvoit.Location = new System.Drawing.Point(38, 341);
+            resources.ApplyResources(this.tbxMessageEnvoit, "tbxMessageEnvoit");
             this.tbxMessageEnvoit.Name = "tbxMessageEnvoit";
-            this.tbxMessageEnvoit.Size = new System.Drawing.Size(445, 20);
-            this.tbxMessageEnvoit.TabIndex = 1;
             this.tbxMessageEnvoit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxMessageEnvoit_KeyDown);
             // 
             // btnEnvoi
             // 
-            this.btnEnvoi.Location = new System.Drawing.Point(489, 340);
+            resources.ApplyResources(this.btnEnvoi, "btnEnvoi");
             this.btnEnvoi.Name = "btnEnvoi";
-            this.btnEnvoi.Size = new System.Drawing.Size(93, 21);
-            this.btnEnvoi.TabIndex = 2;
-            this.btnEnvoi.Text = "Send";
             this.btnEnvoi.UseVisualStyleBackColor = true;
             this.btnEnvoi.Click += new System.EventHandler(this.btnEnvoi_Click);
             // 
             // lblIPDESTINATAIRE
             // 
-            this.lblIPDESTINATAIRE.AutoSize = true;
-            this.lblIPDESTINATAIRE.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPDESTINATAIRE.Location = new System.Drawing.Point(660, 137);
+            resources.ApplyResources(this.lblIPDESTINATAIRE, "lblIPDESTINATAIRE");
             this.lblIPDESTINATAIRE.Name = "lblIPDESTINATAIRE";
-            this.lblIPDESTINATAIRE.Size = new System.Drawing.Size(78, 17);
-            this.lblIPDESTINATAIRE.TabIndex = 6;
-            this.lblIPDESTINATAIRE.Text = "IP Recipient";
             // 
             // btnSart
             // 
-            this.btnSart.Location = new System.Drawing.Point(662, 224);
+            resources.ApplyResources(this.btnSart, "btnSart");
             this.btnSart.Name = "btnSart";
-            this.btnSart.Size = new System.Drawing.Size(130, 43);
-            this.btnSart.TabIndex = 9;
-            this.btnSart.Text = "Check IP";
             this.btnSart.UseVisualStyleBackColor = true;
             this.btnSart.Click += new System.EventHandler(this.btnSart_Click);
             // 
             // lbxTchat
             // 
-            this.lbxTchat.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.lbxTchat, "lbxTchat");
             this.lbxTchat.FormattingEnabled = true;
-            this.lbxTchat.ItemHeight = 16;
-            this.lbxTchat.Location = new System.Drawing.Point(21, 43);
             this.lbxTchat.Name = "lbxTchat";
-            this.lbxTchat.Size = new System.Drawing.Size(561, 276);
-            this.lbxTchat.TabIndex = 10;
             // 
             // lblDescription
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(784, 378);
+            resources.ApplyResources(this.lblDescription, "lblDescription");
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(67, 13);
-            this.lblDescription.TabIndex = 18;
-            this.lblDescription.Text = "Kubeah! 2018";
             // 
             // lblDescription2
             // 
-            this.lblDescription2.AutoSize = true;
-            this.lblDescription2.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription2.Location = new System.Drawing.Point(529, 378);
+            resources.ApplyResources(this.lblDescription2, "lblDescription2");
             this.lblDescription2.Name = "lblDescription2";
-            this.lblDescription2.Size = new System.Drawing.Size(67, 13);
-            this.lblDescription2.TabIndex = 19;
-            this.lblDescription2.Text = "Kubeah! 2018";
             // 
             // lblIPPersonnel
             // 
-            this.lblIPPersonnel.AutoSize = true;
-            this.lblIPPersonnel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPPersonnel.Location = new System.Drawing.Point(713, 270);
+            resources.ApplyResources(this.lblIPPersonnel, "lblIPPersonnel");
             this.lblIPPersonnel.Name = "lblIPPersonnel";
-            this.lblIPPersonnel.Size = new System.Drawing.Size(81, 16);
-            this.lblIPPersonnel.TabIndex = 20;
-            this.lblIPPersonnel.Text = "lblIPPersonnel";
             // 
             // timContrôleFocus
             // 
@@ -155,13 +121,10 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.focusToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.NomDestinataireToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(856, 24);
-            this.menuStrip1.TabIndex = 24;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // menuToolStripMenuItem
             // 
@@ -172,80 +135,46 @@
             this.aProposToolStripMenuItem,
             this.siteToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem.Text = "Menu";
+            resources.ApplyResources(this.menuToolStripMenuItem, "menuToolStripMenuItem");
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.arrêterToolStripMenuItem.Text = "Stop";
+            resources.ApplyResources(this.arrêterToolStripMenuItem, "arrêterToolStripMenuItem");
             this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.arrêterToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.redémmarerToolStripMenuItem.Text = "Restart";
+            resources.ApplyResources(this.redémmarerToolStripMenuItem, "redémmarerToolStripMenuItem");
             this.redémmarerToolStripMenuItem.Click += new System.EventHandler(this.redémmarerToolStripMenuItem_Click);
             // 
             // iPPersonnelToolStripMenuItem
             // 
             this.iPPersonnelToolStripMenuItem.Name = "iPPersonnelToolStripMenuItem";
-            this.iPPersonnelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.iPPersonnelToolStripMenuItem.Text = "IPPersonnel";
+            resources.ApplyResources(this.iPPersonnelToolStripMenuItem, "iPPersonnelToolStripMenuItem");
             // 
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aProposToolStripMenuItem.Text = "About";
+            resources.ApplyResources(this.aProposToolStripMenuItem, "aProposToolStripMenuItem");
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.siteToolStripMenuItem.Text = "Site";
+            resources.ApplyResources(this.siteToolStripMenuItem, "siteToolStripMenuItem");
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
-            // 
-            // focusToolStripMenuItem
-            // 
-            this.focusToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oNToolStripMenuItem,
-            this.oFFToolStripMenuItem});
-            this.focusToolStripMenuItem.Name = "focusToolStripMenuItem";
-            this.focusToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.focusToolStripMenuItem.Text = "Focus";
-            // 
-            // oNToolStripMenuItem
-            // 
-            this.oNToolStripMenuItem.Name = "oNToolStripMenuItem";
-            this.oNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.oNToolStripMenuItem.Text = "ON";
-            this.oNToolStripMenuItem.Click += new System.EventHandler(this.oNToolStripMenuItem_Click);
-            // 
-            // oFFToolStripMenuItem
-            // 
-            this.oFFToolStripMenuItem.Name = "oFFToolStripMenuItem";
-            this.oFFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.oFFToolStripMenuItem.Text = "OFF";
-            this.oFFToolStripMenuItem.Click += new System.EventHandler(this.oFFToolStripMenuItem_Click);
             // 
             // NomDestinataireToolStripMenuItem
             // 
             this.NomDestinataireToolStripMenuItem.Name = "NomDestinataireToolStripMenuItem";
-            this.NomDestinataireToolStripMenuItem.Size = new System.Drawing.Size(210, 20);
-            this.NomDestinataireToolStripMenuItem.Text = "NomDestinataireToolStripMenuItem";
+            resources.ApplyResources(this.NomDestinataireToolStripMenuItem, "NomDestinataireToolStripMenuItem");
             // 
             // lblNbrCaractRestants
             // 
-            this.lblNbrCaractRestants.AutoSize = true;
-            this.lblNbrCaractRestants.Location = new System.Drawing.Point(18, 344);
+            resources.ApplyResources(this.lblNbrCaractRestants, "lblNbrCaractRestants");
             this.lblNbrCaractRestants.Name = "lblNbrCaractRestants";
-            this.lblNbrCaractRestants.Size = new System.Drawing.Size(19, 13);
-            this.lblNbrCaractRestants.TabIndex = 26;
-            this.lblNbrCaractRestants.Text = "72";
             // 
             // timNbrCaractères
             // 
@@ -255,132 +184,86 @@
             // pbxLogo1
             // 
             this.pbxLogo1.BackColor = System.Drawing.Color.Transparent;
-            this.pbxLogo1.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogo1.Image")));
-            this.pbxLogo1.Location = new System.Drawing.Point(637, 37);
+            resources.ApplyResources(this.pbxLogo1, "pbxLogo1");
             this.pbxLogo1.Name = "pbxLogo1";
-            this.pbxLogo1.Size = new System.Drawing.Size(174, 67);
-            this.pbxLogo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLogo1.TabIndex = 27;
             this.pbxLogo1.TabStop = false;
             // 
             // pbxLogoPetit
             // 
             this.pbxLogoPetit.BackColor = System.Drawing.Color.Transparent;
-            this.pbxLogoPetit.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogoPetit.Image")));
-            this.pbxLogoPetit.Location = new System.Drawing.Point(18, 362);
+            resources.ApplyResources(this.pbxLogoPetit, "pbxLogoPetit");
             this.pbxLogoPetit.Name = "pbxLogoPetit";
-            this.pbxLogoPetit.Size = new System.Drawing.Size(82, 26);
-            this.pbxLogoPetit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLogoPetit.TabIndex = 28;
             this.pbxLogoPetit.TabStop = false;
             // 
             // lblStatutDestinataire
             // 
-            this.lblStatutDestinataire.AutoSize = true;
-            this.lblStatutDestinataire.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatutDestinataire.Location = new System.Drawing.Point(18, 26);
+            resources.ApplyResources(this.lblStatutDestinataire, "lblStatutDestinataire");
             this.lblStatutDestinataire.Name = "lblStatutDestinataire";
-            this.lblStatutDestinataire.Size = new System.Drawing.Size(65, 16);
-            this.lblStatutDestinataire.TabIndex = 29;
-            this.lblStatutDestinataire.Text = "Recipient :";
             // 
             // lblFixeCePC
             // 
-            this.lblFixeCePC.AutoSize = true;
-            this.lblFixeCePC.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFixeCePC.Location = new System.Drawing.Point(660, 270);
+            resources.ApplyResources(this.lblFixeCePC, "lblFixeCePC");
             this.lblFixeCePC.Name = "lblFixeCePC";
-            this.lblFixeCePC.Size = new System.Drawing.Size(51, 16);
-            this.lblFixeCePC.TabIndex = 30;
-            this.lblFixeCePC.Text = "This PC :";
             // 
             // tbxIP1
             // 
             this.tbxIP1.BackColor = System.Drawing.Color.Snow;
-            this.tbxIP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIP1.Location = new System.Drawing.Point(662, 156);
-            this.tbxIP1.MaxLength = 3;
+            resources.ApplyResources(this.tbxIP1, "tbxIP1");
             this.tbxIP1.Name = "tbxIP1";
-            this.tbxIP1.Size = new System.Drawing.Size(29, 20);
-            this.tbxIP1.TabIndex = 31;
-            this.tbxIP1.Text = "192";
-            this.tbxIP1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxIP1.TextChanged += new System.EventHandler(this.tbxIP1_TextChanged);
             // 
             // tbxIP2
             // 
             this.tbxIP2.BackColor = System.Drawing.Color.Snow;
-            this.tbxIP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIP2.Location = new System.Drawing.Point(695, 156);
-            this.tbxIP2.MaxLength = 3;
+            resources.ApplyResources(this.tbxIP2, "tbxIP2");
             this.tbxIP2.Name = "tbxIP2";
-            this.tbxIP2.Size = new System.Drawing.Size(29, 20);
-            this.tbxIP2.TabIndex = 32;
-            this.tbxIP2.Text = "168";
-            this.tbxIP2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxIP2.TextChanged += new System.EventHandler(this.tbxIP2_TextChanged);
             // 
             // tbxIP3
             // 
             this.tbxIP3.BackColor = System.Drawing.Color.Snow;
-            this.tbxIP3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIP3.Location = new System.Drawing.Point(730, 156);
-            this.tbxIP3.MaxLength = 3;
+            resources.ApplyResources(this.tbxIP3, "tbxIP3");
             this.tbxIP3.Name = "tbxIP3";
-            this.tbxIP3.Size = new System.Drawing.Size(29, 20);
-            this.tbxIP3.TabIndex = 33;
-            this.tbxIP3.Text = "0";
-            this.tbxIP3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxIP3.TextChanged += new System.EventHandler(this.tbxIP3_TextChanged);
             // 
             // tbxIP4
             // 
             this.tbxIP4.BackColor = System.Drawing.Color.PaleGreen;
-            this.tbxIP4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIP4.Location = new System.Drawing.Point(763, 156);
-            this.tbxIP4.MaxLength = 3;
+            resources.ApplyResources(this.tbxIP4, "tbxIP4");
             this.tbxIP4.Name = "tbxIP4";
-            this.tbxIP4.Size = new System.Drawing.Size(29, 20);
-            this.tbxIP4.TabIndex = 34;
-            this.tbxIP4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxIP4.TextChanged += new System.EventHandler(this.tbxIP4_TextChanged);
             // 
             // lblEtatPing
             // 
-            this.lblEtatPing.AutoSize = true;
-            this.lblEtatPing.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEtatPing.Location = new System.Drawing.Point(660, 178);
+            resources.ApplyResources(this.lblEtatPing, "lblEtatPing");
             this.lblEtatPing.Name = "lblEtatPing";
-            this.lblEtatPing.Size = new System.Drawing.Size(65, 16);
-            this.lblEtatPing.TabIndex = 35;
-            this.lblEtatPing.Text = "lblEtatPing";
             // 
             // lblNomPCDest
             // 
-            this.lblNomPCDest.AutoSize = true;
-            this.lblNomPCDest.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomPCDest.Location = new System.Drawing.Point(660, 193);
+            resources.ApplyResources(this.lblNomPCDest, "lblNomPCDest");
             this.lblNomPCDest.Name = "lblNomPCDest";
-            this.lblNomPCDest.Size = new System.Drawing.Size(84, 16);
-            this.lblNomPCDest.TabIndex = 36;
-            this.lblNomPCDest.Text = "lblNomPCDest";
             // 
             // lblPatience
             // 
-            this.lblPatience.AutoSize = true;
-            this.lblPatience.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatience.Location = new System.Drawing.Point(686, 208);
+            resources.ApplyResources(this.lblPatience, "lblPatience");
             this.lblPatience.Name = "lblPatience";
-            this.lblPatience.Size = new System.Drawing.Size(82, 17);
-            this.lblPatience.TabIndex = 37;
-            this.lblPatience.Text = "Please wait";
-            this.lblPatience.Visible = false;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // ReadAppConfig
+            // 
+            this.ReadAppConfig.Enabled = true;
+            this.ReadAppConfig.Interval = 1000;
+            this.ReadAppConfig.Tick += new System.EventHandler(this.ReadAppConfig_Tick);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 393);
             this.Controls.Add(this.lblPatience);
             this.Controls.Add(this.lblNomPCDest);
             this.Controls.Add(this.lblEtatPing);
@@ -402,13 +285,9 @@
             this.Controls.Add(this.btnEnvoi);
             this.Controls.Add(this.tbxMessageEnvoit);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
-            this.Text = "Kubeah Chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -429,7 +308,6 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblDescription2;
         private System.Windows.Forms.Label lblIPPersonnel;
-        private System.Windows.Forms.Timer timContrôleFocus;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arrêterToolStripMenuItem;
@@ -437,15 +315,11 @@
         private System.Windows.Forms.ToolStripMenuItem aProposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem siteToolStripMenuItem;
         private System.Windows.Forms.Label lblNbrCaractRestants;
-        private System.Windows.Forms.Timer timNbrCaractères;
         private System.Windows.Forms.PictureBox pbxLogo1;
         private System.Windows.Forms.PictureBox pbxLogoPetit;
         private System.Windows.Forms.Label lblStatutDestinataire;
         private System.Windows.Forms.Label lblFixeCePC;
         private System.Windows.Forms.ToolStripMenuItem NomDestinataireToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem focusToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oNToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oFFToolStripMenuItem;
         private System.Windows.Forms.TextBox tbxIP1;
         private System.Windows.Forms.TextBox tbxIP2;
         private System.Windows.Forms.TextBox tbxIP3;
@@ -454,6 +328,10 @@
         private System.Windows.Forms.Label lblNomPCDest;
         private System.Windows.Forms.Label lblPatience;
         private System.Windows.Forms.ToolStripMenuItem iPPersonnelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        public System.Windows.Forms.Timer timContrôleFocus;
+        private System.Windows.Forms.Timer timNbrCaractères;
+        private System.Windows.Forms.Timer ReadAppConfig;
     }
 }
 

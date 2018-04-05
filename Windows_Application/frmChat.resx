@@ -117,16 +117,335 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tbxMessageEnvoit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="tbxMessageEnvoit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>38, 341</value>
+  </data>
+  <data name="tbxMessageEnvoit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tbxMessageEnvoit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbxMessageEnvoit.Name" xml:space="preserve">
+    <value>tbxMessageEnvoit</value>
+  </data>
+  <data name="&gt;&gt;tbxMessageEnvoit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxMessageEnvoit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbxMessageEnvoit.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="btnEnvoi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 340</value>
+  </data>
+  <data name="btnEnvoi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 21</value>
+  </data>
+  <data name="btnEnvoi.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnEnvoi.Text" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="&gt;&gt;btnEnvoi.Name" xml:space="preserve">
+    <value>btnEnvoi</value>
+  </data>
+  <data name="&gt;&gt;btnEnvoi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEnvoi.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnEnvoi.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9pt</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 137</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="lblIPDESTINATAIRE.Text" xml:space="preserve">
+    <value>IP Recipient</value>
+  </data>
+  <data name="&gt;&gt;lblIPDESTINATAIRE.Name" xml:space="preserve">
+    <value>lblIPDESTINATAIRE</value>
+  </data>
+  <data name="&gt;&gt;lblIPDESTINATAIRE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblIPDESTINATAIRE.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblIPDESTINATAIRE.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="btnSart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>662, 224</value>
+  </data>
+  <data name="btnSart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 43</value>
+  </data>
+  <data name="btnSart.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnSart.Text" xml:space="preserve">
+    <value>Check IP</value>
+  </data>
+  <data name="&gt;&gt;btnSart.Name" xml:space="preserve">
+    <value>btnSart</value>
+  </data>
+  <data name="&gt;&gt;btnSart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSart.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSart.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lbxTchat.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lbxTchat.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lbxTchat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 43</value>
+  </data>
+  <data name="lbxTchat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>561, 276</value>
+  </data>
+  <data name="lbxTchat.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lbxTchat.Name" xml:space="preserve">
+    <value>lbxTchat</value>
+  </data>
+  <data name="&gt;&gt;lbxTchat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbxTchat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lbxTchat.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="lblDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDescription.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 6.75pt, style=Bold</value>
+  </data>
+  <data name="lblDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>784, 378</value>
+  </data>
+  <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Kubeah! 2018</value>
+  </data>
+  <data name="&gt;&gt;lblDescription.Name" xml:space="preserve">
+    <value>lblDescription</value>
+  </data>
+  <data name="&gt;&gt;lblDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblDescription.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="lblDescription2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDescription2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 6.75pt, style=Bold</value>
+  </data>
+  <data name="lblDescription2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>529, 378</value>
+  </data>
+  <data name="lblDescription2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblDescription2.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="lblDescription2.Text" xml:space="preserve">
+    <value>Kubeah! 2018</value>
+  </data>
+  <data name="&gt;&gt;lblDescription2.Name" xml:space="preserve">
+    <value>lblDescription2</value>
+  </data>
+  <data name="&gt;&gt;lblDescription2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDescription2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblDescription2.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblIPPersonnel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblIPPersonnel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lblIPPersonnel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>713, 270</value>
+  </data>
+  <data name="lblIPPersonnel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 16</value>
+  </data>
+  <data name="lblIPPersonnel.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="lblIPPersonnel.Text" xml:space="preserve">
+    <value>lblIPPersonnel</value>
+  </data>
+  <data name="&gt;&gt;lblIPPersonnel.Name" xml:space="preserve">
+    <value>lblIPPersonnel</value>
+  </data>
+  <data name="&gt;&gt;lblIPPersonnel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblIPPersonnel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblIPPersonnel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <metadata name="timContrôleFocus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>165, 17</value>
   </metadata>
+  <data name="menuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="menuToolStripMenuItem.Text" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NomDestinataireToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 20</value>
+  </data>
+  <data name="NomDestinataireToolStripMenuItem.Text" xml:space="preserve">
+    <value>NomDestinataireToolStripMenuItem</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>856, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="arrêterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="arrêterToolStripMenuItem.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="redémmarerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="redémmarerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="iPPersonnelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="iPPersonnelToolStripMenuItem.Text" xml:space="preserve">
+    <value>IPPersonnel</value>
+  </data>
+  <data name="aProposToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="aProposToolStripMenuItem.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="siteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="siteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="lblNbrCaractRestants.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblNbrCaractRestants.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 344</value>
+  </data>
+  <data name="lblNbrCaractRestants.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="lblNbrCaractRestants.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="lblNbrCaractRestants.Text" xml:space="preserve">
+    <value>72</value>
+  </data>
+  <data name="&gt;&gt;lblNbrCaractRestants.Name" xml:space="preserve">
+    <value>lblNbrCaractRestants</value>
+  </data>
+  <data name="&gt;&gt;lblNbrCaractRestants.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblNbrCaractRestants.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblNbrCaractRestants.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <metadata name="timNbrCaractères.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>280, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pbxLogo1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAnAAAACeCAYAAACywjd4AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -375,6 +694,31 @@
         KOmFNiqKoiiKoijphTYqiqIoiqIo6YU2KoqiKIqiKOmFNiqKoiiKoijphTYqiqIoiqIo6YU2KoqiKIqi
         KOmFNiqKoiiKoijphTYqiqIoiqIoaaX9tP8Pb5VCBdsWZjwAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="pbxLogo1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>637, 37</value>
+  </data>
+  <data name="pbxLogo1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 67</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pbxLogo1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="pbxLogo1.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;pbxLogo1.Name" xml:space="preserve">
+    <value>pbxLogo1</value>
+  </data>
+  <data name="&gt;&gt;pbxLogo1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbxLogo1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbxLogo1.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="pbxLogoPetit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -625,9 +969,330 @@
         KOmFNiqKoiiKoijphTYqiqIoiqIoaaX9tP8Pb5VCBdsWZjwAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="pbxLogoPetit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 362</value>
+  </data>
+  <data name="pbxLogoPetit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 26</value>
+  </data>
+  <data name="pbxLogoPetit.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="pbxLogoPetit.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;pbxLogoPetit.Name" xml:space="preserve">
+    <value>pbxLogoPetit</value>
+  </data>
+  <data name="&gt;&gt;pbxLogoPetit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbxLogoPetit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbxLogoPetit.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblStatutDestinataire.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblStatutDestinataire.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lblStatutDestinataire.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 26</value>
+  </data>
+  <data name="lblStatutDestinataire.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 16</value>
+  </data>
+  <data name="lblStatutDestinataire.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="lblStatutDestinataire.Text" xml:space="preserve">
+    <value>Recipient :</value>
+  </data>
+  <data name="&gt;&gt;lblStatutDestinataire.Name" xml:space="preserve">
+    <value>lblStatutDestinataire</value>
+  </data>
+  <data name="&gt;&gt;lblStatutDestinataire.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStatutDestinataire.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblStatutDestinataire.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblFixeCePC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixeCePC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lblFixeCePC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 270</value>
+  </data>
+  <data name="lblFixeCePC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 16</value>
+  </data>
+  <data name="lblFixeCePC.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="lblFixeCePC.Text" xml:space="preserve">
+    <value>This PC :</value>
+  </data>
+  <data name="&gt;&gt;lblFixeCePC.Name" xml:space="preserve">
+    <value>lblFixeCePC</value>
+  </data>
+  <data name="&gt;&gt;lblFixeCePC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixeCePC.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixeCePC.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tbxIP1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="tbxIP1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>662, 156</value>
+  </data>
+  <data name="tbxIP1.MaxLength" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbxIP1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="tbxIP1.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="tbxIP1.Text" xml:space="preserve">
+    <value>192</value>
+  </data>
+  <data name="tbxIP1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;tbxIP1.Name" xml:space="preserve">
+    <value>tbxIP1</value>
+  </data>
+  <data name="&gt;&gt;tbxIP1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxIP1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbxIP1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tbxIP2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="tbxIP2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 156</value>
+  </data>
+  <data name="tbxIP2.MaxLength" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbxIP2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="tbxIP2.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="tbxIP2.Text" xml:space="preserve">
+    <value>168</value>
+  </data>
+  <data name="tbxIP2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;tbxIP2.Name" xml:space="preserve">
+    <value>tbxIP2</value>
+  </data>
+  <data name="&gt;&gt;tbxIP2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxIP2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbxIP2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tbxIP3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="tbxIP3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>730, 156</value>
+  </data>
+  <data name="tbxIP3.MaxLength" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbxIP3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="tbxIP3.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="tbxIP3.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbxIP3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;tbxIP3.Name" xml:space="preserve">
+    <value>tbxIP3</value>
+  </data>
+  <data name="&gt;&gt;tbxIP3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxIP3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbxIP3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tbxIP4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="tbxIP4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>763, 156</value>
+  </data>
+  <data name="tbxIP4.MaxLength" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbxIP4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 20</value>
+  </data>
+  <data name="tbxIP4.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="tbxIP4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;tbxIP4.Name" xml:space="preserve">
+    <value>tbxIP4</value>
+  </data>
+  <data name="&gt;&gt;tbxIP4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbxIP4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbxIP4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblEtatPing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblEtatPing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lblEtatPing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 178</value>
+  </data>
+  <data name="lblEtatPing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 16</value>
+  </data>
+  <data name="lblEtatPing.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="lblEtatPing.Text" xml:space="preserve">
+    <value>lblEtatPing</value>
+  </data>
+  <data name="&gt;&gt;lblEtatPing.Name" xml:space="preserve">
+    <value>lblEtatPing</value>
+  </data>
+  <data name="&gt;&gt;lblEtatPing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEtatPing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblEtatPing.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblNomPCDest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblNomPCDest.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 8.25pt</value>
+  </data>
+  <data name="lblNomPCDest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 193</value>
+  </data>
+  <data name="lblNomPCDest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 16</value>
+  </data>
+  <data name="lblNomPCDest.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="lblNomPCDest.Text" xml:space="preserve">
+    <value>lblNomPCDest</value>
+  </data>
+  <data name="&gt;&gt;lblNomPCDest.Name" xml:space="preserve">
+    <value>lblNomPCDest</value>
+  </data>
+  <data name="&gt;&gt;lblNomPCDest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblNomPCDest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblNomPCDest.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblPatience.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPatience.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9.75pt</value>
+  </data>
+  <data name="lblPatience.Location" type="System.Drawing.Point, System.Drawing">
+    <value>686, 208</value>
+  </data>
+  <data name="lblPatience.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="lblPatience.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="lblPatience.Text" xml:space="preserve">
+    <value>Please wait</value>
+  </data>
+  <data name="lblPatience.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblPatience.Name" xml:space="preserve">
+    <value>lblPatience</value>
+  </data>
+  <data name="&gt;&gt;lblPatience.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPatience.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPatience.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="ReadAppConfig.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>427, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>117</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>856, 393</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAEAIABoBAAAVgAAABgYAAABACAAiAkAAL4EAAAgIAAAAQAgAKgQAABGDgAAMDAAAAEA
@@ -1196,5 +1861,83 @@
         bgwVAArFjaECQKG4MVQAKBQ3hgoAheLGUAGgUNwYKgAUihtDBYBCoVAoFAqFQqFQKBQKhUKhUCgUCoVC
         oVAoFAqFQqFQKBQKhUKhUCiUG4v/B5Ld2jzvPFESAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Kubeah Chat</value>
+  </data>
+  <data name="&gt;&gt;timContrôleFocus.Name" xml:space="preserve">
+    <value>timContrôleFocus</value>
+  </data>
+  <data name="&gt;&gt;timContrôleFocus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuToolStripMenuItem.Name" xml:space="preserve">
+    <value>menuToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;menuToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;arrêterToolStripMenuItem.Name" xml:space="preserve">
+    <value>arrêterToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;arrêterToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;redémmarerToolStripMenuItem.Name" xml:space="preserve">
+    <value>redémmarerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;redémmarerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;iPPersonnelToolStripMenuItem.Name" xml:space="preserve">
+    <value>iPPersonnelToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;iPPersonnelToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aProposToolStripMenuItem.Name" xml:space="preserve">
+    <value>aProposToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aProposToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;siteToolStripMenuItem.Name" xml:space="preserve">
+    <value>siteToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;siteToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NomDestinataireToolStripMenuItem.Name" xml:space="preserve">
+    <value>NomDestinataireToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;NomDestinataireToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;timNbrCaractères.Name" xml:space="preserve">
+    <value>timNbrCaractères</value>
+  </data>
+  <data name="&gt;&gt;timNbrCaractères.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>settingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ReadAppConfig.Name" xml:space="preserve">
+    <value>ReadAppConfig</value>
+  </data>
+  <data name="&gt;&gt;ReadAppConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmMain</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

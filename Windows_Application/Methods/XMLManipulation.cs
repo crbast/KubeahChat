@@ -36,6 +36,16 @@ namespace KChat.Methods
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteStartElement("param");
+            xmlWriter.WriteAttributeString("name", "EnableLastIpConnexion");
+            xmlWriter.WriteAttributeString("value", "ON");
+            xmlWriter.WriteAttributeString("info", "Not used yet");
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("param");
+            xmlWriter.WriteAttributeString("name", "SaveDiscussion");
+            xmlWriter.WriteAttributeString("value", "ON");
+            xmlWriter.WriteAttributeString("info", "Not used yet");
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "LastIpConnexion");
             xmlWriter.WriteAttributeString("value", "");
             xmlWriter.WriteEndElement();
@@ -44,7 +54,10 @@ namespace KChat.Methods
             xmlWriter.WriteAttributeString("value", "ON");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
-            xmlWriter.Close();        
+            xmlWriter.Close();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load("./App.config");
+            xmlDoc.Save("./App.config");
         }
 
         public static void ModifyElementXML(string name, string newValue)
