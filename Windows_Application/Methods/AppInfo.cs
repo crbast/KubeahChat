@@ -8,8 +8,8 @@ namespace KChat.Methods
 {
     class AppInfo
     {
-        protected string sStringformattedVersion = "1.6.0.0";
-        protected long lLongFormattedVersion = 001006000000000;
+        protected string sStringformattedVersion = "1.6.1.0";
+        protected long lLongFormattedVersion = 001006001000000; //1.2.3.4 ===> 001002003000004
 
         public string GetFormattedVersion() => sStringformattedVersion;
         public long GetChainFormattedVersion() => lLongFormattedVersion;

@@ -67,7 +67,6 @@ namespace ChatLocalClient
                 timContrôleFocus.Enabled = false;
             }
             //================================================================================================
-            
         }
 
         private string GetLocalIP()
