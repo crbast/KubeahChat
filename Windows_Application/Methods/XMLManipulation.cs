@@ -38,20 +38,23 @@ namespace KChat.Methods
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "EnableLastIpConnexion");
             xmlWriter.WriteAttributeString("value", "ON");
-            xmlWriter.WriteAttributeString("info", "Not used yet");
+            xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "SaveDiscussion");
             xmlWriter.WriteAttributeString("value", "ON");
+            xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteAttributeString("info", "Not used yet");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "LastIpConnexion");
             xmlWriter.WriteAttributeString("value", "");
+            xmlWriter.WriteAttributeString("choice", "Example : 192.168.0.2");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "FocusActivate");
             xmlWriter.WriteAttributeString("value", "ON");
+            xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
@@ -62,6 +65,10 @@ namespace KChat.Methods
 
         public static void ModifyElementXML(string name, string newValue)
         {
+            if (File.Exists("./App.config") == false)
+            {
+                CreateAppConfig();
+            }
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
 

@@ -80,6 +80,9 @@
   <PropertyGroup>
     <ManifestKeyFile>Kubeah!_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ChatLocalClient.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />

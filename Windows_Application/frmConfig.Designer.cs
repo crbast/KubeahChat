@@ -42,14 +42,16 @@
             this.chbSaveDiscussionOff = new System.Windows.Forms.CheckBox();
             this.chbSaveDiscussionOn = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblDropDiscussion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(126, 192);
+            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(126, 181);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(75, 34);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -144,7 +146,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 119);
+            this.label5.Location = new System.Drawing.Point(12, 146);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(307, 13);
             this.label5.TabIndex = 13;
@@ -160,6 +162,7 @@
             this.chbSaveDiscussionOff.TabIndex = 12;
             this.chbSaveDiscussionOff.Text = "OFF";
             this.chbSaveDiscussionOff.UseVisualStyleBackColor = true;
+            this.chbSaveDiscussionOff.CheckedChanged += new System.EventHandler(this.chbSaveDiscussionOff_CheckedChanged);
             // 
             // chbSaveDiscussionOn
             // 
@@ -171,6 +174,7 @@
             this.chbSaveDiscussionOn.TabIndex = 11;
             this.chbSaveDiscussionOn.Text = "ON";
             this.chbSaveDiscussionOn.UseVisualStyleBackColor = true;
+            this.chbSaveDiscussionOn.CheckedChanged += new System.EventHandler(this.chbSaveDiscussionOn_CheckedChanged);
             // 
             // label6
             // 
@@ -182,12 +186,27 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Save discussion";
             // 
+            // lblDropDiscussion
+            // 
+            this.lblDropDiscussion.AutoSize = true;
+            this.lblDropDiscussion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblDropDiscussion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDropDiscussion.Location = new System.Drawing.Point(12, 130);
+            this.lblDropDiscussion.Name = "lblDropDiscussion";
+            this.lblDropDiscussion.Size = new System.Drawing.Size(147, 16);
+            this.lblDropDiscussion.TabIndex = 14;
+            this.lblDropDiscussion.Text = "Delete all discussions";
+            this.lblDropDiscussion.Click += new System.EventHandler(this.lblDropDiscussion_Click);
+            this.lblDropDiscussion.MouseLeave += new System.EventHandler(this.lblDropDiscussion_MouseLeave);
+            this.lblDropDiscussion.MouseHover += new System.EventHandler(this.lblDropDiscussion_MouseHover);
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 221);
             this.ControlBox = false;
+            this.Controls.Add(this.lblDropDiscussion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chbSaveDiscussionOff);
             this.Controls.Add(this.chbSaveDiscussionOn);
@@ -227,5 +246,6 @@
         private System.Windows.Forms.CheckBox chbSaveDiscussionOff;
         private System.Windows.Forms.CheckBox chbSaveDiscussionOn;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblDropDiscussion;
     }
 }
