@@ -4,8 +4,6 @@
 <br></br>
 <a href="https://sourceforge.net/projects/kubeah-chat/files/latest/download" rel="nofollow"><img alt="Download Kubeah Chat" src="https://a.fsdn.com/con/app/sf-download-button"></a>
 <a href="https://sourceforge.net/projects/kubeah-chat/files/latest/download"><img alt="Download Kubeah Chat" src="https://img.shields.io/sourceforge/dw/kubeah-chat.svg" ></a>
-<br></br>
-<br></br>
 <p align="center">
   <img src="https://kubeah.com/img/logoKChat.ico">
 </p>
