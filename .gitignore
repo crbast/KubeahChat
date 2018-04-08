@@ -324,3 +324,7 @@ ASALocalRun/
 
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
+
+# Kubeah
+db.lock
+storage.ide
