@@ -1,9 +1,27 @@
-﻿//--------------------------------------------------------------------
-//  Kubeah ! Open Source Project
-//  
-//  Kubeah Chat
-//  Just like Open Source
-//--------------------------------------------------------------------
+﻿/*
+ * Kubeah ! Open Source Project
+ * 
+ * Kubeah Chat
+ * Just like Open Source
+ * 
+ * It is necessary to have the application Kubeah_SimpleNotification
+ * https://crbast.github.io/Kubeah_SimpleNotification/
+ * Documentation are available :
+ * https://github.com/CrBast/Kubeah_SimpleNotification/blob/master/using-fr.md
+ * 
+ * !!!! Copy the content of ".\External_Applications" on "\bin\Debug" !!!!
+ * 
+ * 
+ * 
+ * for more informations about Kubeah Chat
+ * Please visit https://github.com/CrBast/KubeahChat
+ *
+ * 
+ * 
+ * APPLICATION LICENSE
+ * GNU General Public License v3.0
+ * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
+ * */
 using System;
 using System.Drawing;
 using System.Text;
