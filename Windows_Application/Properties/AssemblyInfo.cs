@@ -1,4 +1,17 @@
-﻿using System.Resources;
+﻿/*
+ * Kubeah ! Open Source Project
+ * 
+ * Kubeah Chat
+ * Just like Open Source
+ * 
+ * for more informations about Kubeah Chat
+ * Please visit https://github.com/CrBast/KubeahChat
+ * 
+ * APPLICATION LICENSE
+ * GNU General Public License v3.0
+ * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
+ * */
+using System.Resources;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -9,10 +22,10 @@ using KChat;
 // associated with an assembly.
 [assembly: AssemblyTitle("Kubeah Chat")]
 [assembly: AssemblyDescription("Kubeah Chat")]
-[assembly: AssemblyConfiguration("Kubeah Chat")]
+[assembly: AssemblyConfiguration("https://github.com/CrBast/KubeahChat")]
 [assembly: AssemblyCompany("Kubeah! The Open Source Project")]
 [assembly: AssemblyProduct("KChat")]
-[assembly: AssemblyCopyright("Kubeah! Open Source")]
+[assembly: AssemblyCopyright("Kubeah! Open Source - GNU General Public License v3.0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

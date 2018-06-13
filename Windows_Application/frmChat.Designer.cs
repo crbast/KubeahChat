@@ -46,6 +46,7 @@
             this.iPPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NomDestinataireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblNbrCaractRestants = new System.Windows.Forms.Label();
             this.timNbrCaractères = new System.Windows.Forms.Timer(this.components);
@@ -60,7 +61,6 @@
             this.lblEtatPing = new System.Windows.Forms.Label();
             this.lblNomPCDest = new System.Windows.Forms.Label();
             this.lblPatience = new System.Windows.Forms.Label();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReadAppConfig = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo1)).BeginInit();
@@ -166,6 +166,12 @@
             resources.ApplyResources(this.siteToolStripMenuItem, "siteToolStripMenuItem");
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // NomDestinataireToolStripMenuItem
             // 
             this.NomDestinataireToolStripMenuItem.Name = "NomDestinataireToolStripMenuItem";
@@ -248,12 +254,6 @@
             resources.ApplyResources(this.lblPatience, "lblPatience");
             this.lblPatience.Name = "lblPatience";
             // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
             // ReadAppConfig
             // 
             this.ReadAppConfig.Enabled = true;
@@ -288,6 +288,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
+            this.Activated += new System.EventHandler(this.FrmMain_Activated);
+            this.Deactivate += new System.EventHandler(this.FrmMain_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);

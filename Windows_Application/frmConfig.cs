@@ -1,4 +1,17 @@
-﻿using KChat.Methods;
+﻿/*
+ * Kubeah ! Open Source Project
+ * 
+ * Kubeah Chat
+ * Just like Open Source
+ * 
+ * for more informations about Kubeah Chat
+ * Please visit https://github.com/CrBast/KubeahChat
+ * 
+ * APPLICATION LICENSE
+ * GNU General Public License v3.0
+ * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
+ * */
+using KChat.Methods;
 using ChatLocalClient;
 using System;
 using System.Collections.Generic;
@@ -53,6 +66,17 @@ namespace KChat
                 else
                     chbSaveDiscussionOff.Checked = true;
             }
+
+            temp = XMLManipulation.ReturnValue("NotificationsEnable");
+            if (temp == "") { }
+            else
+            {
+                if (temp == "ON")
+                    chbEnableNotificationsOn.Checked = true;
+                else
+                    chbEnableNotificationsOff.Checked = true;
+            }
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -171,6 +195,36 @@ namespace KChat
                 chbSaveDiscussionOn.Checked = false;
                 //Change value on App.config
                 XMLManipulation.ModifyElementXML("SaveDiscussion", "OFF");
+            }
+        }
+
+        private void chbEnableNotificationsOn_CheckedChanged(object sender, EventArgs e)
+        {
+            //Management Checked - not checked
+            if (chbEnableNotificationsOn.Checked == false && chbEnableNotificationsOff.Checked == false)
+            {
+                chbEnableNotificationsOff.Checked = true;
+            }
+            if (chbEnableNotificationsOn.Checked == true)
+            {
+                chbEnableNotificationsOff.Checked = false;
+                //Change value on App.config
+                XMLManipulation.ModifyElementXML("NotificationsEnable", "ON");
+            }
+        }
+
+        private void chbEnableNotificationsOff_CheckedChanged(object sender, EventArgs e)
+        {
+            //Management Checked - not checked
+            if (chbEnableNotificationsOn.Checked == false && chbEnableNotificationsOff.Checked == false)
+            {
+                chbEnableNotificationsOn.Checked = true;
+            }
+            if (chbEnableNotificationsOff.Checked == true)
+            {
+                chbEnableNotificationsOn.Checked = false;
+                //Change value on App.config
+                XMLManipulation.ModifyElementXML("NotificationsEnable", "OFF");
             }
         }
     }

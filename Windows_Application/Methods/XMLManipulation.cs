@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*
+ * Kubeah ! Open Source Project
+ * 
+ * Kubeah Chat
+ * Just like Open Source
+ * 
+ * for more informations about Kubeah Chat
+ * Please visit https://github.com/CrBast/KubeahChat
+ * 
+ * APPLICATION LICENSE
+ * GNU General Public License v3.0
+ * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
+ * */
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,6 +69,11 @@ namespace KChat.Methods
             xmlWriter.WriteAttributeString("value", "ON");
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
+            xmlWriter.WriteStartElement("param");
+            xmlWriter.WriteAttributeString("name", "NotificationsEnable");
+            xmlWriter.WriteAttributeString("value", "ON");
+            xmlWriter.WriteAttributeString("choice", "ON - OFF");
+            xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
             XmlDocument xmlDoc = new XmlDocument();
@@ -80,6 +98,26 @@ namespace KChat.Methods
                 }
             }
             xmlDoc.Save("./App.config");
+        }
+        public static void CreateNotifFile(string content)
+        {
+            try
+            {
+                string title = DateTime.Now.ToString("dd/MM/yyyy_HH:mm:ss");
+                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
+                xmlWriter.WriteStartDocument();
+                xmlWriter.WriteStartElement("param");
+                xmlWriter.WriteStartElement("param");
+                xmlWriter.WriteAttributeString("name", "content");
+                xmlWriter.WriteAttributeString("value", $"{content}");
+                xmlWriter.WriteEndElement();
+                xmlWriter.Close();
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load($"./App/notifications/{title}.xml");
+                xmlDoc.Save($"./App/notifications/{title}.xml");
+            }
+            catch { }
+            
         }
     }
 }

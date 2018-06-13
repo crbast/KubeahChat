@@ -43,13 +43,17 @@
             this.chbSaveDiscussionOn = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblDropDiscussion = new System.Windows.Forms.Label();
+            this.chbEnableNotificationsOff = new System.Windows.Forms.CheckBox();
+            this.chbEnableNotificationsOn = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(126, 181);
+            this.btnExit.Location = new System.Drawing.Point(127, 213);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 34);
             this.btnExit.TabIndex = 1;
@@ -146,7 +150,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 146);
+            this.label5.Location = new System.Drawing.Point(12, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(307, 13);
             this.label5.TabIndex = 13;
@@ -191,7 +195,7 @@
             this.lblDropDiscussion.AutoSize = true;
             this.lblDropDiscussion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDropDiscussion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDropDiscussion.Location = new System.Drawing.Point(12, 130);
+            this.lblDropDiscussion.Location = new System.Drawing.Point(13, 181);
             this.lblDropDiscussion.Name = "lblDropDiscussion";
             this.lblDropDiscussion.Size = new System.Drawing.Size(147, 16);
             this.lblDropDiscussion.TabIndex = 14;
@@ -200,12 +204,59 @@
             this.lblDropDiscussion.MouseLeave += new System.EventHandler(this.lblDropDiscussion_MouseLeave);
             this.lblDropDiscussion.MouseHover += new System.EventHandler(this.lblDropDiscussion_MouseHover);
             // 
+            // chbEnableNotificationsOff
+            // 
+            this.chbEnableNotificationsOff.AutoSize = true;
+            this.chbEnableNotificationsOff.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbEnableNotificationsOff.Location = new System.Drawing.Point(257, 142);
+            this.chbEnableNotificationsOff.Name = "chbEnableNotificationsOff";
+            this.chbEnableNotificationsOff.Size = new System.Drawing.Size(50, 21);
+            this.chbEnableNotificationsOff.TabIndex = 18;
+            this.chbEnableNotificationsOff.Text = "OFF";
+            this.chbEnableNotificationsOff.UseVisualStyleBackColor = true;
+            this.chbEnableNotificationsOff.CheckedChanged += new System.EventHandler(this.chbEnableNotificationsOff_CheckedChanged);
+            // 
+            // chbEnableNotificationsOn
+            // 
+            this.chbEnableNotificationsOn.AutoSize = true;
+            this.chbEnableNotificationsOn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbEnableNotificationsOn.Location = new System.Drawing.Point(201, 142);
+            this.chbEnableNotificationsOn.Name = "chbEnableNotificationsOn";
+            this.chbEnableNotificationsOn.Size = new System.Drawing.Size(48, 21);
+            this.chbEnableNotificationsOn.TabIndex = 17;
+            this.chbEnableNotificationsOn.Text = "ON";
+            this.chbEnableNotificationsOn.UseVisualStyleBackColor = true;
+            this.chbEnableNotificationsOn.CheckedChanged += new System.EventHandler(this.chbEnableNotificationsOn_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 143);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(135, 17);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Enable notifications";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(307, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "__________________________________________________";
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 221);
+            this.ClientSize = new System.Drawing.Size(328, 254);
             this.ControlBox = false;
+            this.Controls.Add(this.chbEnableNotificationsOff);
+            this.Controls.Add(this.chbEnableNotificationsOn);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblDropDiscussion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chbSaveDiscussionOff);
@@ -247,5 +298,9 @@
         private System.Windows.Forms.CheckBox chbSaveDiscussionOn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblDropDiscussion;
+        private System.Windows.Forms.CheckBox chbEnableNotificationsOff;
+        private System.Windows.Forms.CheckBox chbEnableNotificationsOn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
