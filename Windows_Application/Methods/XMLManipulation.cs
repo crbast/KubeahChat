@@ -90,12 +90,22 @@ namespace KChat.Methods
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
 
+            bool verificationParameter = false;
+            /* true : The parameter has been entered
+             * false : The parameter has not been entered because it does not exist
+             * */
+
             foreach (XmlNode xmlNode in xmlDoc.DocumentElement)
             {
                 if (xmlNode.Attributes["name"].Value == name)
                 {
                     xmlNode.Attributes["value"].Value = newValue;
+                    verificationParameter = true;
                 }
+            }
+            if(verificationParameter == false)
+            {
+                // TODO : create parameter and give the value 
             }
             xmlDoc.Save("./App.config");
         }
