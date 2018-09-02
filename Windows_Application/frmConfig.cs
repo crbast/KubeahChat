@@ -32,6 +32,7 @@ namespace KChat
         {
             InitializeComponent();
         }
+        Dictionary<string, string> dict = new Dictionary<string, string>();
 
         private void frmConfig_Load(object sender, EventArgs e)
         {

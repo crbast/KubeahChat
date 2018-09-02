@@ -12,6 +12,7 @@
  * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
  * */
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace KChat.Methods
         {
             if (File.Exists("./App.config") == false)
             {
-                CreateAppConfig();
+                Dictionary<string, string> dict = new Dictionary<string, string>();
+                CreateAppConfig(dict);
             }
             string resultToReturn = "";
             XmlDocument xmlDoc = new XmlDocument();
@@ -43,35 +45,60 @@ namespace KChat.Methods
             }
             return resultToReturn;
         }
-        private static void CreateAppConfig()
+        private static void CreateAppConfig(Dictionary<string, string> dict)
         {
             XmlWriter xmlWriter = XmlWriter.Create("./App.config");
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "EnableLastIpConnexion");
-            xmlWriter.WriteAttributeString("value", "ON");
+
+            if (dict.ContainsKey("EnableLastIpConnexion"))
+                xmlWriter.WriteAttributeString("value", dict["EnableLastIpConnexion"]);
+            else
+                xmlWriter.WriteAttributeString("value", "ON");
+
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "SaveDiscussion");
-            xmlWriter.WriteAttributeString("value", "ON");
+
+            if(dict.ContainsKey("SaveDiscussion"))
+                xmlWriter.WriteAttributeString("value", dict["SaveDiscussion"]);
+            else
+                xmlWriter.WriteAttributeString("value", "ON");
+
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteAttributeString("info", "Not used yet");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "LastIpConnexion");
-            xmlWriter.WriteAttributeString("value", "");
+
+            if(dict.ContainsKey("LastIpConnexion"))
+                xmlWriter.WriteAttributeString("value", dict["LastIpConnexion"].ToString());
+            else
+                xmlWriter.WriteAttributeString("value", "");
+
             xmlWriter.WriteAttributeString("choice", "Example : 192.168.0.2");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "FocusActivate");
-            xmlWriter.WriteAttributeString("value", "ON");
+
+            if(dict.ContainsKey("+"))
+                xmlWriter.WriteAttributeString("value", dict["FocusActivate"].ToString());
+            else
+                xmlWriter.WriteAttributeString("value", "ON");
+
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "NotificationsEnable");
-            xmlWriter.WriteAttributeString("value", "ON");
+
+            if(dict.ContainsKey("NotificationsEnable"))
+                xmlWriter.WriteAttributeString("value", dict["NotificationsEnable"]);
+            else
+                xmlWriter.WriteAttributeString("value", "ON");
+
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
@@ -85,7 +112,8 @@ namespace KChat.Methods
         {
             if (File.Exists("./App.config") == false)
             {
-                CreateAppConfig();
+                Dictionary<string, string> dict = new Dictionary<string, string>();
+                CreateAppConfig(dict);
             }
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
@@ -103,28 +131,34 @@ namespace KChat.Methods
                     verificationParameter = true;
                 }
             }
-            if(verificationParameter == false)
-            {
-                // TODO : create parameter and give the value 
-            }
             xmlDoc.Save("./App.config");
+            if (verificationParameter == false)
+            {
+                Dictionary<string, string> dict = new Dictionary<string, string>
+                {
+                    { name, newValue }
+                };
+                CreateAppConfig(dict);
+            }
+            
         }
         public static void CreateNotifFile(string content)
         {
             try
             {
                 string title = DateTime.Now.ToString("dd/MM/yyyy_HH:mm:ss");
-                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
+                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/temp.xml");
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("param");
                 xmlWriter.WriteStartElement("param");
                 xmlWriter.WriteAttributeString("name", "content");
                 xmlWriter.WriteAttributeString("value", $"{content}");
                 xmlWriter.WriteEndElement();
+                xmlWriter.WriteEndElement();
                 xmlWriter.Close();
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load($"./App/notifications/{title}.xml");
-                xmlDoc.Save($"./App/notifications/{title}.xml");
+                xmlDoc.Load($"./App/notifications/temp.xml");
+                xmlDoc.Save($"./App/notifications/temp.xml");
             }
             catch { }
             

@@ -319,7 +319,6 @@
         private System.Windows.Forms.Label lblNbrCaractRestants;
         private System.Windows.Forms.PictureBox pbxLogo1;
         private System.Windows.Forms.PictureBox pbxLogoPetit;
-        private System.Windows.Forms.Label lblStatutDestinataire;
         private System.Windows.Forms.Label lblFixeCePC;
         private System.Windows.Forms.ToolStripMenuItem NomDestinataireToolStripMenuItem;
         private System.Windows.Forms.TextBox tbxIP1;
@@ -334,6 +333,7 @@
         public System.Windows.Forms.Timer timContrôleFocus;
         private System.Windows.Forms.Timer timNbrCaractères;
         private System.Windows.Forms.Timer ReadAppConfig;
+        public System.Windows.Forms.Label lblStatutDestinataire;
     }
 }
 
