@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -144,15 +145,16 @@ namespace KChat.Methods
         }
         public static void CreateNotifFile(string content)
         {
+            Random rndm = new Random();
             try
             {
-                string title = DateTime.Now.ToString("dd/MM/yyyy_HH:mm:ss");
-                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/temp.xml");
+                string title = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
+                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("param");
                 xmlWriter.WriteStartElement("param");
                 xmlWriter.WriteAttributeString("name", "content");
-                xmlWriter.WriteAttributeString("value", $"{content}");
+                xmlWriter.WriteAttributeString("value", $"{RemoveInvalidCharacters(content)}");
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteEndElement();
                 xmlWriter.Close();
@@ -160,8 +162,29 @@ namespace KChat.Methods
                 xmlDoc.Load($"./App/notifications/temp.xml");
                 xmlDoc.Save($"./App/notifications/temp.xml");
             }
-            catch { }
-            
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
+
+        }
+
+        // https://sandeep-tada.blogspot.com/2014/02/c-systemargumentexception-hexadecimal_11.html
+
+        private static string RemoveInvalidCharacters(string str)
+        {
+            if (str == null) return null;
+
+            var formattedStr = new StringBuilder();
+
+            foreach (var ch in str)
+            {
+                if ((ch < 0x00FD && ch > 0x001F) || ch == '\t' || ch == '\n' || ch == '\r')
+                {
+                    formattedStr.Append(ch);
+                } 
+            }
+            return formattedStr.ToString();
         }
     }
 }

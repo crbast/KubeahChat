@@ -333,7 +333,7 @@
         public System.Windows.Forms.Timer timContrôleFocus;
         private System.Windows.Forms.Timer timNbrCaractères;
         private System.Windows.Forms.Timer ReadAppConfig;
-        public System.Windows.Forms.Label lblStatutDestinataire;
+        private System.Windows.Forms.Label lblStatutDestinataire;
     }
 }
 
