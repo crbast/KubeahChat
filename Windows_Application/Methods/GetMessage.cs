@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 
 namespace KChat.Methods
 {
+    /// <summary>
+    /// Does not contain any methods at this time. Do not use. 
+    /// </summary>
     class GetMessage
     {
         

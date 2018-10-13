@@ -16,12 +16,17 @@ using System.Net.NetworkInformation;
 
 namespace KChat.Methods
 {
+    /// <summary>
+    /// IP handling class
+    /// </summary>
     class Ip
     {
-        //Function NAMEMACHINTEWITHIP========================================================================================/
-        //===================================================================================================================/
-        //Return : Detinataire Name
-        public static string NameMachineWithIP(string ipAdress)
+        /// <summary>
+        /// Get the host name using the ip.
+        /// </summary>
+        /// <param name="ipAdress">Host ip</param>
+        /// <returns>String : Host name</returns>
+        public static string GetHostName(string ipAdress)
         {
             string machineName = string.Empty;
             try
@@ -36,9 +41,11 @@ namespace KChat.Methods
             return machineName;
         }
 
-        //FUNCTION PING====================================================================================================/
-        //=====================================================================================================================/
-        //Ping with ip
+        /// <summary>
+        /// Ping host
+        /// </summary>
+        /// <param name="sIpAdress">Host ip</param>
+        /// <returns>Boolean : true(OK) | false(NOT OK)</returns>
         public static bool PingDest(string sIpAdress)
         {
             Ping ping = new Ping();

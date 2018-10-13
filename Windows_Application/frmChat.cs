@@ -72,15 +72,15 @@ namespace ChatLocalClient
             lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
             lblDescription2.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
             //Create and read config==========================================================================
-            string recipientIp = XMLManipulation.ReturnValue("LastIpConnexion");
+            string recipientIp = XMLManipulation.GetValue("LastIpConnexion");
             if(recipientIp != "")
                 IPSeparationString(recipientIp, true);
             else
                 IPSeparationString(lblIPPersonnel.Text, false);
-            string focusState = XMLManipulation.ReturnValue("FocusActivate");
+            string focusState = XMLManipulation.GetValue("FocusActivate");
             if(focusState != "ON")
                 timContrôleFocus.Enabled = false;
-            if (XMLManipulation.ReturnValue("EnableLastIpConnexion") != "ON")
+            if (XMLManipulation.GetValue("EnableLastIpConnexion") != "ON")
                 XMLManipulation.ModifyElementXML("LastIpConnexion", "");
             //================================================================================================
         }
@@ -208,7 +208,7 @@ namespace ChatLocalClient
                                 lblEtatPing.Visible = false;
                                 lblNomPCDest.Visible = false;
                                 lblEtatPing.Visible = true;
-                                string sNameDestinataire = Ip.NameMachineWithIP(sIPDestinataire);
+                                string sNameDestinataire = Ip.GetHostName(sIPDestinataire);
                                 bool bResultPing = Ip.PingDest(sIPDestinataire);
                                 if (bResultPing == true)
                                 {
@@ -255,7 +255,7 @@ namespace ChatLocalClient
                                         iPPersonnelToolStripMenuItem.Visible = true;
                                         //______________________________________________
                                         //FichierConfig---------------------------------
-                                        if(XMLManipulation.ReturnValue("EnableLastIpConnexion") == "ON")
+                                        if(XMLManipulation.GetValue("EnableLastIpConnexion") == "ON")
                                             XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
                                         else
                                             XMLManipulation.ModifyElementXML("LastIpConnexion", "");
@@ -318,7 +318,8 @@ namespace ChatLocalClient
                 {
                     if (bEtatDestinataire == false)
                     {
-                        MessageBox.Show("Your recipient is not active." + "\r\n" + "The discussions are not saved." + "\r\n" + "Please wait for it to connect.", "Your recipient is not active");
+                        XMLManipulation.CreateNotifFile("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
+                        Process.Start("./App/Windows_Notification.exe");
                     }
                     else
                     {
@@ -356,7 +357,7 @@ namespace ChatLocalClient
         {
             try
             {
-                System.Diagnostics.Process.Start("https://sites.google.com/view/kubeahchat");//Ouvre le lien dans le navigateur par défault
+                Process.Start("https://sites.google.com/view/kubeahchat");//Ouvre le lien dans le navigateur par défault
             }
             catch { }
         }
@@ -413,21 +414,16 @@ namespace ChatLocalClient
                 e.SuppressKeyPress = true;
                 if (btnSart.Visible != true)
                 {
-                    if (tbxMessageEnvoit.Text == "")
-                    {
-                        //Permet de ne rien envoyer si la texte box est vide
-                    }
-                    else
-                    {
+                    if (tbxMessageEnvoit.Text != "")
                         if (bEtatDestinataire == false)
                         {
-                            MessageBox.Show("Your recipient is not active." + "\r\n" + "The discussions are not saved." + "\r\n" + "Please wait for it to connect.", "Your recipient is not active");
+                            XMLManipulation.CreateNotifFile("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
+                            Process.Start(@".\\App\\Windows_Notification.exe");
                         }
                         else
                         {
                             EnvoiDuMessage(tbxMessageEnvoit.Text, 1);
                         }
-                    }
                 }
             }
         }
@@ -487,11 +483,11 @@ namespace ChatLocalClient
                             if (receivedMessage != "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0")
                             {
                                 lbxTchat.Items.Add("Him :      " + receivedMessage);
-                                XMLManipulation.CreateNotifFile(receivedMessage);
-                                Process.Start(@".\\App\\Windows_Notification.exe");
-                                if (bNotificationsEnable == true)
+                                
+                                if (bNotificationsEnable)
                                 {
-                                    
+                                    XMLManipulation.CreateNotifFile(receivedMessage);
+                                    Process.Start(@".\\App\\Windows_Notification.exe");
                                 }
                             }
                         }
@@ -516,7 +512,7 @@ namespace ChatLocalClient
 
         private void ReadAppConfig_Tick(object sender, EventArgs e)
         {
-            string temp = XMLManipulation.ReturnValue("FocusActivate");
+            string temp = XMLManipulation.GetValue("FocusActivate");
             if (temp == "ON")
                 timContrôleFocus.Enabled = true;
             else
@@ -525,7 +521,7 @@ namespace ChatLocalClient
 
         private void FrmMain_Deactivate(object sender, EventArgs e)
         {
-            bNotificationsEnable = (XMLManipulation.ReturnValue("NotificationsEnable") == "ON") ? true : false;
+            bNotificationsEnable = (XMLManipulation.GetValue("NotificationsEnable") == "ON") ? true : false;
         }
 
         private void FrmMain_Activated(object sender, EventArgs e)

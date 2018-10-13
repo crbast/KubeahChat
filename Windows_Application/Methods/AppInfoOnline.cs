@@ -15,8 +15,14 @@ using System.Windows.Forms;
 
 namespace KChat.Methods
 {
+    /// <summary>
+    /// Get web informations
+    /// </summary>
     class AppInfoOnline
     {
+        /// <summary>
+        /// Create MessageBox with online or offline description
+        /// </summary>
         public static void GetDescription()
         {
             AppInfo appInfo = new AppInfo();

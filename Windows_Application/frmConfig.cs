@@ -38,7 +38,7 @@ namespace KChat
         {
             //Display all settings with App.config
             string temp = "";
-            temp = XMLManipulation.ReturnValue("FocusActivate");
+            temp = XMLManipulation.GetValue("FocusActivate");
             if (temp == "") { }
             else
             {
@@ -48,7 +48,7 @@ namespace KChat
                     chbFocusOff.Checked = true;
             }
             
-            temp = XMLManipulation.ReturnValue("EnableLastIpConnexion");
+            temp = XMLManipulation.GetValue("EnableLastIpConnexion");
             if (temp == "") { }
             else
             {
@@ -58,7 +58,7 @@ namespace KChat
                     chbLastIpRecipientOff.Checked = true;
             }
 
-            temp = XMLManipulation.ReturnValue("SaveDiscussion");
+            temp = XMLManipulation.GetValue("SaveDiscussion");
             if (temp == "") { }
             else
             {
@@ -68,7 +68,7 @@ namespace KChat
                     chbSaveDiscussionOff.Checked = true;
             }
 
-            temp = XMLManipulation.ReturnValue("NotificationsEnable");
+            temp = XMLManipulation.GetValue("NotificationsEnable");
             if (temp == "") { }
             else
             {

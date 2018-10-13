@@ -24,9 +24,17 @@ using System.Xml.Linq;
 
 namespace KChat.Methods
 {
+    /// <summary>
+    /// XML file manipulation
+    /// </summary>
     class XMLManipulation
     {
-        public static string ReturnValue(string AttributesName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="AttributesName"></param>
+        /// <returns>String : the result of the query. The result can be null</returns>
+        public static string GetValue(string AttributesName)
         {
             if (File.Exists("./App.config") == false)
             {
@@ -46,6 +54,11 @@ namespace KChat.Methods
             }
             return resultToReturn;
         }
+
+        /// <summary>
+        /// Deletes the old XML configuration file. This allows you to update it by keeping the old settings
+        /// </summary>
+        /// <param name="dict">Dictionary containing the old parameters</param>
         private static void CreateAppConfig(Dictionary<string, string> dict)
         {
             XmlWriter xmlWriter = XmlWriter.Create("./App.config");
@@ -109,6 +122,11 @@ namespace KChat.Methods
             xmlDoc.Save("./App.config");
         }
 
+        /// <summary>
+        /// Modify an existing item in the configuration xml file
+        /// </summary>
+        /// <param name="name">Name of the value to be changed</param>
+        /// <param name="newValue">New value</param>
         public static void ModifyElementXML(string name, string newValue)
         {
             if (File.Exists("./App.config") == false)
@@ -143,11 +161,17 @@ namespace KChat.Methods
             }
             
         }
+
+        /// <summary>
+        /// Create notification file for the Kubeah_SimpleNotification application
+        /// </summary>
+        /// <param name="content">Content of the notification</param>
+        /// <example>CreateNotifFile("Hello")</example>
         public static void CreateNotifFile(string content)
         {
-            Random rndm = new Random();
             try
             {
+                // Creating a "notification" file for the Kubeah_SimpleNotification application 
                 string title = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
                 XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
                 xmlWriter.WriteStartDocument();
@@ -159,8 +183,8 @@ namespace KChat.Methods
                 xmlWriter.WriteEndElement();
                 xmlWriter.Close();
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load($"./App/notifications/temp.xml");
-                xmlDoc.Save($"./App/notifications/temp.xml");
+                xmlDoc.Load($"./App/notifications/{title}.xml");
+                xmlDoc.Save($"./App/notifications/{title}.xml");
             }
             catch (Exception exception)
             {
