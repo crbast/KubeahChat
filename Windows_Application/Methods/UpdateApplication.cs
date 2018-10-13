@@ -19,7 +19,10 @@ namespace KChat.Methods
 {
     class UpdateApplication
     {
-        //Function verification update
+        /// <summary>
+        /// Search if updates exist. If so, it creates a messageBox().
+        /// </summary>
+        /// <param name="iVersionApplication">Actual software version</param>
         public static void VersionVerification(long iVersionApplication)
         {
             try
@@ -40,13 +43,12 @@ namespace KChat.Methods
                         }
                         catch
                         {
-                            MessageBox.Show("KubeahChat_Update.exe not found!", "", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                            MessageBox.Show("KubeahChat_Update.exe not found!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else if (dialogResultUser == DialogResult.No) { }//Ne rien faire si NO
                 }
             }
-            catch { }//Pour gestion pas d'accès internet
+            catch { }
         }
     }
 }
