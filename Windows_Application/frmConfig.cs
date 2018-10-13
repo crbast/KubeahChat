@@ -142,6 +142,7 @@ namespace KChat
                 chbLastIpRecipientOn.Checked = false;
                 //Change value on App.config
                 XMLManipulation.ModifyElementXML("EnableLastIpConnexion", "OFF");
+                XMLManipulation.ModifyElementXML("LastIpConnexion", "");
             }
         }
 

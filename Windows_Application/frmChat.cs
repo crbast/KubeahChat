@@ -30,6 +30,7 @@ using System.Net;
 using System.Net.Sockets;
 using KChat.Methods;
 using System.Diagnostics;
+using System.IO;
 
 namespace ChatLocalClient
 {
@@ -318,8 +319,7 @@ namespace ChatLocalClient
                 {
                     if (bEtatDestinataire == false)
                     {
-                        XMLManipulation.CreateNotifFile("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
-                        Process.Start("./App/Windows_Notification.exe");
+                        CreateNotification("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
                     }
                     else
                     {
@@ -417,8 +417,7 @@ namespace ChatLocalClient
                     if (tbxMessageEnvoit.Text != "")
                         if (bEtatDestinataire == false)
                         {
-                            XMLManipulation.CreateNotifFile("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
-                            Process.Start(@".\\App\\Windows_Notification.exe");
+                            CreateNotification("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
                         }
                         else
                         {
@@ -486,8 +485,7 @@ namespace ChatLocalClient
                                 
                                 if (bNotificationsEnable)
                                 {
-                                    XMLManipulation.CreateNotifFile(receivedMessage);
-                                    Process.Start(@".\\App\\Windows_Notification.exe");
+                                    CreateNotification(receivedMessage);
                                 }
                             }
                         }
@@ -544,6 +542,20 @@ namespace ChatLocalClient
                 lblStatutDestinataire.Text = $"Recipient : Last connection { DateTime.Now.ToString("HH:mm")}";
                 lblStatutDestinataire.ForeColor = Color.Red;
             }
+        }
+
+        /// <summary>
+        /// Create notification file and execute Kubeah_SimpleNotification
+        /// </summary>
+        /// <param name="Content">Content of the notification</param>
+        public void CreateNotification(string Content)
+        {
+            XMLManipulation.CreateNotifFile(Content);
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var executablePath = $@"{currentDirectory}\App\Windows_Notification.exe";
+            var p = new Process { StartInfo = new ProcessStartInfo(executablePath) };
+            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(executablePath);
+            p.Start();
         }
     }
 }

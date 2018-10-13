@@ -80,7 +80,7 @@ namespace KChat.Methods
             if(dict.ContainsKey("SaveDiscussion"))
                 xmlWriter.WriteAttributeString("value", dict["SaveDiscussion"]);
             else
-                xmlWriter.WriteAttributeString("value", "ON");
+                xmlWriter.WriteAttributeString("value", "");
 
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteAttributeString("info", "Not used yet");
