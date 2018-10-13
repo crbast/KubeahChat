@@ -133,10 +133,6 @@ namespace ChatLocalClient
                 Application.Exit();
             }
         }
-        //Fonction LABELTOINTTEST==============================================================================================/
-        //====================================================================================================================/
-        //Return : 1 = Error                               2 = PASS
-        //Control int
         /// <summary>
         /// Checks the string to see if it is compatible
         /// </summary>
