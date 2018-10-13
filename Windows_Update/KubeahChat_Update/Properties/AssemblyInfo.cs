@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 // associées à un assembly.
 [assembly: AssemblyTitle("KubeahChat_Update")]
 [assembly: AssemblyDescription("KubeahChat_Update")]
-[assembly: AssemblyConfiguration("KubeahChat_Update")]
+[assembly: AssemblyConfiguration("https://github.com/CrBast/KubeahChat")]
 [assembly: AssemblyCompany("Kubeah! The Open Source Project")]
 [assembly: AssemblyProduct("KubeahChat_Update")]
-[assembly: AssemblyCopyright("Kubeah! Open Source")]
+[assembly: AssemblyCopyright("Kubeah! Open Source - GNU General Public License v3.0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]

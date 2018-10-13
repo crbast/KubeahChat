@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace KubeahChat_Update
             Console.WriteLine("Kubeah! Open Source\r\nKubeah Chat Update\r\nPlease visit \"https://sourceforge.net/projects/kubeah-chat/\"\r\n\r\nStarting update");
             try
             {
-                forceManuallyUpdate = webClientKubeah.DownloadString("http://kubeah.com/kchat/ForceDownloadManually.config");
+                forceManuallyUpdate = webClientKubeah.DownloadString("https://kubeah.com/kchat/ForceDownloadManually.config");
             }
             catch
             {
@@ -27,7 +28,7 @@ namespace KubeahChat_Update
             {
                 try
                 {
-                    OnlineUpdateInformation = webClientKubeah.DownloadString("http://kubeah.com/kchat/Update_Information.onlineconfig");
+                    OnlineUpdateInformation = webClientKubeah.DownloadString("https://kubeah.com/kchat/Update_Information.onlineconfig");
                     
                 }
                 catch
@@ -44,8 +45,30 @@ namespace KubeahChat_Update
                 {
                     try
                     {
-                        webClientKubeah.DownloadFile($"https://kubeah.com/kchat/Update_App/{temp}", temp);
-                        Console.WriteLine($"download : {temp}   ================>   OK");
+                        if (temp.Contains("/"))
+                        {
+                            if (!temp.Contains("."))
+                                Directory.CreateDirectory($"./{temp}");
+                            else
+                            {
+                                List<string> seperation = new List<string>();
+                                seperation = temp.Split("/".ToCharArray()).ToList();
+                                string localFolder = "./";
+
+                                for (int i = 0; i < seperation.Count() - 1; i++)
+                                {
+                                    localFolder = seperation[i];
+                                }
+                                /*if(!Directory.Exists(localFolder))
+                                    Directory.CreateDirectory(localFolder);
+                                File.Delete($"./{temp}");*/
+                                webClientKubeah.DownloadFile($"https://kubeah.com/kchat/Update_App/{temp}", $"./{temp}");
+                            }
+                        }
+                        else
+                            webClientKubeah.DownloadFile($"https://kubeah.com/kchat/Update_App/{temp}", temp);
+
+                        Console.WriteLine($"download : {temp}\t\t   ================>   OK");
                     }
                     catch
                     {
@@ -60,15 +83,17 @@ namespace KubeahChat_Update
                 }
                 else
                 {
-                    Console.WriteLine("\r\nAn error occurred. Please restart the update");
+                    Console.WriteLine("\r\nAn error occurred. Please restart the update or download manually the application.");
                 }
                 Console.Read();
+                System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/");
             }
             else
             {
                 Console.WriteLine("\r\nYou need to install manually the new version of the application");
                 Console.WriteLine("Please go to \"https://sourceforge.net/projects/kubeah-chat/\"");
                 Console.Read();
+                System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/");
             }
         }
     }
