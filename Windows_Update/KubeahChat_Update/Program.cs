@@ -78,14 +78,16 @@ namespace KubeahChat_Update
                 }
                 if (updateState == true)
                 {
-                    Console.WriteLine("\r\nThe new version has been installed");
+                    Console.WriteLine("\r\nThe new version has been installed. \r\nPlease note the application on SourceForge.net");
+                    Console.Read();
+                    System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/");
                 }
                 else
                 {
                     Console.WriteLine("\r\nAn error occurred. Please restart the update or download manually the application.");
+                    Console.Read();
+                    System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/");
                 }
-                Console.Read();
-                System.Diagnostics.Process.Start("https://sourceforge.net/projects/kubeah-chat/");
             }
             else
             {
