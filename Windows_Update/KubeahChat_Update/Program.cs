@@ -59,9 +59,8 @@ namespace KubeahChat_Update
                                 {
                                     localFolder = seperation[i];
                                 }
-                                /*if(!Directory.Exists(localFolder))
+                                if(!Directory.Exists(localFolder))
                                     Directory.CreateDirectory(localFolder);
-                                File.Delete($"./{temp}");*/
                                 webClientKubeah.DownloadFile($"https://kubeah.com/kchat/Update_App/{temp}", $"./{temp}");
                             }
                         }
