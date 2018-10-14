@@ -13,18 +13,19 @@
  * */
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using KChat.Objects;
 
 namespace KChat.Objects
 {
     /// <summary>
     /// Create Message object
-    /// Example message : string json = @"{""Type"":""leTyoe"",""Content"":""HEY""}"
+    /// Example message : string json = @"{""Type"":""0"",""Content"":""HEY""}"
     /// </summary>
     public class KMessage
     {
         /*  Example for test :
          *  
-         *  string json = @"{""Type"":""leTyoe"",""Content"":""HEY""}";
+         *  string json = @"{""Type"":""0"",""Content"":""HEY""}";
          *  KMessage msg = new KMessage(json);
          *  string temp = msg.ReadyToSend();
          *  KMessage msg2 = new KMessage(temp);
@@ -48,22 +49,18 @@ namespace KChat.Objects
         /// To be used only for send this message
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="messageType">Message type (message, initialization)</param>
-        public KMessage(string content, string type)
+        /// <param name="type"></param>
+        public KMessage(string content, int type)
         {
             messageDict.Add("Content", content);
-            messageDict.Add("Type", type);
+            messageDict.Add("Type", type.ToString());
         }
 
         /// <summary>
         /// Preparation of the message for the string sending
         /// </summary>
         /// <returns>String result</returns>
-        public string ReadyToSend()
-        {
-
-            return JObject.FromObject(messageDict).ToString();
-        }
+        public string ReadyToSend() => JObject.FromObject(messageDict).ToString();
 
         /// <summary>
         /// Return content of message
@@ -76,5 +73,16 @@ namespace KChat.Objects
         /// </summary>
         /// <returns>Type</returns>
         public string GetMessageType() => messageDict["Type"].ToString();
+
+        /// <summary>
+        /// Return Type of message. Type : Initialization
+        /// </summary>
+        /// <returns>Type (int)</returns>
+        public static int TypeInit() => 1;
+        /// <summary>
+        /// Return Type of message. Type : Message
+        /// </summary>
+        /// <returns>Type (int)</returns>
+        public static int TypeMsg() => 0;
     }
 }

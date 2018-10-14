@@ -113,7 +113,7 @@ namespace ChatLocalClient
         /// </summary>
         /// <param name="lblTextEnvoi">String : Text to send</param>
         /// <param name="type">message | initialization</param>
-        public void EnvoiDuMessage(string lblTextEnvoi, string type)
+        public void EnvoiDuMessage(string lblTextEnvoi, int type)
         {
             KMessage kMessage = new KMessage(lblTextEnvoi, type);
             try
@@ -123,7 +123,7 @@ namespace ChatLocalClient
                 msg = enc.GetBytes(kMessage.ReadyToSend());
 
                 sck.Send(msg);
-                if(kMessage.GetMessageType() == "message")
+                if(kMessage.GetMessageType() == KMessage.TypeMsg().ToString())
                 {
                     lbxTchat.Items.Add("Me : " + tbxMessageEnvoit.Text);
                     tbxMessageEnvoit.Clear();
@@ -283,7 +283,7 @@ namespace ChatLocalClient
                                             btnSart.Enabled = false;
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
-                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", "initialization");
+                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
                                         }
                                         catch
                                         {
@@ -326,7 +326,7 @@ namespace ChatLocalClient
                     }
                     else
                     {
-                        EnvoiDuMessage(tbxMessageEnvoit.Text, "message");
+                        EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.TypeMsg());
                     }
              }
         }
@@ -427,7 +427,7 @@ namespace ChatLocalClient
                         }
                         else
                         {
-                            EnvoiDuMessage(tbxMessageEnvoit.Text, "message");
+                            EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.TypeMsg());
                         }
                 }
             }
@@ -448,7 +448,7 @@ namespace ChatLocalClient
             //Que si la conversation à démmarée
             if (btnSart.Visible == false)
             {
-                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", "initialization");//Clé Absent
+                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.TypeInit());//Clé Absent
             }
         }
 
@@ -472,11 +472,11 @@ namespace ChatLocalClient
                     UTF8Encoding enc = new UTF8Encoding();
                     KMessage kMessage = new KMessage(enc.GetString(receivedData));
                     //Comparaison chaine de caractère reçu
-                    if (kMessage.GetMessageType() == "initialization")
+                    if (kMessage.GetMessageType() == KMessage.TypeInit().ToString())
                     {
                         switch (kMessage.GetMessageContent())
                         {
-                            case "789ZCFZTiniwjZTUvjkas790127980":
+                            case "789ZCFZTiniwjZTUvjkas79012798":
                                 bEtatDestinataire = false;
                                 RecipientStatus(bEtatDestinataire);
                                 break;
@@ -549,7 +549,7 @@ namespace ChatLocalClient
             {
                 lblStatutDestinataire.Text = "Recipient : Active";//Changement du statut le la personne
                 lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
-                EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", "initialization");
+                EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
             }
             else
             {
