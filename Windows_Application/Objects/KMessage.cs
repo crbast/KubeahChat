@@ -55,6 +55,10 @@ namespace KChat.Objects
             messageDict.Add("Type", type);
         }
 
+        /// <summary>
+        /// Preparation of the message for the string sending
+        /// </summary>
+        /// <returns>String result</returns>
         public string ReadyToSend()
         {
 
