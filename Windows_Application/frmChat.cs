@@ -32,6 +32,7 @@ using KChat.Methods;
 using System.Diagnostics;
 using System.IO;
 using KChat.Objects;
+using System.Collections.Generic;
 
 namespace ChatLocalClient
 {
@@ -42,6 +43,7 @@ namespace ChatLocalClient
         bool bEtatDestinataire = false; //State recipient True/Actif False/Inactif
         AppInfo appInfo = new AppInfo();
         bool bNotificationsEnable = false;
+        string recipientIP = "";
 
         public FrmMain()
         {
@@ -268,6 +270,7 @@ namespace ChatLocalClient
                                             XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
                                         else
                                             XMLManipulation.ModifyElementXML("LastIpConnexion", "");
+                                        recipientIP = sIPDestinataire;
                                         try
                                         {
                                             epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
@@ -284,6 +287,11 @@ namespace ChatLocalClient
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                             EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
+                                            List<string> temp = ChatData.Import(recipientIP);
+                                            foreach (string element in temp)
+                                            {
+                                                lbxTchat.Items.Add(element);
+                                            }
                                         }
                                         catch
                                         {
@@ -436,19 +444,26 @@ namespace ChatLocalClient
         //GestionNbrCactèresRestants=======================================================================================
         private void timNbrCaractères_Tick(object sender, EventArgs e)
         {
-            //Permet de montrer le nombre de caractères restants
-            int iNbrCaract = tbxMessageEnvoit.TextLength;//.TextLength permet de donner le nombre de caractères
-            iNbrCaract = 72 - iNbrCaract;//Calcul pour donner le nombre de caractères restants
-            lblNbrCaractRestants.Text = Convert.ToString(iNbrCaract);//Permet l'affichage de iNbrCract
+            //Allows you to show the number of characters left
+            int iNbrCaract = tbxMessageEnvoit.TextLength;
+            iNbrCaract = 72 - iNbrCaract;
+            lblNbrCaractRestants.Text = Convert.ToString(iNbrCaract);
         }
         //FINGestionNbrCaractères===================================================================FIN====================
-        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)//Quand l'utilisateur ferme la fenêtre
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Envoi la clé pour dire à l'autre client qu'il est absent
             //Que si la conversation à démmarée
             if (btnSart.Visible == false)
             {
                 EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.TypeInit());//Clé Absent
+
+                string status = XMLManipulation.GetValue("SaveDiscussion");
+                if (status == "ON")
+                {
+                    ChatData.Export(recipientIP, lbxTchat.Text);
+                    // Why one line?
+                }
             }
         }
 
@@ -562,7 +577,7 @@ namespace ChatLocalClient
         /// Create notification file and execute Kubeah_SimpleNotification
         /// </summary>
         /// <param name="Content">Content of the notification</param>
-        public void CreateNotification(string Content)
+        public static void CreateNotification(string Content)
         {
             XMLManipulation.CreateNotifFile(Content);
             var currentDirectory = Directory.GetCurrentDirectory();

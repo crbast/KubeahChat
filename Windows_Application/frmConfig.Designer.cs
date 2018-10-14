@@ -159,7 +159,6 @@
             // chbSaveDiscussionOff
             // 
             this.chbSaveDiscussionOff.AutoSize = true;
-            this.chbSaveDiscussionOff.Enabled = false;
             this.chbSaveDiscussionOff.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbSaveDiscussionOff.Location = new System.Drawing.Point(257, 101);
             this.chbSaveDiscussionOff.Name = "chbSaveDiscussionOff";
@@ -172,7 +171,6 @@
             // chbSaveDiscussionOn
             // 
             this.chbSaveDiscussionOn.AutoSize = true;
-            this.chbSaveDiscussionOn.Enabled = false;
             this.chbSaveDiscussionOn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbSaveDiscussionOn.Location = new System.Drawing.Point(201, 101);
             this.chbSaveDiscussionOn.Name = "chbSaveDiscussionOn";
@@ -185,7 +183,6 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Enabled = false;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(12, 102);
             this.label6.Name = "label6";
@@ -197,7 +194,6 @@
             // 
             this.lblDropDiscussion.AutoSize = true;
             this.lblDropDiscussion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblDropDiscussion.Enabled = false;
             this.lblDropDiscussion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDropDiscussion.Location = new System.Drawing.Point(13, 181);
             this.lblDropDiscussion.Name = "lblDropDiscussion";

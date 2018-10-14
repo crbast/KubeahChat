@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="Methods\AppInfo.cs" />
     <Compile Include="Methods\AppInfoOnline.cs" />
+    <Compile Include="Methods\ChatData.cs" />
     <Compile Include="Methods\Ip.cs" />
     <Compile Include="Methods\UpdateApplication.cs" />
     <Compile Include="Methods\XMLManipulation.cs" />

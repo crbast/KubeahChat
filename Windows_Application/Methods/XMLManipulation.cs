@@ -30,7 +30,7 @@ namespace KChat.Methods
     class XMLManipulation
     {
         /// <summary>
-        /// 
+        /// Get value of parameter
         /// </summary>
         /// <param name="AttributesName"></param>
         /// <returns>String : the result of the query. The result can be null</returns>
