@@ -31,6 +31,7 @@ using System.Net.Sockets;
 using KChat.Methods;
 using System.Diagnostics;
 using System.IO;
+using KChat.Objects;
 
 namespace ChatLocalClient
 {
@@ -330,12 +331,16 @@ namespace ChatLocalClient
         }
         //===============================================================================================
 
-        //======================================GestionFocus==============================================
+        /// <summary>
+        /// Focus management
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timContrôleFocus_Tick(object sender, EventArgs e)
         {
+            // Always keeps the last record as selected
             lbxTchat.SelectedIndex = lbxTchat.Items.Count - 1;
         }
-        //=====================================FINGestionFocus==============================================
 
         //MENU================================================MENU==============================MENU========================================================
         private void arrêterToolStripMenuItem_Click(object sender, EventArgs e)

@@ -71,9 +71,7 @@
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ManifestCertificateThumbprint>2AE65EC2C7DCD34F29C1B717450BEFDB1747FD6A</ManifestCertificateThumbprint>
   </PropertyGroup>
@@ -83,7 +81,13 @@
   <PropertyGroup>
     <StartupObject>ChatLocalClient.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -113,10 +117,10 @@
     </Compile>
     <Compile Include="Methods\AppInfo.cs" />
     <Compile Include="Methods\AppInfoOnline.cs" />
-    <Compile Include="Methods\GetMessage.cs" />
     <Compile Include="Methods\Ip.cs" />
     <Compile Include="Methods\UpdateApplication.cs" />
     <Compile Include="Methods\XMLManipulation.cs" />
+    <Compile Include="Objects\KMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChat.resx">
@@ -135,6 +139,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
