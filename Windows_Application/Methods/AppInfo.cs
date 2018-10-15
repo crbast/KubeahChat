@@ -26,12 +26,12 @@ namespace KChat.Methods
         /// Returns the version in a string.
         /// </summary>
         /// <returns>String : Example "1.7.0.0"</returns>
-        public string GetFormattedVersion() => sStringformattedVersion;
+        public static string GetFormattedVersion() => sStringformattedVersion;
         /// <summary>
         /// Returns the version in a int.
         /// </summary>
         /// <returns>Int : Example 001007000000000 (1.2.3.4 ===> 001002003000004)</returns>
-        public long GetChainFormattedVersion() => lLongFormattedVersion;
+        public static long GetChainFormattedVersion() => lLongFormattedVersion;
     }
 
 }

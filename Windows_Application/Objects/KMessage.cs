@@ -13,7 +13,6 @@
  * */
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using KChat.Objects;
 
 namespace KChat.Objects
 {

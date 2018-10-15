@@ -122,6 +122,7 @@
     <Compile Include="Methods\UpdateApplication.cs" />
     <Compile Include="Methods\XMLManipulation.cs" />
     <Compile Include="Objects\KMessage.cs" />
+    <Compile Include="Objects\KNotification.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChat.resx">

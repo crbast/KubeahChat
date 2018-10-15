@@ -80,7 +80,7 @@ namespace KChat.Methods
             if(dict.ContainsKey("SaveDiscussion"))
                 xmlWriter.WriteAttributeString("value", dict["SaveDiscussion"]);
             else
-                xmlWriter.WriteAttributeString("value", "");
+                xmlWriter.WriteAttributeString("value", "OFF");
 
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
             xmlWriter.WriteAttributeString("info", "Not used yet");
@@ -171,6 +171,7 @@ namespace KChat.Methods
         {
             try
             {
+                Directory.CreateDirectory("./App/notifications");
                 // Creating a "notification" file for the Kubeah_SimpleNotification application 
                 string title = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
                 XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
@@ -186,9 +187,8 @@ namespace KChat.Methods
                 xmlDoc.Load($"./App/notifications/{title}.xml");
                 xmlDoc.Save($"./App/notifications/{title}.xml");
             }
-            catch (Exception exception)
+            catch
             {
-                MessageBox.Show(exception.ToString());
             }
 
         }

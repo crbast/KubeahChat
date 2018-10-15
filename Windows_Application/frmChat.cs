@@ -30,9 +30,9 @@ using System.Net;
 using System.Net.Sockets;
 using KChat.Methods;
 using System.Diagnostics;
-using System.IO;
 using KChat.Objects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChatLocalClient
 {
@@ -41,7 +41,6 @@ namespace ChatLocalClient
         Socket sck;
         EndPoint epLocal, epRemote;
         bool bEtatDestinataire = false; //State recipient True/Actif False/Inactif
-        AppInfo appInfo = new AppInfo();
         bool bNotificationsEnable = false;
         string recipientIP = "";
 
@@ -70,7 +69,7 @@ namespace ChatLocalClient
             lblEtatPing.Visible = false;
             
             //==============SearchUpdate================================================================
-            UpdateApplication.VersionVerification(appInfo.GetChainFormattedVersion());//ApplicationVersionWeb          
+            UpdateApplication.VersionVerification(AppInfo.GetChainFormattedVersion());//ApplicationVersionWeb          
             //================================================================================================
             //UpdateAppYear===================================================================================
             lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
@@ -287,11 +286,18 @@ namespace ChatLocalClient
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                             EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
-                                            List<string> temp = ChatData.Import(recipientIP);
-                                            foreach (string element in temp)
+                                            if (XMLManipulation.GetValue("SaveDiscussion").ToString() == "ON")
                                             {
-                                                lbxTchat.Items.Add(element);
+                                                List<string> temp = ChatData.Import(recipientIP);
+                                                if (temp.Count() != 0)
+                                                {
+                                                    foreach (string element in temp)
+                                                    {
+                                                        lbxTchat.Items.Add(element);
+                                                    }
+                                                }        
                                             }
+                                            
                                         }
                                         catch
                                         {
@@ -330,7 +336,7 @@ namespace ChatLocalClient
                 if (tbxMessageEnvoit.Text != "")
                     if (bEtatDestinataire == false)
                     {
-                        CreateNotification("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
+                        KNotification.Show("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
                     }
                     else
                     {
@@ -431,7 +437,7 @@ namespace ChatLocalClient
                     if (tbxMessageEnvoit.Text != "")
                         if (bEtatDestinataire == false)
                         {
-                            CreateNotification("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
+                            KNotification.Show("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
                         }
                         else
                         {
@@ -461,7 +467,12 @@ namespace ChatLocalClient
                 string status = XMLManipulation.GetValue("SaveDiscussion");
                 if (status == "ON")
                 {
-                    ChatData.Export(recipientIP, lbxTchat.Text);
+                    string text = "";
+                    foreach (var item in lbxTchat.Items)
+                    {
+                        text += item.ToString() + "\r\n";
+                    }
+                    ChatData.Export(recipientIP, text);
                     // Why one line?
                 }
             }
@@ -513,7 +524,7 @@ namespace ChatLocalClient
 
                         if (bNotificationsEnable)
                         {
-                            CreateNotification(kMessage.GetMessageContent());
+                            KNotification.Show(kMessage.GetMessageContent());
                         }
                     }
                 }
@@ -571,20 +582,6 @@ namespace ChatLocalClient
                 lblStatutDestinataire.Text = $"Recipient : Last connection { DateTime.Now.ToString("HH:mm")}";
                 lblStatutDestinataire.ForeColor = Color.Red;
             }
-        }
-
-        /// <summary>
-        /// Create notification file and execute Kubeah_SimpleNotification
-        /// </summary>
-        /// <param name="Content">Content of the notification</param>
-        public static void CreateNotification(string Content)
-        {
-            XMLManipulation.CreateNotifFile(Content);
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var executablePath = $@"{currentDirectory}\App\Windows_Notification.exe";
-            var p = new Process { StartInfo = new ProcessStartInfo(executablePath) };
-            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(executablePath);
-            p.Start();
         }
     }
 }

@@ -168,6 +168,7 @@ namespace KChat
                 foreach (DirectoryInfo dir in di.GetDirectories())
                     dir.Delete(true);
             }
+            Objects.KNotification.Show("All discussions have been deleted.");
         }
 
         private void chbSaveDiscussionOn_CheckedChanged(object sender, EventArgs e)
@@ -198,6 +199,7 @@ namespace KChat
                 //Change value on App.config
                 XMLManipulation.ModifyElementXML("SaveDiscussion", "OFF");
             }
+            // Objects.KNotification.Show("The saving of discussions is cancelled.\r\n!!! Old backups are not deleted !!!");
         }
 
         private void chbEnableNotificationsOn_CheckedChanged(object sender, EventArgs e)
