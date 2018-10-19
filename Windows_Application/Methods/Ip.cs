@@ -13,6 +13,7 @@
  * */
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 
 namespace KChat.Methods
 {
@@ -46,19 +47,17 @@ namespace KChat.Methods
         /// </summary>
         /// <param name="sIpAdress">Host ip</param>
         /// <returns>Boolean : true(OK) | false(NOT OK)</returns>
-        public static bool PingDest(string sIpAdress)
+        public static async Task<bool> PingDest(string sIpAdress)
         {
             Ping ping = new Ping();
             PingReply pingresult = ping.Send(sIpAdress, 60);
             if (pingresult.Status.ToString() == "Success")
             {
-                bool bResult = true;
-                return bResult;
+                return true;
             }
             else
             {
-                bool bResult = false;
-                return bResult;
+                return false;
             }
         }
     }

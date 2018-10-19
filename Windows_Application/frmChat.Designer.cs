@@ -90,7 +90,7 @@
             resources.ApplyResources(this.btnSart, "btnSart");
             this.btnSart.Name = "btnSart";
             this.btnSart.UseVisualStyleBackColor = true;
-            this.btnSart.Click += new System.EventHandler(this.btnSart_Click);
+            this.btnSart.Click += new System.EventHandler(this.btnSart_ClickAsync);
             // 
             // lbxTchat
             // 

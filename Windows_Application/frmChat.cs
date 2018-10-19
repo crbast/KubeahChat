@@ -199,7 +199,7 @@ namespace ChatLocalClient
         //====================================================================================================================/
 
         //=====================BTNSTART=============================================================================
-        private void btnSart_Click(object sender, EventArgs e)
+        private async void btnSart_ClickAsync(object sender, EventArgs e)
         {
             lblPatience.Visible = true;
             string sIPDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
@@ -219,7 +219,7 @@ namespace ChatLocalClient
                                 lblNomPCDest.Visible = false;
                                 lblEtatPing.Visible = true;
                                 string sNameDestinataire = Ip.GetHostName(sIPDestinataire);
-                                bool bResultPing = Ip.PingDest(sIPDestinataire);
+                                bool bResultPing = await Ip.PingDest(sIPDestinataire);
                                 if (bResultPing == true)
                                 {
                                     lblEtatPing.Text = "Ping : OK";
@@ -239,7 +239,7 @@ namespace ChatLocalClient
                                             lblNomPCDest.Visible = true;
                                             lblNomPCDest.Text = "Name :" + "\r\n" + sNameDestinataire;
                                             lblNomPCDest.ForeColor = Color.Black;
-                                            bResultPing = Ip.PingDest(sIPDestinataire);
+                                            bResultPing = await Ip.PingDest(sIPDestinataire);
                                         }
                                     }
                                     else
