@@ -48,7 +48,7 @@ namespace KChat.Objects
         /// To be used only for send this message
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="type"></param>
+        /// <param name="type">Can use KMessage.Type.(...)</param>
         public KMessage(string content, int type)
         {
             messageDict.Add("Content", content);
@@ -73,15 +73,19 @@ namespace KChat.Objects
         /// <returns>Type</returns>
         public string GetMessageType() => messageDict["Type"].ToString();
 
-        /// <summary>
-        /// Return Type of message. Type : Initialization
-        /// </summary>
-        /// <returns>Type (int)</returns>
-        public static int TypeInit() => 1;
-        /// <summary>
-        /// Return Type of message. Type : Message
-        /// </summary>
-        /// <returns>Type (int)</returns>
-        public static int TypeMsg() => 0;
+        public static class Type
+        {
+            /// <summary>
+            /// Return Type of message. Type : Initialization
+            /// </summary>
+            /// <returns>Type (int)</returns>
+            public static int Init() => 1;
+            /// <summary>
+            /// Return Type of message. Type : Message
+            /// </summary>
+            /// <returns>Type (int)</returns>
+            public static int Message() => 0;
+        }
     }
+
 }

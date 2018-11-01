@@ -124,7 +124,7 @@ namespace ChatLocalClient
                 msg = enc.GetBytes(kMessage.ReadyToSend());
 
                 sck.Send(msg);
-                if(kMessage.GetMessageType() == KMessage.TypeMsg().ToString())
+                if(kMessage.GetMessageType() == KMessage.Type.Init().ToString())
                 {
                     lbxTchat.Items.Add("Me : " + tbxMessageEnvoit.Text);
                     tbxMessageEnvoit.Clear();
@@ -285,7 +285,7 @@ namespace ChatLocalClient
                                             btnSart.Enabled = false;
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
-                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
+                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
                                             if (XMLManipulation.GetValue("SaveDiscussion").ToString() == "ON")
                                             {
                                                 List<string> temp = ChatData.Import(recipientIP);
@@ -340,7 +340,7 @@ namespace ChatLocalClient
                     }
                     else
                     {
-                        EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.TypeMsg());
+                        EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.Type.Message());
                     }
              }
         }
@@ -357,7 +357,7 @@ namespace ChatLocalClient
             lbxTchat.SelectedIndex = lbxTchat.Items.Count - 1;
         }
 
-        //MENU================================================MENU==============================MENU========================================================
+        //MENU========================================================
         private void arrêterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit(); 
@@ -381,14 +381,13 @@ namespace ChatLocalClient
             }
             catch { }
         }
-        //FINMENU==============================================FIN============================================MENU===========================================
-
-        //Gestion des informations utilisateur IP destinataire===============================================================================================
+        //===========================================================
+        
         private void tbxIP1_TextChanged(object sender, EventArgs e)
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
-            Boolean temp = LabelToIntTest(tbxIP1.Text);//Utilise la fonction "LabelToIntTest"
+            Boolean temp = LabelToIntTest(tbxIP1.Text);
             if (temp){tbxIP1.BackColor = Color.Snow;} else{tbxIP1.BackColor = Color.Red;}
             if (tbxIP1.Text == "0") { tbxIP1.BackColor = Color.Red; }
             btnSart.Text = "Check IP";
@@ -429,7 +428,7 @@ namespace ChatLocalClient
         //======================================FIN========================FIN===============================================================================
         private void tbxMessageEnvoit_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)//Quand appuie sur touche enter
+            if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
                 if (btnSart.Visible != true)
@@ -441,7 +440,7 @@ namespace ChatLocalClient
                         }
                         else
                         {
-                            EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.TypeMsg());
+                            EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.Type.Message());
                         }
                 }
             }
@@ -462,7 +461,7 @@ namespace ChatLocalClient
             //Que si la conversation à démmarée
             if (btnSart.Visible == false)
             {
-                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.TypeInit());//Clé Absent
+                EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.Type.Init());//Clé Absent
 
                 string status = XMLManipulation.GetValue("SaveDiscussion");
                 if (status == "ON")
@@ -498,7 +497,7 @@ namespace ChatLocalClient
                     UTF8Encoding enc = new UTF8Encoding();
                     KMessage kMessage = new KMessage(enc.GetString(receivedData));
                     //Comparaison chaine de caractère reçu
-                    if (kMessage.GetMessageType() == KMessage.TypeInit().ToString())
+                    if (kMessage.GetMessageType() == KMessage.Type.Init().ToString())
                     {
                         switch (kMessage.GetMessageContent())
                         {
@@ -575,7 +574,7 @@ namespace ChatLocalClient
             {
                 lblStatutDestinataire.Text = "Recipient : Active";//Changement du statut le la personne
                 lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
-                EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.TypeInit());
+                EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
             }
             else
             {
