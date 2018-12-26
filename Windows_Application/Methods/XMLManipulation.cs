@@ -12,15 +12,10 @@
  * https://github.com/CrBast/KubeahChat/blob/master/LICENSE
  * */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace KChat.Methods
 {
@@ -83,7 +78,6 @@ namespace KChat.Methods
                 xmlWriter.WriteAttributeString("value", "OFF");
 
             xmlWriter.WriteAttributeString("choice", "ON - OFF");
-            xmlWriter.WriteAttributeString("info", "Not used yet");
             xmlWriter.WriteEndElement();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "LastIpConnexion");
@@ -98,7 +92,8 @@ namespace KChat.Methods
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteAttributeString("name", "FocusActivate");
 
-            if(dict.ContainsKey("+"))
+            // To verify (date change : 26.12.2018)
+            if(dict.ContainsKey("FocusActivate"))
                 xmlWriter.WriteAttributeString("value", dict["FocusActivate"].ToString());
             else
                 xmlWriter.WriteAttributeString("value", "ON");
@@ -189,6 +184,7 @@ namespace KChat.Methods
             }
             catch
             {
+
             }
 
         }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<param>
-	<param name="content" value="This notification was not created by KubeahChat.exe"/>
-	<param name="title" value="!!! Attention !!!"/>
-	<param name="time" value="10"/>
-</param>

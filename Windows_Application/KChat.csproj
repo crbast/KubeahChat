@@ -121,6 +121,7 @@
     <Compile Include="Methods\Ip.cs" />
     <Compile Include="Methods\UpdateApplication.cs" />
     <Compile Include="Methods\XMLManipulation.cs" />
+    <Compile Include="Objects\KLogs.cs" />
     <Compile Include="Objects\KMessage.cs" />
     <Compile Include="Objects\KNotification.cs" />
     <Compile Include="Program.cs" />
