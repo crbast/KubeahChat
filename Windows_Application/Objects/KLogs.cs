@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,35 +10,26 @@ namespace KChat.Objects
     // To complete
     class KLogs
     {
-        public void Write(KLogsType type)
-        {
 
+        private void Write(string type, string content)
+        {
+            /*
+             One line structure <date> | <type>     <content>
+
+                example 01.01.2019 - 21:20:20 | Error       Recipient is not active ...
+             */
+            string line = DateTime.Now.ToString("dd.MM.yyyy - hh:mm:ss");
+            if(type == "warning")
+                line += $" | {type} \t {content}";
+            else
+                line += $" | {type} \t\t {content}";
+            File.AppendAllText(logPath, line + Environment.NewLine);
         }
 
-        /// <summary>
-        /// Write event.
-        /// </summary>
-        /// <param name="type">Can use Klogs.KLogsType.Type<Type>()</param>
-        public void Write(int type)
-        {
+        public void WriteError(string message) => Write("error", message);
 
-        }
-    }
+        public void WriteWarning(string message) => Write("warning", message);
 
-    class KLogsType {
-        private int type = 2;
-        KLogsType(int type)
-        {
-            this.type = type;
-        }
-        public new int GetType() => this.type;
-
-        public int Error() => 0;
-        public int Warning() => 1;
-        public int Info() => 2;
-
-        public static int TypeError() => 0;
-        public static int TypeWarning() => 1;
-        public static int TypeInfo() => 2;
+        public void WriteInfo(string message) => Write("info", message);
     }
 }
