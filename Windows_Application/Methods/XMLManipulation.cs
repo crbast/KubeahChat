@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
+using KChat.Objects;
 
 namespace KChat.Methods
 {
@@ -184,7 +185,7 @@ namespace KChat.Methods
             }
             catch
             {
-
+                KLogs.WriteWarning("Impossible to create a notification file");
             }
 
         }

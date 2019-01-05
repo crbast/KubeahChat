@@ -35,10 +35,7 @@ namespace KChat.Methods
                 IPHostEntry hostEntry = Dns.GetHostEntry(ipAdress);
                 machineName = hostEntry.HostName;
             }
-            catch
-            {
-                //MessageBox.Show("Destinataire introuvable");
-            }
+            catch { }
             return machineName;
         }
 
@@ -52,13 +49,10 @@ namespace KChat.Methods
             Ping ping = new Ping();
             PingReply pingresult = ping.Send(sIpAdress, 60);
             if (pingresult.Status.ToString() == "Success")
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
+
         }
     }
 }

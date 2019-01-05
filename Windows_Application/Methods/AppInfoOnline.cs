@@ -13,6 +13,7 @@
  * */
 using System.Windows.Forms;
 
+using KChat.Objects;
 namespace KChat.Methods
 {
     /// <summary>
@@ -39,7 +40,7 @@ namespace KChat.Methods
                 }
                 catch{ iMode = 2; }
             }
-            catch { iMode = 3; }
+            catch { iMode = 3; KLogs.WriteInfo("No internet connection"); }
             switch (iMode)
             {
                 case 1:

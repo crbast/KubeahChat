@@ -52,7 +52,6 @@ namespace ChatLocalClient
         // At start-up
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //==============================AtStartUp===================================================
             lblDescription2.Visible = false; //Hidden label
             sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Socket creation
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -69,7 +68,7 @@ namespace ChatLocalClient
             lblEtatPing.Visible = false;
             
             //==============SearchUpdate================================================================
-            UpdateApplication.VersionVerification(AppInfo.GetChainFormattedVersion());//ApplicationVersionWeb          
+            UpdateApplication.VersionVerification();//ApplicationVersionWeb          
             //================================================================================================
             //UpdateAppYear===================================================================================
             lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
@@ -130,9 +129,10 @@ namespace ChatLocalClient
                     tbxMessageEnvoit.Clear();
                 }
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
+                KLogs.WriteError(e.Message);
+                MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat\r\n\r\n", "An error occurred");
                 Application.Exit();
             }
         }
@@ -204,121 +204,109 @@ namespace ChatLocalClient
             lblPatience.Visible = true;
             string sIPDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
             if (sIPDestinataire == lblIPPersonnel.Text) { tbxIP4.BackColor = Color.Red; }
-            if (tbxIP1.BackColor != Color.Red)
-                if (tbxIP2.BackColor != Color.Red)
+            if (tbxIP1.BackColor != Color.Red && tbxIP2.BackColor != Color.Red && tbxIP3.BackColor != Color.Red && tbxIP4.BackColor != Color.Red && tbxIP4.BackColor != Color.PaleGreen)
+            {
+                this.Enabled = false;
+                lblPatience.Visible = true;
+                lblEtatPing.Visible = false;
+                lblNomPCDest.Visible = false;
+                lblEtatPing.Visible = true;
+                string sNameDestinataire = Ip.GetHostName(sIPDestinataire);
+                bool bResultPing = await Ip.PingDest(sIPDestinataire);
+                if (bResultPing == true)
                 {
-                    if (tbxIP3.BackColor != Color.Red)
+                    lblEtatPing.Text = "Ping : OK";
+                    lblEtatPing.ForeColor = Color.Green;
+                    if (btnSart.Text == "Check IP")
                     {
-                        if (tbxIP4.BackColor != Color.Red)
+                        if (sNameDestinataire == "")
                         {
-                            if (tbxIP4.BackColor != Color.PaleGreen)
-                            {
-                                this.Enabled = false;
-                                lblPatience.Visible = true;
-                                lblEtatPing.Visible = false;
-                                lblNomPCDest.Visible = false;
-                                lblEtatPing.Visible = true;
-                                string sNameDestinataire = Ip.GetHostName(sIPDestinataire);
-                                bool bResultPing = await Ip.PingDest(sIPDestinataire);
-                                if (bResultPing == true)
-                                {
-                                    lblEtatPing.Text = "Ping : OK";
-                                    lblEtatPing.ForeColor = Color.Green;
-                                    if (btnSart.Text == "Check IP")
-                                    {
-                                        if (sNameDestinataire == "")
-                                        {
-                                            lblNomPCDest.Text = "Name :" + "\r\n" + "Not found";
-                                            lblNomPCDest.ForeColor = Color.Red;
-                                            lblNomPCDest.Visible = true;
-                                            tbxIP4.BackColor = Color.Red;
-                                        }
-                                        else
-                                        {
-                                            btnSart.Text = "Start";
-                                            lblNomPCDest.Visible = true;
-                                            lblNomPCDest.Text = "Name :" + "\r\n" + sNameDestinataire;
-                                            lblNomPCDest.ForeColor = Color.Black;
-                                            bResultPing = await Ip.PingDest(sIPDestinataire);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //___________MinimiserLaFenetre________________
-                                        this.Width = 620;
-                                        lblDescription.Visible = false;
-                                        btnSart.Visible = false;
-                                        lblDescription2.Visible = true;
-                                        lblIPDESTINATAIRE.Visible = false;
-                                        pbxLogo1.Visible = false;
-                                        pbxLogoPetit.Visible = true;
-                                        lblIPPersonnel.Visible = false;
-                                        lblFixeCePC.Visible = false;
-                                        NomDestinataireToolStripMenuItem.Visible = true;
-                                        tbxIP1.Visible = false;
-                                        tbxIP2.Visible = false;
-                                        tbxIP3.Visible = false;
-                                        tbxIP4.Visible = false;
-                                        NomDestinataireToolStripMenuItem.Text = "Recipient : " + sNameDestinataire;
-                                        lblNomPCDest.Visible = false;
-                                        iPPersonnelToolStripMenuItem.Text = "My IP : " + lblIPPersonnel.Text;
-                                        iPPersonnelToolStripMenuItem.Visible = true;
-                                        //______________________________________________
-                                        //FichierConfig---------------------------------
-                                        if(XMLManipulation.GetValue("EnableLastIpConnexion") == "ON")
-                                            XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
-                                        else
-                                            XMLManipulation.ModifyElementXML("LastIpConnexion", "");
-                                        recipientIP = sIPDestinataire;
-                                        try
-                                        {
-                                            epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
-                                            sck.Bind(epLocal);
-
-                                            epRemote = new IPEndPoint(IPAddress.Parse(sIPDestinataire), 3056);
-                                            sck.Connect(epRemote);
-
-                                            byte[] buffer = new byte[1500];
-                                            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageReceived), buffer);
-
-                                            btnSart.Text = "Connected";
-                                            btnSart.Enabled = false;
-                                            btnEnvoi.Enabled = true;
-                                            tbxMessageEnvoit.Focus();
-                                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
-                                            if (XMLManipulation.GetValue("SaveDiscussion").ToString() == "ON")
-                                            {
-                                                List<string> temp = ChatData.Import(recipientIP);
-                                                if (temp.Count() != 0)
-                                                {
-                                                    foreach (string element in temp)
-                                                    {
-                                                        lbxTchat.Items.Add(element);
-                                                    }
-                                                }        
-                                            }
-                                            
-                                        }
-                                        catch
-                                        {
-                                            MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat" + "\r\n" + "\r\n", "An error occurred");
-                                            Application.Exit();
-                                        }
-                                        //Send the key to the other client to connect
-
-                                    }
-                                }
-                                else
-                                {
-                                    lblEtatPing.Text = "Ping : Fail";
-                                    lblEtatPing.ForeColor = Color.Red;
-                                    lblNomPCDest.Visible = false;
-                                    tbxIP4.BackColor = Color.Red;
-                                }
-                            }
+                            lblNomPCDest.Text = "Name : \r\nNot found";
+                            lblNomPCDest.ForeColor = Color.Red;
+                            lblNomPCDest.Visible = true;
+                            tbxIP4.BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            btnSart.Text = "Start";
+                            lblNomPCDest.Visible = true;
+                            lblNomPCDest.Text = $"Name :\r\n{sNameDestinataire}";
+                            lblNomPCDest.ForeColor = Color.Black;
+                            bResultPing = await Ip.PingDest(sIPDestinataire);
                         }
                     }
+                    else
+                    {
+                        //___________WindowPreparation________________
+                        this.Width = 620;
+                        lblDescription.Visible = false;
+                        btnSart.Visible = false;
+                        lblDescription2.Visible = true;
+                        lblIPDESTINATAIRE.Visible = false;
+                        pbxLogo1.Visible = false;
+                        pbxLogoPetit.Visible = true;
+                        lblIPPersonnel.Visible = false;
+                        lblFixeCePC.Visible = false;
+                        NomDestinataireToolStripMenuItem.Visible = true;
+                        tbxIP1.Visible = tbxIP2.Visible = tbxIP3.Visible = tbxIP4.Visible = false;
+
+                        NomDestinataireToolStripMenuItem.Text = $"Recipient : {sNameDestinataire}";
+                        lblNomPCDest.Visible = false;
+                        iPPersonnelToolStripMenuItem.Text = $"My IP : {lblIPPersonnel.Text}";
+                        iPPersonnelToolStripMenuItem.Visible = true;
+                        //______________________________________________
+                        //FichierConfig---------------------------------
+                        if (XMLManipulation.GetValue("EnableLastIpConnexion") == "ON")
+                            XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
+                        else
+                            XMLManipulation.ModifyElementXML("LastIpConnexion", "");
+                        recipientIP = sIPDestinataire;
+                        try
+                        {
+                            epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
+                            sck.Bind(epLocal);
+
+                            epRemote = new IPEndPoint(IPAddress.Parse(sIPDestinataire), 3056);
+                            sck.Connect(epRemote);
+
+                            byte[] buffer = new byte[1500];
+                            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageReceived), buffer);
+
+                            btnSart.Text = "Connected";
+                            btnSart.Enabled = false;
+                            btnEnvoi.Enabled = true;
+                            tbxMessageEnvoit.Focus();
+                            EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
+                            if (XMLManipulation.GetValue("SaveDiscussion").ToString() == "ON")
+                            {
+                                List<string> temp = ChatData.Import(recipientIP);
+                                if (temp.Count() != 0)
+                                {
+                                    foreach (string element in temp)
+                                    {
+                                        lbxTchat.Items.Add(element);
+                                    }
+                                }
+                            }
+
+                        }
+                        catch(Exception ex)
+                        {
+                            KLogs.WriteError(ex.Message);
+                            MessageBox.Show("An error occured. \r\nPlease restart Kubeah Chat\r\n\r\n", "An error occurred");
+                            Application.Exit();
+                        }
+                        //Send the key to the other client to connect
+
+                    }
                 }
+                else
+                {
+                    lblEtatPing.Text = "Ping : Fail";
+                    lblNomPCDest.Visible = false;
+                    tbxIP4.BackColor = lblEtatPing.ForeColor = Color.Red;
+                }
+            }
             this.Enabled = true;
             lblPatience.Visible = false;
         }
@@ -327,22 +315,14 @@ namespace ChatLocalClient
         //====================================BTNEnvoi====================================================
         private void btnEnvoi_Click(object sender, EventArgs e)
         {
-            if (btnSart.Visible == true)
-            {
-
-            }
-            else
+            if (!btnSart.Visible)
             {
                 if (tbxMessageEnvoit.Text != "")
-                    if (bEtatDestinataire == false)
-                    {
+                    if (!bEtatDestinataire)
                         KNotification.Show("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
-                    }
                     else
-                    {
                         EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.Type.Message());
-                    }
-             }
+            }
         }
         //===============================================================================================
 
@@ -379,7 +359,7 @@ namespace ChatLocalClient
             {
                 Process.Start("https://sites.google.com/view/kubeahchat");
             }
-            catch { }
+            catch { KLogs.WriteWarning("Unable to open this link : https://sites.google.com/view/kubeahchat"); }
         }
         //===========================================================
         
@@ -457,9 +437,8 @@ namespace ChatLocalClient
         //FINGestionNbrCaractères===================================================================FIN====================
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Envoi la clé pour dire à l'autre client qu'il est absent
-            //Que si la conversation à démmarée
-            if (btnSart.Visible == false)
+            //Send state key
+            if (!btnSart.Visible)
             {
                 EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.Type.Init());//Clé Absent
 
@@ -469,7 +448,7 @@ namespace ChatLocalClient
                     string text = "";
                     foreach (var item in lbxTchat.Items)
                     {
-                        text += item.ToString() + "\r\n";
+                        text += $"{item.ToString()}\r\n";
                     }
                     ChatData.Export(recipientIP, text);
                     // Why one line?
@@ -521,10 +500,8 @@ namespace ChatLocalClient
                     {
                         lbxTchat.Items.Add("Him :      " + kMessage.GetMessageContent());
 
-                        if (bNotificationsEnable)
-                        {
+                        if(bNotificationsEnable)
                             KNotification.Show(kMessage.GetMessageContent());
-                        }
                     }
                 }
 
@@ -533,6 +510,7 @@ namespace ChatLocalClient
             }
             catch (Exception exception)
             {
+                KLogs.WriteError(exception.Message);
                 MessageBox.Show(exception.ToString());
                 Application.Exit();
             }
@@ -570,7 +548,7 @@ namespace ChatLocalClient
         /// <param name="bEtat">True : Active | False : Inactive</param>
         private void RecipientStatus(bool bEtat)
         {
-            if (bEtat == true)
+            if (bEtat)
             {
                 lblStatutDestinataire.Text = "Recipient : Active";//Changement du statut le la personne
                 lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text

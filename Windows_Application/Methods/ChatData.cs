@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using KChat.Objects;
 
 namespace KChat.Methods
 {
@@ -40,7 +42,7 @@ namespace KChat.Methods
                 tw.WriteLine(result);
                 tw.Close();
             }
-            catch { }
+            catch(Exception e) { KLogs.WriteWarning(e.Message); }
         }
 
         /// <summary>
