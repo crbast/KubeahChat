@@ -29,10 +29,10 @@ namespace KChat.Methods
         /// <returns>String : Host name</returns>
         public static string GetHostName(string ipAdress)
         {
-            string machineName = string.Empty;
+            var machineName = string.Empty;
             try
             {
-                IPHostEntry hostEntry = Dns.GetHostEntry(ipAdress);
+                var hostEntry = Dns.GetHostEntry(ipAdress);
                 machineName = hostEntry.HostName;
             }
             catch
@@ -49,9 +49,9 @@ namespace KChat.Methods
         /// <returns>Boolean : true(OK) | false(NOT OK)</returns>
         public static async Task<bool> PingDest(string sIpAdress)
         {
-            Ping ping = new Ping();
-            PingReply pingresult = ping.Send(sIpAdress, 60);
-            if (pingresult.Status.ToString() == "Success")
+            var ping = new Ping();
+            var pingresult = ping.Send(sIpAdress, 60);
+            if (pingresult?.Status.ToString() == "Success")
             {
                 return true;
             }

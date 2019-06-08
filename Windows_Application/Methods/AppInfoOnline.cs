@@ -25,12 +25,12 @@ namespace KChat.Methods
         /// </summary>
         public static void GetDescription()
         {
-            int iMode = 1;
-            string sDescription = "";
-            string sVersionWeb = "";
+            var iMode = 1;
+            var sDescription = "";
+            var sVersionWeb = "";
             try
             {
-                System.Net.WebClient webClientKubeah = new System.Net.WebClient();
+                var webClientKubeah = new System.Net.WebClient();
                 sDescription = webClientKubeah.DownloadString("http://kubeah.com/kchat/description.txt");
                 try
                 {

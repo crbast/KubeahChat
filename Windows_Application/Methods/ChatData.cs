@@ -17,8 +17,8 @@ namespace KChat.Methods
         /// <param name="content">(string) content of discussion</param>
         public static void Export(string ipRecipient, string content)
         {
-            List<string> verificationEmptyLine = new List<string>();
-            string result = "";
+            List<string> verificationEmptyLine;
+            var result = "";
             try
             {
                 verificationEmptyLine = content.Split("\r\n".ToCharArray()).ToList(); 
@@ -26,11 +26,11 @@ namespace KChat.Methods
 
                 // Convert list verificationEmptyLine to string result
                 foreach (var item in verificationEmptyLine)
-                    result += $"{item.ToString()}\r\n";
+                    result += $"{item}\r\n";
 
                 if (!Directory.Exists("./Discussions"))
                     Directory.CreateDirectory("./Discussions");
-                string path = $"./Discussions/{ipRecipient}.chat";
+                var path = $"./Discussions/{ipRecipient}.chat";
                 if (!File.Exists(path))
                 {
                     var myFile = File.Create(path);
@@ -40,7 +40,10 @@ namespace KChat.Methods
                 tw.WriteLine(result);
                 tw.Close();
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
         }
 
         /// <summary>
@@ -50,11 +53,11 @@ namespace KChat.Methods
         /// <returns></returns>
         public static List<string> Import(string ipRecipient)
         {
-            List<string> result = new List<string>();
-            string path = $"./Discussions/{ipRecipient}.chat";
+            var result = new List<string>();
+            var path = $"./Discussions/{ipRecipient}.chat";
             if (File.Exists(path))
             {
-                string contentFile = File.ReadAllText(path);
+                var contentFile = File.ReadAllText(path);
                 result = contentFile.Split("\n".ToCharArray()).ToList();
                 result.RemoveAll(string.IsNullOrWhiteSpace);//Delete empty line
                 return result;

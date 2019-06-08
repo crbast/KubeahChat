@@ -31,7 +31,7 @@ namespace KChat
         private void frmConfig_Load(object sender, EventArgs e)
         {
             //Display all settings with App.config
-            string temp = "";
+            var temp = "";
             temp = XmlManipulation.GetValue("FocusActivate");
             if (temp == "") { }
             else
@@ -156,10 +156,10 @@ namespace KChat
             if(Directory.Exists("./Discussions"))
             {
                 //If the directory exist all file is deleted
-                System.IO.DirectoryInfo di = new DirectoryInfo("./Discussions");
-                foreach (FileInfo file in di.GetFiles())
+                var di = new DirectoryInfo("./Discussions");
+                foreach (var file in di.GetFiles())
                     file.Delete();
-                foreach (DirectoryInfo dir in di.GetDirectories())
+                foreach (var dir in di.GetDirectories())
                     dir.Delete(true);
             }
             Objects.KNotification.Show("All discussions have been deleted.");

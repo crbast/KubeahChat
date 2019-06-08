@@ -18,20 +18,20 @@ namespace KChat.Methods
     /// </summary>
     class AppInfo
     {
-        protected const string sStringformattedVersion = "1.7.2.0";
-        protected const long lLongFormattedVersion = 001007002000000; //1.2.3.4 ===> 001002003000004
+        protected const string SStringformattedVersion = "1.7.2.0";
+        protected const long LLongFormattedVersion = 001007002000000; //1.2.3.4 ===> 001002003000004
 
 
         /// <summary>
         /// Returns the version in a string.
         /// </summary>
         /// <returns>String : Example "1.7.0.0"</returns>
-        public static string GetFormattedVersion() => sStringformattedVersion;
+        public static string GetFormattedVersion() => SStringformattedVersion;
         /// <summary>
         /// Returns the version in a int.
         /// </summary>
         /// <returns>Int : Example 001007000000000 (1.2.3.4 ===> 001002003000004)</returns>
-        public static long GetChainFormattedVersion() => lLongFormattedVersion;
+        public static long GetChainFormattedVersion() => LLongFormattedVersion;
     }
 
 }

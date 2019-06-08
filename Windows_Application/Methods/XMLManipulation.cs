@@ -33,11 +33,11 @@ namespace KChat.Methods
         {
             if (File.Exists("./App.config") == false)
             {
-                Dictionary<string, string> dict = new Dictionary<string, string>();
+                var dict = new Dictionary<string, string>();
                 CreateAppConfig(dict);
             }
-            string resultToReturn = "";
-            XmlDocument xmlDoc = new XmlDocument();
+            var resultToReturn = "";
+            var xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
 
             foreach (XmlNode xmlNode in xmlDoc.DocumentElement)
@@ -56,7 +56,7 @@ namespace KChat.Methods
         /// <param name="dict">Dictionary containing the old parameters</param>
         private static void CreateAppConfig(Dictionary<string, string> dict)
         {
-            XmlWriter xmlWriter = XmlWriter.Create("./App.config");
+            var xmlWriter = XmlWriter.Create("./App.config");
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("param");
             xmlWriter.WriteStartElement("param");
@@ -112,7 +112,7 @@ namespace KChat.Methods
             xmlWriter.WriteEndElement();
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
             xmlDoc.Save("./App.config");
         }
@@ -126,13 +126,13 @@ namespace KChat.Methods
         {
             if (File.Exists("./App.config") == false)
             {
-                Dictionary<string, string> dict = new Dictionary<string, string>();
+                var dict = new Dictionary<string, string>();
                 CreateAppConfig(dict);
             }
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.Load("./App.config");
 
-            bool verificationParameter = false;
+            var verificationParameter = false;
             /* true : The parameter has been entered
              * false : The parameter has not been entered because it does not exist
              * */
@@ -148,7 +148,7 @@ namespace KChat.Methods
             xmlDoc.Save("./App.config");
             if (verificationParameter == false)
             {
-                Dictionary<string, string> dict = new Dictionary<string, string>
+                var dict = new Dictionary<string, string>
                 {
                     { name, newValue }
                 };
@@ -168,8 +168,8 @@ namespace KChat.Methods
             {
                 Directory.CreateDirectory("./App/notifications");
                 // Creating a "notification" file for the Kubeah_SimpleNotification application 
-                string title = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
-                XmlWriter xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
+                var title = DateTime.Now.ToString("dd.MM.yyyy_HH.mm.ss");
+                var xmlWriter = XmlWriter.Create($"./App/notifications/{title}.xml");
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("param");
                 xmlWriter.WriteStartElement("param");
@@ -178,7 +178,7 @@ namespace KChat.Methods
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteEndElement();
                 xmlWriter.Close();
-                XmlDocument xmlDoc = new XmlDocument();
+                var xmlDoc = new XmlDocument();
                 xmlDoc.Load($"./App/notifications/{title}.xml");
                 xmlDoc.Save($"./App/notifications/{title}.xml");
             }
