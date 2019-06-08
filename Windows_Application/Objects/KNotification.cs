@@ -22,7 +22,7 @@ namespace KChat.Objects
     /// </summary>
     public class KNotification
     {
-        private string content = "";
+        private string content;
 
         /// <summary>
         /// Create basic KNotification object
@@ -47,7 +47,7 @@ namespace KChat.Objects
         /// <param name="content"></param>
         private static void ShowNotification(string content)
         {
-            XMLManipulation.CreateNotifFile(content);
+            XmlManipulation.CreateNotifFile(content);
             var currentDirectory = Directory.GetCurrentDirectory();
             var executablePath = $@"{currentDirectory}\App\Windows_Notification.exe";
             var p = new Process { StartInfo = new ProcessStartInfo(executablePath) };

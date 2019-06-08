@@ -33,7 +33,7 @@ namespace KChat.Methods
                 else
                 {//Si ancienne version
                     string sInfoNewVersion = webClientKubeah.DownloadString("http://kubeah.com/kchat/info.txt");//Affectation de */version.txt à sInfoNewVersion
-                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, "A new version is available", MessageBoxButtons.YesNo);//Message box avec YES/NO
+                    DialogResult dialogResultUser = MessageBox.Show(sInfoNewVersion, @"A new version is available", MessageBoxButtons.YesNo);//Message box avec YES/NO
                     if (dialogResultUser == DialogResult.Yes)
                     {
                         try
@@ -43,7 +43,7 @@ namespace KChat.Methods
                         }
                         catch
                         {
-                            MessageBox.Show("KubeahChat_Update.exe not found!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(@"KubeahChat_Update.exe not found!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

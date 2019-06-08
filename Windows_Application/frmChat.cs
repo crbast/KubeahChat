@@ -31,18 +31,18 @@ using System.Net.Sockets;
 using KChat.Methods;
 using System.Diagnostics;
 using KChat.Objects;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ChatLocalClient
 {
     public partial class FrmMain : Form
     {
-        Socket sck;
-        EndPoint epLocal, epRemote;
-        bool bEtatDestinataire = false; //State recipient True/Actif False/Inactif
-        bool bNotificationsEnable = false;
-        string recipientIP = "";
+        Socket _sck;
+        private EndPoint _epLocal, _epRemote;
+        private bool _bEtatDestinataire = false; //State recipient True/Actif False/Inactif
+        bool _bNotificationsEnable = false;
+        string _recipientIp = "";
 
         public FrmMain()
         {
@@ -54,15 +54,15 @@ namespace ChatLocalClient
         {
             //==============================AtStartUp===================================================
             lblDescription2.Visible = false; //Hidden label
-            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Socket creation
-            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            lblIPPersonnel.Text = GetLocalIP();//Show personnal Ip
+            _sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);//Socket creation
+            _sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            lblIPPersonnel.Text = GetLocalIp();//Show personnal Ip
             tbxMessageEnvoit.MaxLength = 72;//Limit max lenght
             pbxLogoPetit.Visible = false;//Don't show logo
             NomDestinataireToolStripMenuItem.Visible = false;
             NomDestinataireToolStripMenuItem.Text = lblIPPersonnel.Text;
             iPPersonnelToolStripMenuItem.Visible = false;
-            this.MaximizeBox = false;//Don't show maximize button on form
+            MaximizeBox = false;//Don't show maximize button on form
             //GESTIONFOCUS====================================================================================
             timContrôleFocus.Enabled = true;//Start timer focus
             lblNomPCDest.Visible = false;
@@ -75,16 +75,16 @@ namespace ChatLocalClient
             lblDescription.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
             lblDescription2.Text = $"Kubeah! {DateTime.Now.Year.ToString()}";
             //Create and read config==========================================================================
-            string recipientIp = XMLManipulation.GetValue("LastIpConnexion");
+            var recipientIp = XmlManipulation.GetValue("LastIpConnexion");
             if(recipientIp != "")
-                IPSeparationString(recipientIp, true);
+                IpSeparationString(recipientIp, true);
             else
-                IPSeparationString(lblIPPersonnel.Text, false);
-            string focusState = XMLManipulation.GetValue("FocusActivate");
+                IpSeparationString(lblIPPersonnel.Text, false);
+            var focusState = XmlManipulation.GetValue("FocusActivate");
             if(focusState != "ON")
                 timContrôleFocus.Enabled = false;
-            if (XMLManipulation.GetValue("EnableLastIpConnexion") != "ON")
-                XMLManipulation.ModifyElementXML("LastIpConnexion", "");
+            if (XmlManipulation.GetValue("EnableLastIpConnexion") != "ON")
+                XmlManipulation.ModifyElementXml("LastIpConnexion", "");
             //================================================================================================
         }
 
@@ -92,12 +92,11 @@ namespace ChatLocalClient
         /// Get localhost IP
         /// </summary>
         /// <returns>String : Example 192.168.0.2</returns>
-        private string GetLocalIP()
+        private static string GetLocalIp()
         {
-            IPHostEntry host;
-            host = Dns.GetHostEntry(Dns.GetHostName());
+            var host = Dns.GetHostEntry(Dns.GetHostName());
 
-            foreach (IPAddress ip in host.AddressList)
+            foreach (var ip in host.AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
@@ -116,14 +115,13 @@ namespace ChatLocalClient
         /// <param name="type">message | initialization</param>
         public void EnvoiDuMessage(string lblTextEnvoi, int type)
         {
-            KMessage kMessage = new KMessage(lblTextEnvoi, type);
+            var kMessage = new KMessage(lblTextEnvoi, type);
             try
             {
-                System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();
-                byte[] msg = new byte[1500];
-                msg = enc.GetBytes(kMessage.ReadyToSend());
+                var enc = new UTF8Encoding();
+                var msg = enc.GetBytes(kMessage.ReadyToSend());
 
-                sck.Send(msg);
+                _sck.Send(msg);
                 if(kMessage.GetMessageType() == KMessage.Type.Init().ToString())
                 {
                     lbxTchat.Items.Add("Me : " + tbxMessageEnvoit.Text);
@@ -145,7 +143,7 @@ namespace ChatLocalClient
         {
             try
             {
-                int iVerification = Convert.ToInt32(sText);
+                var int32 = Convert.ToInt32(sText);
                 return true;
             }
             catch
@@ -157,20 +155,19 @@ namespace ChatLocalClient
         //Fonction SPLITSTRING=================================================================================================/
         //=====================================================================================================================/
         //Permet l'affichage de l'IP séparé dans les textbox
-        public void IPSeparationString(string sIP, bool withConfig)
+        public void IpSeparationString(string sIp, bool withConfig)
         {
             if (withConfig)
             {
-                string[] stringSeparators = new string[] { "." };
-                string[] result;
+                var stringSeparators = new[] { "." };
 
                 // ...
-                result = sIP.Split(stringSeparators, StringSplitOptions.None);
+                var result = sIp.Split(stringSeparators, StringSplitOptions.None);
 
-                string sIp1 = result[0];
-                string sIp2 = result[1];
-                string sIp3 = result[2];
-                string sIp4 = result[3];
+                var sIp1 = result[0];
+                var sIp2 = result[1];
+                var sIp3 = result[2];
+                var sIp4 = result[3];
 
                 tbxIP1.Text = sIp1;
                 tbxIP2.Text = sIp2;
@@ -179,15 +176,14 @@ namespace ChatLocalClient
             }
             else
             {
-                string[] stringSeparators = new string[] { "." };
-                string[] result;
+                var stringSeparators = new[] { "." };
 
                 // ...
-                result = sIP.Split(stringSeparators, StringSplitOptions.None);
+                var result = sIp.Split(stringSeparators, StringSplitOptions.None);
 
-                string sIp1 = result[0];
-                string sIp2 = result[1];
-                string sIp3 = result[2];
+                var sIp1 = result[0];
+                var sIp2 = result[1];
+                var sIp3 = result[2];
 
                 tbxIP1.Text = sIp1;
                 tbxIP2.Text = sIp2;
@@ -202,8 +198,8 @@ namespace ChatLocalClient
         private async void btnSart_ClickAsync(object sender, EventArgs e)
         {
             lblPatience.Visible = true;
-            string sIPDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
-            if (sIPDestinataire == lblIPPersonnel.Text) { tbxIP4.BackColor = Color.Red; }
+            var sIpDestinataire = tbxIP1.Text + "." + tbxIP2.Text + "." + tbxIP3.Text + "." + tbxIP4.Text;
+            if (sIpDestinataire == lblIPPersonnel.Text) { tbxIP4.BackColor = Color.Red; }
             if (tbxIP1.BackColor != Color.Red)
                 if (tbxIP2.BackColor != Color.Red)
                 {
@@ -213,18 +209,17 @@ namespace ChatLocalClient
                         {
                             if (tbxIP4.BackColor != Color.PaleGreen)
                             {
-                                this.Enabled = false;
                                 lblPatience.Visible = true;
                                 lblEtatPing.Visible = false;
                                 lblNomPCDest.Visible = false;
                                 lblEtatPing.Visible = true;
-                                string sNameDestinataire = Ip.GetHostName(sIPDestinataire);
-                                bool bResultPing = await Ip.PingDest(sIPDestinataire);
-                                if (bResultPing == true)
+                                var sNameDestinataire = Ip.GetHostName(sIpDestinataire);
+                                var bResultPing = await Task.Run(() => Ip.PingDest(sIpDestinataire));
+                                if (bResultPing)
                                 {
-                                    lblEtatPing.Text = "Ping : OK";
+                                    lblEtatPing.Text = @"Ping : OK";
                                     lblEtatPing.ForeColor = Color.Green;
-                                    if (btnSart.Text == "Check IP")
+                                    if (btnSart.Text == @"Check IP")
                                     {
                                         if (sNameDestinataire == "")
                                         {
@@ -239,7 +234,7 @@ namespace ChatLocalClient
                                             lblNomPCDest.Visible = true;
                                             lblNomPCDest.Text = "Name :" + "\r\n" + sNameDestinataire;
                                             lblNomPCDest.ForeColor = Color.Black;
-                                            bResultPing = await Ip.PingDest(sIPDestinataire);
+
                                         }
                                     }
                                     else
@@ -265,33 +260,33 @@ namespace ChatLocalClient
                                         iPPersonnelToolStripMenuItem.Visible = true;
                                         //______________________________________________
                                         //FichierConfig---------------------------------
-                                        if(XMLManipulation.GetValue("EnableLastIpConnexion") == "ON")
-                                            XMLManipulation.ModifyElementXML("LastIpConnexion", sIPDestinataire);
+                                        if(XmlManipulation.GetValue("EnableLastIpConnexion") == "ON")
+                                            XmlManipulation.ModifyElementXml("LastIpConnexion", sIpDestinataire);
                                         else
-                                            XMLManipulation.ModifyElementXML("LastIpConnexion", "");
-                                        recipientIP = sIPDestinataire;
+                                            XmlManipulation.ModifyElementXml("LastIpConnexion", "");
+                                        _recipientIp = sIpDestinataire;
                                         try
                                         {
-                                            epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
-                                            sck.Bind(epLocal);
+                                            _epLocal = new IPEndPoint(IPAddress.Parse(lblIPPersonnel.Text), 3056);//Use 3056 port
+                                            _sck.Bind(_epLocal);
 
-                                            epRemote = new IPEndPoint(IPAddress.Parse(sIPDestinataire), 3056);
-                                            sck.Connect(epRemote);
+                                            _epRemote = new IPEndPoint(IPAddress.Parse(sIpDestinataire), 3056);
+                                            _sck.Connect(_epRemote);
 
-                                            byte[] buffer = new byte[1500];
-                                            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageReceived), buffer);
+                                            var buffer = new byte[1500];
+                                            _sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref _epRemote, MessageReceived, buffer);
 
-                                            btnSart.Text = "Connected";
+                                            btnSart.Text = @"Connected";
                                             btnSart.Enabled = false;
                                             btnEnvoi.Enabled = true;
                                             tbxMessageEnvoit.Focus();
                                             EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
-                                            if (XMLManipulation.GetValue("SaveDiscussion").ToString() == "ON")
+                                            if (XmlManipulation.GetValue("SaveDiscussion") == "ON")
                                             {
-                                                List<string> temp = ChatData.Import(recipientIP);
+                                                var temp = ChatData.Import(_recipientIp);
                                                 if (temp.Count() != 0)
                                                 {
-                                                    foreach (string element in temp)
+                                                    foreach (var element in temp)
                                                     {
                                                         lbxTchat.Items.Add(element);
                                                     }
@@ -319,7 +314,6 @@ namespace ChatLocalClient
                         }
                     }
                 }
-            this.Enabled = true;
             lblPatience.Visible = false;
         }
         //==========================================================================================================================================================
@@ -327,22 +321,18 @@ namespace ChatLocalClient
         //====================================BTNEnvoi====================================================
         private void btnEnvoi_Click(object sender, EventArgs e)
         {
-            if (btnSart.Visible == true)
+            if (!btnSart.Visible && tbxMessageEnvoit.Text != "")
             {
-
+                if (_bEtatDestinataire == false)
+                {
+                    KNotification.Show(
+                        "Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
+                }
+                else
+                {
+                    EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.Type.Message());
+                }
             }
-            else
-            {
-                if (tbxMessageEnvoit.Text != "")
-                    if (bEtatDestinataire == false)
-                    {
-                        KNotification.Show("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
-                    }
-                    else
-                    {
-                        EnvoiDuMessage(tbxMessageEnvoit.Text, KMessage.Type.Message());
-                    }
-             }
         }
         //===============================================================================================
 
@@ -387,31 +377,28 @@ namespace ChatLocalClient
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
-            Boolean temp = LabelToIntTest(tbxIP1.Text);
-            if (temp){tbxIP1.BackColor = Color.Snow;} else{tbxIP1.BackColor = Color.Red;}
+            tbxIP1.BackColor = LabelToIntTest(tbxIP1.Text) ? Color.Snow : Color.Red;
             if (tbxIP1.Text == "0") { tbxIP1.BackColor = Color.Red; }
             btnSart.Text = "Check IP";
-            try { int iTemp2 = Convert.ToInt32(tbxIP1.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP1.BackColor = Color.Red; } } catch { } //Must be greater than 0 but less than 256
+            try { var ipInt32 = Convert.ToInt32(tbxIP1.Text); if (ipInt32 > 255 || ipInt32 == 0) { tbxIP1.BackColor = Color.Red; } } catch { } //Must be greater than 0 but less than 256
             if (tbxIP1.Text.Contains("-") || tbxIP1.Text.Contains("+")) { tbxIP1.BackColor = Color.Red; } //Browse the string to find the sign "-" or "+" if present tbx -> Red
         }
         private void tbxIP2_TextChanged(object sender, EventArgs e)
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
-            Boolean temp = LabelToIntTest(tbxIP2.Text);
-            if (temp) { tbxIP2.BackColor = Color.Snow; } else { tbxIP2.BackColor = Color.Red; }
+            tbxIP2.BackColor = LabelToIntTest(tbxIP2.Text) ? Color.Snow : Color.Red;
             btnSart.Text = "Check IP";
-            try { int iTemp2 = Convert.ToInt32(tbxIP2.Text); if (iTemp2 > 255) {tbxIP2.BackColor = Color.Red;}}catch { } //Must be greater than or equal to 0 but less than 256
+            try { if (Convert.ToInt32(tbxIP2.Text) > 255) {tbxIP2.BackColor = Color.Red;}}catch { } //Must be greater than or equal to 0 but less than 256
             if (tbxIP2.Text.Contains("-") || tbxIP2.Text.Contains("+")) { tbxIP2.BackColor = Color.Red; } //Browse the string to find the sign "-" or "+" if present tbx -> Red
         }
         private void tbxIP3_TextChanged(object sender, EventArgs e)
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
-            bool temp = LabelToIntTest(tbxIP3.Text);
-            if (temp){tbxIP3.BackColor = Color.Snow;} else{tbxIP3.BackColor = Color.Red;}
+            tbxIP3.BackColor = LabelToIntTest(tbxIP3.Text) ? Color.Snow : Color.Red;
             btnSart.Text = "Check IP";
-            try { int iTemp2 = Convert.ToInt32(tbxIP3.Text); if (iTemp2 > 255) { tbxIP3.BackColor = Color.Red; } } catch { } //Must be greater than or equal to 0 but less than 256
+            try {  if (Convert.ToInt32(tbxIP3.Text) > 255) { tbxIP3.BackColor = Color.Red; } } catch { } //Must be greater than or equal to 0 but less than 256
             if (tbxIP3.Text.Contains("-") || tbxIP3.Text.Contains("+")) { tbxIP3.BackColor = Color.Red; } //Browse the string to find the sign "-" or "+" if present tbx -> Red
         }
 
@@ -419,10 +406,9 @@ namespace ChatLocalClient
         {
             lblEtatPing.Visible = false;
             lblNomPCDest.Visible = false;
-            bool temp = LabelToIntTest(tbxIP4.Text);
-            if (temp){tbxIP4.BackColor = Color.Snow;} else{tbxIP4.BackColor = Color.Red;}
+            tbxIP4.BackColor = LabelToIntTest(tbxIP4.Text) ? Color.Snow : Color.Red;
             btnSart.Text = "Check IP";
-            try { int iTemp2 = Convert.ToInt32(tbxIP4.Text); if (iTemp2 > 255 || iTemp2 == 0) { tbxIP4.BackColor = Color.Red; } } catch { } //Must be greater than or equal to 0 but less than 256
+            try { var ipInt32 = Convert.ToInt32(tbxIP4.Text); if (ipInt32 > 255 || ipInt32 == 0) { tbxIP4.BackColor = Color.Red; } } catch { } //Must be greater than or equal to 0 but less than 256
             if (tbxIP4.Text.Contains("-") || tbxIP4.Text.Contains("+")) { tbxIP4.BackColor = Color.Red; } //Browse the string to find the sign "-" or "+" if present tbx -> Red
         }
         //======================================FIN========================FIN===============================================================================
@@ -434,7 +420,7 @@ namespace ChatLocalClient
                 if (btnSart.Visible != true)
                 {
                     if (tbxMessageEnvoit.Text != "")
-                        if (bEtatDestinataire == false)
+                        if (_bEtatDestinataire == false)
                         {
                             KNotification.Show("Your recipient is not active.\r\nThe discussions are not saved.\r\n Please wait for it to connect.");
                         }
@@ -450,7 +436,7 @@ namespace ChatLocalClient
         private void timNbrCaractères_Tick(object sender, EventArgs e)
         {
             //Allows you to show the number of characters left
-            int iNbrCaract = tbxMessageEnvoit.TextLength;
+            var iNbrCaract = tbxMessageEnvoit.TextLength;
             iNbrCaract = 72 - iNbrCaract;
             lblNbrCaractRestants.Text = Convert.ToString(iNbrCaract);
         }
@@ -459,19 +445,19 @@ namespace ChatLocalClient
         {
             //Envoi la clé pour dire à l'autre client qu'il est absent
             //Que si la conversation à démmarée
-            if (btnSart.Visible == false)
+            if (!btnSart.Visible)
             {
                 EnvoiDuMessage("789ZCFZTiniwjZTUvjkas79012798", KMessage.Type.Init());//Clé Absent
 
-                string status = XMLManipulation.GetValue("SaveDiscussion");
+                var status = XmlManipulation.GetValue("SaveDiscussion");
                 if (status == "ON")
                 {
-                    string text = "";
+                    var text = "";
                     foreach (var item in lbxTchat.Items)
                     {
-                        text += item.ToString() + "\r\n";
+                        text += item + "\r\n";
                     }
-                    ChatData.Export(recipientIP, text);
+                    ChatData.Export(_recipientIp, text);
                     // Why one line?
                 }
             }
@@ -487,15 +473,15 @@ namespace ChatLocalClient
         {
             try
             {
-                int size = sck.EndReceiveFrom(aResult, ref epRemote);
+                var size = _sck.EndReceiveFrom(aResult, ref _epRemote);
                 if (size > 0)
                 {
-                    byte[] receivedData = new byte[1464];
+                    var receivedData = new byte[1464];
 
                     receivedData = (byte[])aResult.AsyncState;
 
-                    UTF8Encoding enc = new UTF8Encoding();
-                    KMessage kMessage = new KMessage(enc.GetString(receivedData));
+                    var enc = new UTF8Encoding();
+                    var kMessage = new KMessage(enc.GetString(receivedData));
                     //Comparaison chaine de caractère reçu
                     if (kMessage.GetMessageType() == KMessage.Type.Init().ToString())
                     {
@@ -503,16 +489,16 @@ namespace ChatLocalClient
                         {
                             case "789ZCFZTiniwjZTUvjkas79012798":
                                 FrmMain.CheckForIllegalCrossThreadCalls = false;
-                                bEtatDestinataire = false;
-                                RecipientStatus(bEtatDestinataire);
+                                _bEtatDestinataire = false;
+                                RecipientStatus(_bEtatDestinataire);
                                 FrmMain.CheckForIllegalCrossThreadCalls = true;
                                 break;
                             case "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178":
-                                if (!bEtatDestinataire)
+                                if (!_bEtatDestinataire)
                                 {
                                     FrmMain.CheckForIllegalCrossThreadCalls = false;
-                                    bEtatDestinataire = true;
-                                    RecipientStatus(bEtatDestinataire);
+                                    _bEtatDestinataire = true;
+                                    RecipientStatus(_bEtatDestinataire);
                                     FrmMain.CheckForIllegalCrossThreadCalls = true;
                                 }
                                 break;
@@ -526,15 +512,15 @@ namespace ChatLocalClient
                         FrmMain.CheckForIllegalCrossThreadCalls = false;
                         lbxTchat.Items.Add("Him :      " + kMessage.GetMessageContent());
                         FrmMain.CheckForIllegalCrossThreadCalls = true;
-                        if (bNotificationsEnable)
+                        if (_bNotificationsEnable)
                         {
                             KNotification.Show(kMessage.GetMessageContent());
                         }
                     }
                 }
 
-                byte[] buffer = new byte[1500];
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageReceived), buffer);
+                var buffer = new byte[1500];
+                _sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref _epRemote, new AsyncCallback(MessageReceived), buffer);
             }
             catch (Exception exception)
             {
@@ -545,13 +531,13 @@ namespace ChatLocalClient
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            KChat.frmConfig frmConfig = new KChat.frmConfig();
+            var frmConfig = new KChat.frmConfig();
             frmConfig.Show();
         }
 
         private void ReadAppConfig_Tick(object sender, EventArgs e)
         {
-            string temp = XMLManipulation.GetValue("FocusActivate");
+            var temp = XmlManipulation.GetValue("FocusActivate");
             if (temp == "ON")
                 timContrôleFocus.Enabled = true;
             else
@@ -560,12 +546,12 @@ namespace ChatLocalClient
 
         private void FrmMain_Deactivate(object sender, EventArgs e)
         {
-            bNotificationsEnable = (XMLManipulation.GetValue("NotificationsEnable") == "ON") ? true : false;
+            _bNotificationsEnable = (XmlManipulation.GetValue("NotificationsEnable") == "ON") ? true : false;
         }
 
         private void FrmMain_Activated(object sender, EventArgs e)
         {
-            bNotificationsEnable = false;
+            _bNotificationsEnable = false;
         }
 
 

@@ -32,7 +32,7 @@ namespace KChat
         {
             //Display all settings with App.config
             string temp = "";
-            temp = XMLManipulation.GetValue("FocusActivate");
+            temp = XmlManipulation.GetValue("FocusActivate");
             if (temp == "") { }
             else
             {
@@ -42,7 +42,7 @@ namespace KChat
                     chbFocusOff.Checked = true;
             }
             
-            temp = XMLManipulation.GetValue("EnableLastIpConnexion");
+            temp = XmlManipulation.GetValue("EnableLastIpConnexion");
             if (temp == "") { }
             else
             {
@@ -52,7 +52,7 @@ namespace KChat
                     chbLastIpRecipientOff.Checked = true;
             }
 
-            temp = XMLManipulation.GetValue("SaveDiscussion");
+            temp = XmlManipulation.GetValue("SaveDiscussion");
             if (temp == "") { }
             else
             {
@@ -62,7 +62,7 @@ namespace KChat
                     chbSaveDiscussionOff.Checked = true;
             }
 
-            temp = XMLManipulation.GetValue("NotificationsEnable");
+            temp = XmlManipulation.GetValue("NotificationsEnable");
             if (temp == "") { }
             else
             {
@@ -90,7 +90,7 @@ namespace KChat
             {
                 chbFocusOff.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("FocusActivate", "ON");
+                XmlManipulation.ModifyElementXml("FocusActivate", "ON");
             }
         }
 
@@ -105,7 +105,7 @@ namespace KChat
             {
                 chbFocusOn.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("FocusActivate", "OFF");
+                XmlManipulation.ModifyElementXml("FocusActivate", "OFF");
             }
         }
 
@@ -120,7 +120,7 @@ namespace KChat
             {
                 chbLastIpRecipientOff.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("EnableLastIpConnexion", "ON");
+                XmlManipulation.ModifyElementXml("EnableLastIpConnexion", "ON");
             }           
         }
 
@@ -135,8 +135,8 @@ namespace KChat
             {
                 chbLastIpRecipientOn.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("EnableLastIpConnexion", "OFF");
-                XMLManipulation.ModifyElementXML("LastIpConnexion", "");
+                XmlManipulation.ModifyElementXml("EnableLastIpConnexion", "OFF");
+                XmlManipulation.ModifyElementXml("LastIpConnexion", "");
             }
         }
 
@@ -176,7 +176,7 @@ namespace KChat
             {
                 chbSaveDiscussionOff.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("SaveDiscussion", "ON");
+                XmlManipulation.ModifyElementXml("SaveDiscussion", "ON");
             }
         }
 
@@ -191,7 +191,7 @@ namespace KChat
             {
                 chbSaveDiscussionOn.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("SaveDiscussion", "OFF");
+                XmlManipulation.ModifyElementXml("SaveDiscussion", "OFF");
             }
             // Objects.KNotification.Show("The saving of discussions is cancelled.\r\n!!! Old backups are not deleted !!!");
         }
@@ -207,7 +207,7 @@ namespace KChat
             {
                 chbEnableNotificationsOff.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("NotificationsEnable", "ON");
+                XmlManipulation.ModifyElementXml("NotificationsEnable", "ON");
             }
         }
 
@@ -222,7 +222,7 @@ namespace KChat
             {
                 chbEnableNotificationsOn.Checked = false;
                 //Change value on App.config
-                XMLManipulation.ModifyElementXML("NotificationsEnable", "OFF");
+                XmlManipulation.ModifyElementXml("NotificationsEnable", "OFF");
             }
         }
     }

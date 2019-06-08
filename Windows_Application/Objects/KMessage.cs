@@ -65,13 +65,13 @@ namespace KChat.Objects
         /// Return content of message
         /// </summary>
         /// <returns>Content</returns>
-        public string GetMessageContent() => messageDict["Content"].ToString();
+        public string GetMessageContent() => messageDict["Content"];
 
         /// <summary>
         /// Return type of message
         /// </summary>
         /// <returns>Type</returns>
-        public string GetMessageType() => messageDict["Type"].ToString();
+        public string GetMessageType() => messageDict["Type"];
 
         public static class Type
         {

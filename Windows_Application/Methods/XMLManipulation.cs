@@ -22,14 +22,14 @@ namespace KChat.Methods
     /// <summary>
     /// XML file manipulation
     /// </summary>
-    class XMLManipulation
+    internal class XmlManipulation
     {
         /// <summary>
         /// Get value of parameter
         /// </summary>
-        /// <param name="AttributesName"></param>
+        /// <param name="attributesName"></param>
         /// <returns>String : the result of the query. The result can be null</returns>
-        public static string GetValue(string AttributesName)
+        public static string GetValue(string attributesName)
         {
             if (File.Exists("./App.config") == false)
             {
@@ -42,9 +42,9 @@ namespace KChat.Methods
 
             foreach (XmlNode xmlNode in xmlDoc.DocumentElement)
             {
-                if (xmlNode.Attributes["name"].Value == AttributesName)
+                if (xmlNode.Attributes?["name"].Value == attributesName)
                 {
-                     resultToReturn = xmlNode.Attributes["value"].Value.ToString();
+                     resultToReturn = xmlNode.Attributes?["value"].Value.ToString();
                 }
             }
             return resultToReturn;
@@ -122,7 +122,7 @@ namespace KChat.Methods
         /// </summary>
         /// <param name="name">Name of the value to be changed</param>
         /// <param name="newValue">New value</param>
-        public static void ModifyElementXML(string name, string newValue)
+        public static void ModifyElementXml(string name, string newValue)
         {
             if (File.Exists("./App.config") == false)
             {
@@ -137,9 +137,9 @@ namespace KChat.Methods
              * false : The parameter has not been entered because it does not exist
              * */
 
-            foreach (XmlNode xmlNode in xmlDoc.DocumentElement)
+            foreach (XmlNode xmlNode in xmlDoc?.DocumentElement)
             {
-                if (xmlNode.Attributes["name"].Value == name)
+                if (xmlNode.Attributes?["name"].Value == name)
                 {
                     xmlNode.Attributes["value"].Value = newValue;
                     verificationParameter = true;
