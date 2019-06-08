@@ -502,14 +502,18 @@ namespace ChatLocalClient
                         switch (kMessage.GetMessageContent())
                         {
                             case "789ZCFZTiniwjZTUvjkas79012798":
+                                FrmMain.CheckForIllegalCrossThreadCalls = false;
                                 bEtatDestinataire = false;
                                 RecipientStatus(bEtatDestinataire);
+                                FrmMain.CheckForIllegalCrossThreadCalls = true;
                                 break;
                             case "tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178":
                                 if (!bEtatDestinataire)
                                 {
+                                    FrmMain.CheckForIllegalCrossThreadCalls = false;
                                     bEtatDestinataire = true;
                                     RecipientStatus(bEtatDestinataire);
+                                    FrmMain.CheckForIllegalCrossThreadCalls = true;
                                 }
                                 break;
                             default:
@@ -519,8 +523,9 @@ namespace ChatLocalClient
                     }
                     else
                     {
+                        FrmMain.CheckForIllegalCrossThreadCalls = false;
                         lbxTchat.Items.Add("Him :      " + kMessage.GetMessageContent());
-
+                        FrmMain.CheckForIllegalCrossThreadCalls = true;
                         if (bNotificationsEnable)
                         {
                             KNotification.Show(kMessage.GetMessageContent());
@@ -572,9 +577,11 @@ namespace ChatLocalClient
         {
             if (bEtat == true)
             {
+                FrmMain.CheckForIllegalCrossThreadCalls = false;
                 lblStatutDestinataire.Text = "Recipient : Active";//Changement du statut le la personne
                 lblStatutDestinataire.ForeColor = Color.Green;//Changement de la couleur du text
                 EnvoiDuMessage("tuiFZCz56786casdcssdcvuivgboRTSDetre67Rz7463178", KMessage.Type.Init());
+                FrmMain.CheckForIllegalCrossThreadCalls = true;
             }
             else
             {
